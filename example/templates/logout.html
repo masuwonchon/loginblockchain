@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block page_content %}
+    <h1>Bye, {{ current_user.username }}!</h1>
+
+<script type="text/javascript">
+function getXMLObject() {
+    var xmlHttp = false;
+    try {
+        xmlHttp = new ActiveXObject("Msxml2.XMLHTTP")}
+    catch (e) {
+        try {
+            xmlHttp = new ActiveXObject("Microsoft.XMLHTTP")}
+        catch (e2) {
+            xmlHttp = false}
+    }
+    if (!xmlHttp && typeof XMLHttpRequest != 'undefined') {
+        xmlHttp = new XMLHttpRequest();}
+
+    return xmlHttp;
+}
+
+var xmlhttp = new getXMLObject();
+
+function ajaxFunction() {
+    var getdate = new Date();      
+        if(xmlhttp) { 
+        var username = '{{current_user.username}}';
+        var loginhashblock = localStorage.getItem('{{current_user.username}}');
+        xmlhttp.open("POST","/logout",true);
+        xmlhttp.onreadystatechange  = handleServerResponse;
+        xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xmlhttp.setRequestHeader('Cache-Control', 'max-age=0');
+        xmlhttp.setRequestHeader('Upgrade-Insecure-Requests', 1);
+        xmlhttp.setRequestHeader('Accept', 'text/html,application/xhtml_xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3');
+        xmlhttp.send("username="+username+"&loginhashblock="+loginhashblock);
+    }
+};
+
+function handleServerResponse() {
+    if (xmlhttp.readyState == 4) {
+        if(xmlhttp.status == 200) {
+            document.write(xmlhttp.responseText);
+        }
+        else {
+            alert("Error proccessing form. Please try again");
+        }
+    }
+}
+</script>
+
+<div align="center">
+<table width="50%" cellpadding="7">
+<tr>
+    <button type="button" class="btn btn-default navbar-btn" onclick="ajaxFunction();">Logout</button>
+</tr>
+</table>
+</div>
+
+{% endblock %}

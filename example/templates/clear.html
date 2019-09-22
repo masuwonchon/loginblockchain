@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block page_content %}
+
+<h1>Command</h1>
+
+<script type="text/javascript">
+function getXMLObject() {
+    var xmlHttp = false;
+    try {
+        xmlHttp = new ActiveXObject("Msxml2.XMLHTTP")}
+    catch (e) {
+        try {
+            xmlHttp = new ActiveXObject("Microsoft.XMLHTTP")}
+        catch (e2) {
+            xmlHttp = false}
+    }
+    if (!xmlHttp && typeof XMLHttpRequest != 'undefined') {
+        xmlHttp = new XMLHttpRequest();}
+    return xmlHttp;}
+
+var xmlhttp = new getXMLObject();
+
+function ajaxFunction() {
+    var getdate = new Date();      
+        if(xmlhttp) { 
+        var username = document.getElementById("username");
+        var command = document.getElementById("command");
+        xmlhttp.open("POST","",true);
+        xmlhttp.onreadystatechange  = handleServerResponse;
+        xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xmlhttp.setRequestHeader('Cache-Control', 'max-age=0');
+        xmlhttp.setRequestHeader('Upgrade-Insecure-Requests', 1);
+        xmlhttp.setRequestHeader('Accept', 'text/html,application/xhtml_xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3');
+        xmlhttp.send("username="+username.value+"&command="+command.value);
+    }
+};
+ 
+function handleServerResponse() {
+    if (xmlhttp.readyState == 4) {
+        if(xmlhttp.status == 200) {
+            document.write(xmlhttp.responseText);
+        }
+        else if(xmlhttp.status == 302) {
+            window.location.replace("/command");
+        }
+        else if(xmlhttp.status == 2) {
+            alert(xmlhttp.responseText);
+            alert("2");
+        }
+        else if(xmlhttp.status == 1) {
+            username = xmlhttp.responseText;
+            //loginhb = 'OptQZt4l$bb1dc813f1d3a23278443a228f48c0e4a59e4754c4a8e805c2146020c2f8f26a';
+            //localStorage.setItem(username, loginhb);
+            //console.log('[info:set] username: '+username+', loginhb: '+loginhb);
+            buf = localStorage.getItem(username);
+            buf = localStorage.getItem('11');
+            //localStorage.setItem('{{username}}', '{{LoginHB}}');
+            //localStorage.getItem('{{username}}');
+            //console.log('username:','{{username}}','loginhb:','{{LoginHB}}');
+            alert('username: '+username);
+            alert('hashblock: '+buf);
+            console.log('[info:get] username: '+username+', loginhb: '+buf);
+        }
+        else {
+            alert("1234");
+        }
+    }
+}
+
+</script>
+<div align="center">
+<table width="50%" cellpadding="7">
+<tr>
+    <td>Username</td>
+    <td>:</td>
+    <td><input type="text" name="username" id="username" maxlength="12" placeholder="username"></td>
+</tr>
+
+<form>
+<tr>
+    <td>Command</td>
+    <td>:</td>
+    <td><input type="new-command" id="command" maxlength="12" value="" placeholder="command"></td>
+</tr>
+</form>
+<tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td><button type="button" class="btn btn-default navbar-btn" onclick="ajaxFunction();">Submit</button></td>
+</tr>
+</table>
+</div>
+{% endblock %}

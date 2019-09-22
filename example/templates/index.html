@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block page_content %}
+    {% if current_user.is_authenticated %}
+    <h1>Welcome, {{ current_user.username }}!</h1>
+    {% else %}
+    <h1>Welcome, Stranger!</h1>
+    <p>Please <a href="{{ url_for('register') }}">Register</a> or <a href="{{ url_for('login') }}">Login</a>.</p>
+    {% endif %}
+
+    {% if condition == True %}
+        HELLO condition is True.
+        <script>
+        username = '{{username}}';
+        loginhb = '{{LoginHB}}';
+        localStorage.setItem(username, loginhb);
+        buf = localStorage.getItem(username);
+        //localStorage.setItem('{{username}}', '{{LoginHB}}');
+        //localStorage.getItem('{{username}}');
+        //console.log('username:','{{username}}','loginhb:','{{LoginHB}}');
+        console.log('[info:index.html] username: '+username+', new_loginhb: '+buf);
+        </script>
+    {% else %}
+       HELLO condition is False.
+        <script>
+        var buf = localStorage.getItem("AA");
+        localStorage.setItem("AA", "index");
+	console.log(buf);
+        </script>
+    {% endif %}
+
+{% endblock %}

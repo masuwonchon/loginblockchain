@@ -17,22 +17,23 @@ import binascii
 
 DEBUG = False
 
-def print_LHBlist(LHBlist):
+
+def print_LHBlist(LHBliststr):
     """
     The function prints login hash block list for debug.
-    :param LHBlist:
+    :param LHBliststr:
     :return:
     """
 
-    if LHBlist == None:
-        text = '[info:print_LHBlist] user.Lhashblock:\n{}'.format(LHBlist)
+    if LHBliststr == None:
+        text = '[info:print_LHBlist] user.Lhashblock:\n{}'.format(LHBliststr)
         return True
 
-    if len(LHBlist) < 1:
-        text = '[info:print_LHBlist] user.Lhashblock:\n{}'.format(LHBlist)
+    if len(LHBliststr) < 1:
+        text = '[info:print_LHBlist] user.Lhashblock:\n{}'.format(LHBliststr)
         print(text)
     else:
-        hblist = LHBlist.split(',')
+        hblist = LHBliststr.split(',')
         text = '[info:print_LHBlist] user.Lhashblock:'
         print(text)
         for i in hblist:
@@ -174,6 +175,9 @@ def get_deviceId(loginhashblock, DEBUG=False):
     :return:
     """
 
+    if DEBUG:
+        print("[info:get_deviceId] loginhashblock: {}".format(loginhashblock))
+
     if not loginhashblock:
         raise ValueError("[info:get_deviceId] login hash block is null")
 
@@ -277,21 +281,49 @@ def update_loginhashblock(prev_loginhashblock, DEBUG=False):
 
     return loginhashblock
 
-def get_loginhashblock(DEBUG=False):
+def valid_prevloginhashblcok(client_loginhashblock, LHBliststr, DEBUG=DEBUG):
     """
-    This functions is to make login hash block
-    :param DEBUG:
-    :return: login hash block
+    This function is to check valid previous login hash block.
+    :client_loginhashblock: client's login hash block
+    :LHBliststr: client's login has block in database
     """
 
-    devid = create_deviceId(DEBUG=DEBUG)
-    loginhashblock = create_loginhashblock(devid, DEBUG=DEBUG)
+    server_loginhashblocklist = LHBliststr.split(',')
+
+    if not valid_loginhashblock(client_loginhashblock, DEBUG=DEBUG):
+        return False
+
+    devid = get_deviceId(client_loginhashblock, DEBUG=DEBUG)
+    server_loginhashblock = get_loginhashblock(devid, server_loginhashblocklist, DEBUG=DEBUG)
 
     if DEBUG:
-        text = "[info:get_loginhashblock] devid: {}, loginhashblock:{}".format(devid, loginhashblock)
-        print(text)
+        print("[info:valid_loginhashblock]\nclient_loginhashblock: {}\nserver_loginhashblock: {}".format(client_loginhashblock, server_loginhashblock))
 
-    return loginhashblock
+    if client_loginhashblock == server_loginhashblock:
+        return True
+
+    return False
+
+def get_loginhashblock(devid, loginhashblocklist, DEBUG=False):
+    """
+    This function is to get login hash block by device id in login hash block list.
+    :devid: device id
+    :loginhashblocklist: client's login has block in database
+    :return:
+    """
+
+
+    for i in loginhashblocklist:
+        _devid = get_deviceId(i, DEBUG=DEBUG)
+        if devid == _devid:
+            if DEBUG:
+                print('[info:get_loginhashblock] True')
+            return i
+
+    if DEBUG:
+        print('[info:get_loginhashblock] False')
+
+    return False
 
 def create_loginhashblock(devid, key=None, DEBUG=False):
     """

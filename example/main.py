@@ -113,7 +113,6 @@ class register(Resource):
             flash('Username already exists.')
             return redirect(url_for('register'))
 
-        # add new user to the database
         user = User(username=username, password=password)
         db.session.add(user)
         db.session.commit()
@@ -190,6 +189,8 @@ class login(Resource):
         if prev_LHB == 'null':
             prev_LHB = None
 
+        #prev_LHB='QRC1dMtQ$9748f6af0b4024aa8ac4d98a60dd2b7822f448f247bbd8a0829848f804733976'
+
         if not prev_LHB:
             #if user is None or not user.verify_password(password) or not user.verify_totp(token):
             if user is None or not user.verify_password(password):
@@ -197,19 +198,29 @@ class login(Resource):
                 flash('Invalid username, password or token.')
                 return make_response('Error', 302)
 
-            prev_LHB = get_loginhashblock()
-            new_LHB = update_loginhashblock(prev_LHB)
+            #prev_LHB = get_loginhashblock()
+            devid = create_deviceId(DEBUG=DEBUG)
+            prev_LHB = create_loginhashblock(devid, DEBUG=DEBUG)
+            new_LHB = update_loginhashblock(prev_LHB, DEBUG=DEBUG)
+            user.Lhashblock = new_LHB
+            db.session.commit()
+
+        elif user.verify_totp(token):
+            new_LHB = update_loginhashblock(prev_LHB, DEBUG=DEBUG)
             user.Lhashblock = new_LHB
             db.session.commit()
 
         else:
             if user is None or not user.verify_password(password):
-                # Add LHB check logic
                 print('[info:login:post:non_otp] Invalid username, password or token')
                 flash('Invalid username, password or token.')
                 return make_response('Error', 302)
 
-            new_LHB = update_loginhashblock(prev_LHB)
+            if not valid_prevloginhashblcok(prev_LHB, user.Lhashblock, DEBUG=DEBUG):
+                flash('Your account is hacked, you have to OTP token')
+                return make_response('Error', 302)
+
+            new_LHB = update_loginhashblock(prev_LHB, DEBUG=DEBUG)
             user.Lhashblock = new_LHB
             db.session.commit()
 

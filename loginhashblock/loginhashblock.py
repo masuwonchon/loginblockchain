@@ -4,7 +4,7 @@ It is compatible with python flask and application based on it
 
 @version: 1.0.0
 @authour: suwonchon(suwonchon@gmail.com)
-@contact http://github.com/masuwonchon
+@contact http://github.com/masuwonchon/loginblockchain
 @license: MIT
 
 Example usage:
@@ -23,6 +23,11 @@ def print_LHBlist(LHBlist):
     :param LHBlist:
     :return:
     """
+
+    if LHBlist == None:
+        text = '[info:print_LHBlist] user.Lhashblock:\n{}'.format(LHBlist)
+        return True
+
     if len(LHBlist) < 1:
         text = '[info:print_LHBlist] user.Lhashblock:\n{}'.format(LHBlist)
         print(text)
@@ -32,6 +37,8 @@ def print_LHBlist(LHBlist):
         print(text)
         for i in hblist:
             print(i)
+
+    return True
 
 def pbkdf2_hash(data, salt, iterations, dklen=None, hash_name="sha256", DEBUG=False):
     """

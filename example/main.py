@@ -2,7 +2,7 @@
 This is example web site using python flask based on LHB(login hash block) module.
 @version: 1.0.0
 @authour: suwonchon(suwonchon@gmail.com)
-@contact http://github.com/masuwonchon/loginhashblock
+@contact http://github.com/masuwonchon/loginblockchain
 @license: MIT
 """
 
@@ -65,7 +65,7 @@ class User(UserMixin, db.Model):
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
 
-    def verify_LoginHB(self, LoginHB):
+    def verify_loginhashblock(self, LoginHB):
         loginhashblock = self.Lhashblock.split(',')
         return True
 
@@ -74,9 +74,6 @@ class User(UserMixin, db.Model):
 
     def verify_totp(self, token):
         return onetimepass.valid_totp(token, self.otp_secret)
-
-    def get_username(self):
-        return username
 
 @lm.user_loader
 def load_user(user_id):
@@ -90,13 +87,6 @@ class RegisterForm(FlaskForm):
     password_again = PasswordField('Password again', validators=[Required(), EqualTo('password')])
     submit = SubmitField('Register')
 
-class LoginForm(FlaskForm):
-    """Login form."""
-    username = StringField('Username', validators=[Required(), Length(1, 64)])
-    password = PasswordField('Password', validators=[Required()])
-    token = StringField('Token', validators=[Required(), Length(6, 6)])
-    submit = SubmitField('Login')
-
 # API Class
 class index(Resource):
     def get(self):
@@ -105,9 +95,7 @@ class index(Resource):
 
 class register(Resource):
     def get(self):
-        """User registration route."""
         if current_user.is_authenticated:
-            # if user is logged in we get out of here
             return redirect(url_for('index'))
 
         form = RegisterForm()
@@ -130,7 +118,6 @@ class register(Resource):
         db.session.add(user)
         db.session.commit()
 
-        # redirect to the two-factor auth page, passing username in session
         session['username'] = user.username
 
         return redirect(url_for('twofactor'))
@@ -151,8 +138,6 @@ class twofactor(Resource):
 
 class qrcode(Resource):
     def get(self):
-        #session['username'] = '11'
-
         if 'username' not in session:
             abort(404)
 
@@ -161,10 +146,8 @@ class qrcode(Resource):
         if user is None:
             abort(404)
 
-        # for added security, remove username from session
         del session['username']
 
-        # render qrcode for FreeTOTP
         url = pyqrcode.create(user.get_totp_uri())
         stream = BytesIO()
         url.svg(stream, scale=3)
@@ -201,10 +184,11 @@ class login(Resource):
             flash('password is null')
             return make_response('Error', 302)
 
-        #prev_LHB = 'AAA'
-
         if DEBUG:
             print_LHBlist(user.Lhashblock)
+
+        if prev_LHB == 'null':
+            prev_LHB = None
 
         if not prev_LHB:
             #if user is None or not user.verify_password(password) or not user.verify_totp(token):
@@ -259,17 +243,6 @@ class logout(Resource):
         if not prev_LHB:
             print("[info:logout:post] GO TO OTP")
         else:
-            '''
-            new_LHB = update_loginhashblock(prev_LHB)
-            status, hblist = update_loginhashblocklist(user.Lhashblock, new_LHB)
-            if status:
-                user.Lhashblock = ",".join(hblist)
-            else:
-                hblist.append(new_LHB)
-                user.Lhashblock = ",".join(hblist)
-
-            db.session.commit()
-            '''
             new_LHB = update_loginhashblock(prev_LHB)
             Lhashblock = update_loginhashblocklist(user.Lhashblock, new_LHB)
             user.Lhashblock = Lhashblock
@@ -315,7 +288,6 @@ class command(Resource):
         command_num = 1
         return make_response(username, command_num)
 
-# create database tables if they don't exist yet
 db.create_all()
 
 api.add_resource(index, '/')

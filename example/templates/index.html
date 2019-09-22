@@ -8,23 +8,11 @@
     {% endif %}
 
     {% if condition == True %}
-        HELLO condition is True.
         <script>
         username = '{{username}}';
         loginhb = '{{LoginHB}}';
         localStorage.setItem(username, loginhb);
         buf = localStorage.getItem(username);
-        //localStorage.setItem('{{username}}', '{{LoginHB}}');
-        //localStorage.getItem('{{username}}');
-        //console.log('username:','{{username}}','loginhb:','{{LoginHB}}');
-        console.log('[info:index.html] username: '+username+', new_loginhb: '+buf);
-        </script>
-    {% else %}
-       HELLO condition is False.
-        <script>
-        var buf = localStorage.getItem("AA");
-        localStorage.setItem("AA", "index");
-	console.log(buf);
         </script>
     {% endif %}
 

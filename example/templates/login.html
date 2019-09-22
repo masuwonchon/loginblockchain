@@ -50,31 +50,23 @@ function handleServerResponse() {
 }
 
 </script>
+
 <div align="center">
 <table width="50%" cellpadding="7">
-<tr>
-    <td>Username</td>
-    <td>:</td>
-    <td><input type="text" name="username" id="username" maxlength="12" placeholder="username"></td>
-</tr>
-
-<form>
-<tr>
-    <td>Password</td>
-    <td>:</td>
-    <td><input type="new-password" id="password" maxlength="12" value="" placeholder="password"></td>
-</tr>
-</form>
-<tr>
-    <td>token</td>
-    <td>:</td>
-    <td><input type="text" name="token" id="token" maxlength="12" placeholder="token"></td>
-</tr>
-<tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td><button type="button" class="btn btn-default navbar-btn" onclick="ajaxFunction();">Submit</button></td>
-</tr>
-</table>
+  </table>
 </div>
+    <p>This is test web site for login hash block algorithms in python-flask.<a> Before you submit this form, please ensure you have to agree your device informations. </a></br>
+    If you want to learn about it, you can download from <a href="https://github.com/masuwonchon/loginblockchain/tree/master/docs">Github</a> | <a href="https://www.boho.or.kr/data/reportView.do?bulletin_writing_sequence=35003">KISA KrCERT.</a>
+    </p>
+<div class="form-group  required"><label class="control-label" for="username">Username</label>
+          <input class="form-control" id="username" name="username" required type="text" value="" placeholder="username">
+</div>
+<div class="form-group  required"><label class="control-label" for="password">Password</label>
+          <input class="form-control" id="password" name="password" required type="password" value="" placeholder="password">
+</div>
+<div class="form-group  required"><label class="control-label" for="password">Token</label>
+          <input class="form-control" id="token" name="token" required type="password" value="" placeholder="token">
+</div>
+<button type="button" class="btn btn-default navbar-btn" onclick="ajaxFunction();">Submit</button>
+<div class="alert alert-danger" role="alert">Note: The next page will show sensitive information. Make sure nobody can see your screen before pressing the Register button.</div>
 {% endblock %}

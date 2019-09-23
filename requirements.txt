@@ -1,0 +1,9 @@
+--index-url https://pypi.python.org/simple/
+flask==1.1.1
+flask_restful==0.3.7
+Flask-SQLAlchemy==2.4.0
+flask_login==0.4.1
+flask_bootstrap==3.3.7.1
+flask_wtf==0.14.2
+onetimepass==1.0.1
+pyqrcode==1.2.1

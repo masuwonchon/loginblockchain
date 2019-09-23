@@ -281,7 +281,7 @@ def update_loginhashblock(prev_loginhashblock, DEBUG=False):
 
     return loginhashblock
 
-def valid_prevloginhashblcok(client_loginhashblock, LHBliststr, DEBUG=DEBUG):
+def valid_prevloginhashblock(client_loginhashblock, LHBliststr, DEBUG=DEBUG):
     """
     This function is to check valid previous login hash block.
     :client_loginhashblock: client's login hash block
@@ -317,11 +317,11 @@ def get_loginhashblock(devid, loginhashblocklist, DEBUG=False):
         _devid = get_deviceId(i, DEBUG=DEBUG)
         if devid == _devid:
             if DEBUG:
-                print('[info:get_loginhashblock] True')
+                print('[info:get_loginhashblock] devid is found in login hash block list')
             return i
 
     if DEBUG:
-        print('[info:get_loginhashblock] False')
+        print('[info:get_loginhashblock] devid is not found in login hash block list')
 
     return False
 

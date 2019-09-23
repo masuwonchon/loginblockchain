@@ -26,7 +26,7 @@ import sys
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 from loginhashblock.loginhashblock import *
 
-DEBUG = True
+DEBUG = False
 
 # create application instance
 app = Flask(__name__)
@@ -169,12 +169,6 @@ class login(Resource):
         token = request.form.get('token')
         prev_LHB = request.form.get('loginhashblock')
 
-        user = User.query.filter_by(username=username).first()
-
-        if not user:
-            flash('not registered username')
-            return make_response('Error', 302)
-
         if not username:
             flash('username is null')
             return make_response('Error', 302)
@@ -183,54 +177,56 @@ class login(Resource):
             flash('password is null')
             return make_response('Error', 302)
 
+        user = User.query.filter_by(username=username).first()
+
+        if not user:
+            flash('not registered username')
+            return make_response('Error', 302)
+
+        '''
         if DEBUG:
             print_LHBlist(user.Lhashblock)
+        '''
 
         if prev_LHB == 'null':
             prev_LHB = None
 
-        #prev_LHB='QRC1dMtQ$9748f6af0b4024aa8ac4d98a60dd2b7822f448f247bbd8a0829848f804733976'
-
-        if not prev_LHB:
-            #if user is None or not user.verify_password(password) or not user.verify_totp(token):
-            if user is None or not user.verify_password(password):
-                print('[info:login:post] Invalid username, password or OTP token')
-                flash('Invalid username, password or token.')
-                return make_response('Error', 302)
-
-            #prev_LHB = get_loginhashblock()
+        if user.verify_password(password) and user.verify_totp(token):
             devid = create_deviceId(DEBUG=DEBUG)
-            prev_LHB = create_loginhashblock(devid, DEBUG=DEBUG)
-            new_LHB = update_loginhashblock(prev_LHB, DEBUG=DEBUG)
-            user.Lhashblock = new_LHB
+            prev_LHB = None
+            new_LHB = create_loginhashblock(devid, DEBUG=DEBUG)
+            Lhashblock = update_loginhashblocklist(user.Lhashblock, new_LHB)
+            user.Lhashblock = Lhashblock
             db.session.commit()
+        elif not prev_LHB:
+            if not user.verify_password(password) or not user.verify_totp(token):
+                print('[info:login:post] Invalid username, password or OTP token')
+                flash('your account is hacked, You have to use OTP 1')
+                return make_response('Error', 302)
+        elif prev_LHB:
+            if not user.verify_password(password):
+                flash('your password is wrong')
+                return make_response('Error', 302)
+            if not valid_loginhashblock(prev_LHB):
+                flash('your account is hacked, You have to use OTP 2')
+                return make_response('Error', 302)
+            if not valid_prevloginhashblock(prev_LHB, user.Lhashblock, DEBUG=DEBUG):
+                flash('your account is hacked, You have to use OTP 3')
+                return make_response('Error', 302)
 
-        elif user.verify_totp(token):
             new_LHB = update_loginhashblock(prev_LHB, DEBUG=DEBUG)
-            user.Lhashblock = new_LHB
+            Lhashblock = update_loginhashblocklist(user.Lhashblock, new_LHB)
+            user.Lhashblock = Lhashblock
             db.session.commit()
-
         else:
-            if user is None or not user.verify_password(password):
-                print('[info:login:post:non_otp] Invalid username, password or token')
-                flash('Invalid username, password or token.')
-                return make_response('Error', 302)
+            text = '[error:login:post] other case'
+            print(text)
+            raise ValueError("[error:login:post] exit")
 
-            if not valid_prevloginhashblcok(prev_LHB, user.Lhashblock, DEBUG=DEBUG):
-                flash('Your account is hacked, you have to OTP token')
-                return make_response('Error', 302)
 
-            new_LHB = update_loginhashblock(prev_LHB, DEBUG=DEBUG)
-            user.Lhashblock = new_LHB
-            db.session.commit()
-
-            if DEBUG:
-                text = "[info:login:post]\nprev_hashblock[{}]: {}\nnext_hashblock[{}]: {}".format(username,prev_LHB,username,new_LHB)
-                print(text)
-
-        if not valid_loginhashblock(prev_LHB):
-            flash('your account is hacked, You have to use OTP')
-            return make_response('Error', 302)
+        if DEBUG:
+            text = "[info:login:post]\nprev_hashblock[{}]: {}\nnext_hashblock[{}]: {}".format(username,prev_LHB,username,new_LHB)
+            print(text)
 
         login_user(user)
         flash('You are now logged in!')
@@ -278,26 +274,27 @@ class logout(Resource):
 
 class command(Resource):
     def get(self):
-        response = make_response(render_template('clear.html'))
+        response = make_response(render_template('command.html'))
         return response
 
     def post(self):
         username = request.form.get('username')
         command = request.form.get('command')
-        text = "[info:command] username: {}, command: {}".format(username, command)
+        loginhashblock = request.form.get('loginhashblock')
+        text = "[info:command] username: {}, command: {}, loginhashblock: {}".format(username, command, loginhashblock)
         print(text)
 
-        Set_hashblock = False
+        user = User.query.filter_by(username=username).first()
 
-        if Set_hashblock:
-            username="11"
-            user = User.query.filter_by(username=username).first()
-            user.Lhashblock=''
+        if command == str(3):
+            loginhashblock = user.Lhashblock
+
+        if command == str(4):
+            user.Lhashblock = loginhashblock
             db.session.commit()
-            print('[info:login:get] login hash block is cleared in DB')
 
-        command_num = 1
-        return make_response(username, command_num)
+        resp = {'username':username, 'command':command, 'loginhashblock':loginhashblock}
+        return make_response(resp, command)
 
 db.create_all()
 

@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% block page_content %}
+
+<h1>Command</h1>
+
+<script type="text/javascript">
+function getXMLObject() {
+    var xmlHttp = false;
+    try {
+        xmlHttp = new ActiveXObject("Msxml2.XMLHTTP")}
+    catch (e) {
+        try {
+            xmlHttp = new ActiveXObject("Microsoft.XMLHTTP")}
+        catch (e2) {
+            xmlHttp = false}
+    }
+    if (!xmlHttp && typeof XMLHttpRequest != 'undefined') {
+        xmlHttp = new XMLHttpRequest();}
+    return xmlHttp;}
+
+var xmlhttp = new getXMLObject();
+
+function ajaxFunction() {
+    var getdate = new Date();      
+        if(xmlhttp) { 
+        var username = document.getElementById("username");
+        var command = document.getElementById("command");
+        var loginhashblock = document.getElementById("loginhashblock");
+        xmlhttp.open("POST","",true);
+        xmlhttp.onreadystatechange  = handleServerResponse;
+        xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xmlhttp.setRequestHeader('Cache-Control', 'max-age=0');
+        xmlhttp.setRequestHeader('Upgrade-Insecure-Requests', 1);
+        xmlhttp.setRequestHeader('Accept', 'text/html,application/xhtml_xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3');
+        xmlhttp.send("username="+username.value+"&command="+command.value+"&loginhashblock="+loginhashblock.value);
+    }
+};
+ 
+function handleServerResponse() {
+    if (xmlhttp.readyState == 4) {
+        if(xmlhttp.status == 200) {
+            document.write(xmlhttp.responseText);
+        }
+        else if(xmlhttp.status == 302) {
+            window.location.replace("/command");
+        }
+        else if(xmlhttp.status == 4) {
+            // set login hash block for username
+            var respJson=JSON.parse(xmlhttp.responseText);
+            document.getElementById("resp").innerHTML = 'usename: '+respJson['username']+'<br> command: '+respJson['command']+'<br> LHB: '+respJson['loginhashblock'];
+            //console.log(respJson);
+        }
+        else if(xmlhttp.status == 3) {
+            // set login hash block for username
+            var respJson=JSON.parse(xmlhttp.responseText);
+            var bufString=respJson['loginhashblock'];
+            var bufSplit=bufString.split(',');
+            var loginhashblock=''
+            for ( var i in bufSplit ) {
+                loginhashblock = loginhashblock+bufSplit[i]+'<br>';
+            }
+
+            document.getElementById("resp").innerHTML = 'usename: '+respJson['username']+'<br> command: '+respJson['command']+'<br> LHB: '+loginhashblock;
+            //console.log(respJson);
+        }
+        else if(xmlhttp.status == 2) {
+            // set login hash block for username
+            var respJson=JSON.parse(xmlhttp.responseText);
+            localStorage.setItem(respJson['username'], respJson['loginhashblock']);
+            document.getElementById("resp").innerHTML = 'usename: '+respJson['username']+'<br> command: '+respJson['command']+'<br> LHB: '+respJson['loginhashblock'];
+            //console.log(respJson);
+        }
+        else if(xmlhttp.status == 1) {
+            // get login hash block for username
+            var respJson=JSON.parse(xmlhttp.responseText);
+            loginhashblock = localStorage.getItem(respJson['username']);
+            document.getElementById("resp").innerHTML = 'usename: '+respJson['username']+'<br> command: '+respJson['command']+'<br> LHB: '+loginhashblock;
+        }
+        else {
+            document.getElementById("resp").innerHTML = 'command is not list.';
+        }
+    }
+}
+
+</script>
+
+<div align="center">
+<table width="50%" cellpadding="7">
+  </table>
+</div>
+<div class="alert alert-success" role="alert">
+    This is command list for debug and test example site.<br>
+    Before you submit this form, please read the command information.<br><br>
+    CommandList: <br>
+    1: Get login hash block for username (username, command) <br>
+    2: Set login hash block for username (username, command, loginhashblock) <br>
+    3: Get login hash block for username in DB (username, command) <br>
+    4: Set login hash block for username in DB (username, command, loginhashblock)
+</div>
+<div class="form-group  required"><label class="control-label" for="username">Username</label>
+          <input class="form-control" id="username" name="username" required type="text" value="" placeholder="username">
+</div>
+<div class="form-group  required"><label class="control-label" for="command">Command</label>
+          <input class="form-control" id="command" name="command" required type="text" value="" placeholder="command">
+</div>
+<div class="form-group  required"><label class="control-label" for="loginhashblock">LHB</label>
+          <input class="form-control" id="loginhashblock" name="loginhashblock" required type="text" value="" placeholder="loginhashblock">
+</div>
+<button type="button" class="btn btn-default navbar-btn" onclick="ajaxFunction();">Submit</button><br>
+
+<br><label class="control-label" for="username">Result</label>
+<div class="alert alert-danger" role="alert" id="resp">
+</div>
+{% endblock %}

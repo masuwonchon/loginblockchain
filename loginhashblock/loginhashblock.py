@@ -83,7 +83,7 @@ def create_salt(length, RAND_CHARS=None, DEBUG=False):
     salt = ''.join(randx)
     return salt
 
-def update_loginhashblocklist(list, loginhashblock, DEBUG=False):
+def update_loginhashblocklist(loginhashblocklist, loginhashblock, DEBUG=False):
     """
     This function replace login hash block in data bases.
     :param list: login hash block list
@@ -92,9 +92,13 @@ def update_loginhashblocklist(list, loginhashblock, DEBUG=False):
     """
 
     devid = get_deviceId(loginhashblock, DEBUG=DEBUG)
-    loginhashblocklist = list.split(',')
 
-    if len(list) < 8:
+    if not loginhashblocklist :
+        return loginhashblock
+
+    loginhashblocklist = loginhashblocklist.split(',')
+
+    if len(loginhashblocklist) < 8:
         return loginhashblock
 
     if DEBUG:

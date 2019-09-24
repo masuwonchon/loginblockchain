@@ -51,8 +51,8 @@ You can use this module in the following way::
 
        from loginhashblock.loginhashblock import *
 
-       next_loginhashblock = update_loginhashblock(prev_loginhashblock)
-       loginhashblocklist = update_loginhashblocklist(user.Lhashblock, next_loginhashblock)
+       loginhashblock = update_loginhashblock(prev_loginhashblock)
+       loginhashblocklist = update_loginhashblocklist(loginhashblocklist, loginhashblock)
 
    where ``prev_loginhashblock`` is a random variable of the server-side, current trial (if checking on the server, you have to check several values, higher than the last successful one, determined for previous successful authentications).
 

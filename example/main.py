@@ -201,17 +201,17 @@ class login(Resource):
         elif not prev_LHB:
             if not user.verify_password(password) or not user.verify_totp(token):
                 print('[info:login:post] Invalid username, password or OTP token')
-                flash('your account is hacked, You have to use OTP 1')
+                flash('Your account is suspected of being stolen. OTP is required.')
                 return make_response('Error', 302)
         elif prev_LHB:
             if not user.verify_password(password):
                 flash('your password is wrong')
                 return make_response('Error', 302)
             if not valid_loginhashblock(prev_LHB):
-                flash('your account is hacked, You have to use OTP 2')
+                flash('Your account is suspected of being stolen. OTP is required.')
                 return make_response('Error', 302)
             if not valid_prevloginhashblock(prev_LHB, user.Lhashblock, DEBUG=DEBUG):
-                flash('your account is hacked, You have to use OTP 3')
+                flash('Your account is suspected of being stolen. OTP is required.')
                 return make_response('Error', 302)
 
             new_LHB = update_loginhashblock(prev_LHB, DEBUG=DEBUG)

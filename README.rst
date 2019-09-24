@@ -1,3 +1,15 @@
+Login Block Chain - The Python Login Block Chain Library
+========================================================
+
+This is login hash block algorithms in python-flask. If you want to learn about it, you can download from 
+`KISA KrCERT <https://www.boho.or.kr/data/reportView.do?bulletin_writing_sequence=35003>`_
+
+Accounts stolen as the result of recent security incidents in vulnerable sites are generating secondary damages. These are cases of account hijacking. The basic problem leading to account hijacking is an authentication process that only checks for matching of the user attempting login and the account user using only their account data (ID and password). The damage by account hijacking can thus be reduced by providing various authentication means in addition to the account data and using the method of multi-factor authentication through active user intervention.
+One of the most well-known multi-factor authentication methods is OTP (One-Time Password). OTP generates a single-use random number by a special algorithm instead of a pre-specified password. When a user attempts to log in, the system performs authentication with the account data, then with the additional authentication using OTP input to complete the login process. Although multi-factor authentication is effective in preventing account hijacking by authenticating the matching of the user attempting login and the account user via active intervention of the user, it reduces user convenience as it requires additional user input each time.
+
+In other words, using multi-factor authentication can increase the security level but with the downside of lower user convenience. It is therefore used mostly in the financial sector where additional security can be mandatorily enforced. As low convenience in the general service environment can lead to rejection by users, solutions such as blocking by IP critical value and log analysis are being used in response.
+However, these methods cannot solve the intrinsic problem of account hijacking due to low- security strength even though it provides convenience to users. Thus, the dilemma of security level vs. convenience has limitations as shown in [Figure 14]. Many enterprises struggle with business strategies to deal with account hijacking while balancing the security level and user convenience. The following method presents a hybrid solution to account hijacking with the appropriate balance of the security level and user convenience.
+
 Versions
 ========
 
@@ -9,7 +21,7 @@ Changelog
 +---------+------------+------------------------------------------------------+
 | Version | Date       | Changes                                              |
 +=========+============+======================================================+
-| 0.8.0   | 2019-09-19 | - initial public release                             |
+| 0.1.0   | 2019-09-19 | - initial public release                             |
 +---------+------------+------------------------------------------------------+
 
 What is Login Block Chain?

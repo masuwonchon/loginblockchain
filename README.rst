@@ -85,4 +85,4 @@ License
 License for this library is available in ``LICENSE.rst`` file, in the same
 directory. Online version is available here_.
 
-.. _here: https://github.com/masuwonchon/loginblockchain/LICENSE.rst
+.. _here: https://github.com/masuwonchon/loginblockchain/blob/master/LICENSE.rst

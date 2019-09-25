@@ -98,11 +98,11 @@ def update_loginhashblocklist(loginhashblocklist, loginhashblock, DEBUG=False):
 
     loginhashblocklist = loginhashblocklist.split(',')
 
-    if len(loginhashblocklist) < 8:
+    if len(loginhashblocklist) < 2:
         return loginhashblock
 
     if DEBUG:
-        print("[info:update_loginhashblocklist] devid: {}, hash: {}".format(devid, hash))
+        print("[info:update_loginhashblocklist] devid: {}".format(devid))
         print("[info:update_loginhashblocklist] db_hashblock: {}".format(len(loginhashblocklist)))
 
     for i,v in enumerate(loginhashblocklist):
@@ -188,7 +188,7 @@ def get_deviceId(loginhashblock, DEBUG=False):
     if not valid_loginhashblock(loginhashblock, DEBUG=DEBUG):
         raise ValueError("[info:get_deviceId] Invalid login hash block")
 
-    devid, hash = loginhashblock.split("$", 1)
+    devid, loginhash = loginhashblock.split("$", 1)
     return devid
 
 def create_deviceId(DEBUG=False):
@@ -276,11 +276,11 @@ def update_loginhashblock(prev_loginhashblock, DEBUG=False):
     if not valid_loginhashblock(prev_loginhashblock, DEBUG=DEBUG):
         raise ValueError("[info:update_loginhashblock] Invalid login hash block")
 
-    devid, hash = prev_loginhashblock.split("$", 1)
+    devid = get_deviceId(prev_loginhashblock, DEBUG=DEBUG)
     loginhashblock = create_loginhashblock(devid, DEBUG=DEBUG)
 
     if DEBUG:
-        text = '[info:update_loginhashblock] \nprev_loginhashblock: {}\n     loginhashblock: {}'.format(prev_loginhashblock,loginhashblock)
+        text = '[info:update_loginhashblock] \npre_loginhashblock: {}\nnew_loginhashblock: {}'.format(prev_loginhashblock,loginhashblock)
         print(text)
 
     return loginhashblock

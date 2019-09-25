@@ -18,7 +18,7 @@ import binascii
 DEBUG = False
 
 
-def print_LHBlist(LHBliststr):
+def print_LHBlist(LHBliststr, DEBUG=False):
     """
     The function prints login hash block list for debug.
     :param LHBliststr:
@@ -285,7 +285,7 @@ def update_loginhashblock(prev_loginhashblock, DEBUG=False):
 
     return loginhashblock
 
-def valid_prevloginhashblock(client_loginhashblock, LHBliststr, DEBUG=DEBUG):
+def valid_prevloginhashblock(client_loginhashblock, LHBliststr, DEBUG=False):
     """
     This function is to check valid previous login hash block.
     :client_loginhashblock: client's login hash block
@@ -315,7 +315,6 @@ def get_loginhashblock(devid, loginhashblocklist, DEBUG=False):
     :loginhashblocklist: client's login has block in database
     :return:
     """
-
 
     for i in loginhashblocklist:
         _devid = get_deviceId(i, DEBUG=DEBUG)

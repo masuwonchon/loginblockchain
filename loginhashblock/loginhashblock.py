@@ -83,36 +83,42 @@ def create_salt(length, RAND_CHARS=None, DEBUG=False):
     salt = ''.join(randx)
     return salt
 
-def update_loginhashblocklist(loginhashblocklist, loginhashblock, DEBUG=False):
+def update_loginhashblocklist(LHBlistStr, prev_LHB, DEBUG=False):
     """
-    This function replace login hash block in data bases.
-    :param list: login hash block list
+    This function update login hash block list.
+    :param LHBlistStr: login hash block list
     :param loginhashblock: login hash block
-    :return:
+    :return: updated login hash block list
     """
+
+    loginhashblock = update_loginhashblock(prev_LHB, DEBUG=False)
+
+    if not loginhashblock:
+        return LHBlistStr
 
     devid = get_deviceId(loginhashblock, DEBUG=DEBUG)
 
-    if not loginhashblocklist :
+    if not LHBlistStr :
+        if DEBUG:
+            print("[info:update_loginhashblocklist] LHBlistStr is null")
+
         return loginhashblock
 
-    loginhashblocklist = loginhashblocklist.split(',')
+    LHBlist = LHBlistStr.split(',')
 
-    if len(loginhashblocklist) < 2:
-        return loginhashblock
+    for i,v in enumerate(LHBlist):
+        _devid = get_deviceId(v, DEBUG=DEBUG)
+        if devid == _devid:
+            LHBlist[i] = loginhashblock
+            return ",".join(LHBlist)
+
+    LHBlist.append(loginhashblock)
 
     if DEBUG:
         print("[info:update_loginhashblocklist] devid: {}".format(devid))
-        print("[info:update_loginhashblocklist] db_hashblock: {}".format(len(loginhashblocklist)))
+        print("[info:update_loginhashblocklist] db_hashblock: {}".format(len(LHBlist)))
 
-    for i,v in enumerate(loginhashblocklist):
-        get_devid = get_deviceId(v, DEBUG=DEBUG)
-        if devid == get_devid:
-            loginhashblocklist[i] = loginhashblock
-            return ",".join(loginhashblocklist)
-
-    loginhashblocklist.append(loginhashblock)
-    return ",".join(loginhashblocklist)
+    return ",".join(LHBlist)
 
 def create_hash(salt, target, hash_name="sha256", iterations=100000, kdf=None, DEBUG=False):
     """
@@ -272,6 +278,9 @@ def update_loginhashblock(prev_loginhashblock, DEBUG=False):
     :param DEBUG:
     :return: updated login hash block
     """
+
+    if not prev_loginhashblock:
+        return None
 
     if not valid_loginhashblock(prev_loginhashblock, DEBUG=DEBUG):
         raise ValueError("[info:update_loginhashblock] Invalid login hash block")

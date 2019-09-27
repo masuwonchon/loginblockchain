@@ -301,7 +301,7 @@ def update_loginhashblock(prev_loginhashblock, DEBUG=False):
 
     return loginhashblock
 
-def valid_prevloginhashblock(client_loginhashblock, LHBliststr, DEBUG=False):
+def isRegistedLHB(client_loginhashblock, LHBliststr, DEBUG=False):
     """
     This function is to check valid previous login hash block.
     :client_loginhashblock: client's login hash block
@@ -317,7 +317,7 @@ def valid_prevloginhashblock(client_loginhashblock, LHBliststr, DEBUG=False):
     server_loginhashblock = get_loginhashblock(devid, server_loginhashblocklist, DEBUG=DEBUG)
 
     if DEBUG:
-        print("[info:valid_loginhashblock]\nclient_loginhashblock: {}\nserver_loginhashblock: {}".format(client_loginhashblock, server_loginhashblock))
+        print("[info:isRegistedLHB]\nclient_loginhashblock: {}\nserver_loginhashblock: {}".format(client_loginhashblock, server_loginhashblock))
 
     if client_loginhashblock == server_loginhashblock:
         return True

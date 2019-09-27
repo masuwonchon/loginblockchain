@@ -24,7 +24,7 @@ import sys
 
 # import LHB library
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-from loginhashblock.loginhashblock import *
+from loginhashblock.loginhashblock import create_deviceId, create_loginhashblock, update_loginhashblocklist, valid_loginhashblock, isRegistedLHB, update_loginhashblock
 
 DEBUG = False
 
@@ -192,11 +192,8 @@ class login(Resource):
             prev_LHB = None
 
         if user.verify_password(password) and user.verify_totp(token):
-            devid = create_deviceId(DEBUG=DEBUG)
-            prev_LHB = None
-            new_LHB = create_loginhashblock(devid, DEBUG=DEBUG)
-            Lhashblock = update_loginhashblocklist(user.Lhashblock, new_LHB)
-            user.Lhashblock = Lhashblock
+            LHBlistStr = create_loginhashblocklist(user.Lhashblock, DEBUG=DEBUG):
+            user.Lhashblock = LHBlistStr
             db.session.commit()
         elif not prev_LHB:
             if not user.verify_password(password) or not user.verify_totp(token):
@@ -210,13 +207,12 @@ class login(Resource):
             if not valid_loginhashblock(prev_LHB):
                 flash('Your account is suspected of being stolen. OTP is required.')
                 return make_response('Error', 302)
-            if not valid_prevloginhashblock(prev_LHB, user.Lhashblock, DEBUG=DEBUG):
+            if not isRegistedLHB(prev_LHB, user.Lhashblock, DEBUG=DEBUG):
                 flash('Your account is suspected of being stolen. OTP is required.')
                 return make_response('Error', 302)
 
-            new_LHB = update_loginhashblock(prev_LHB, DEBUG=DEBUG)
-            Lhashblock = update_loginhashblocklist(user.Lhashblock, new_LHB)
-            user.Lhashblock = Lhashblock
+            LHBlistStr = update_loginhashblocklist(user.Lhashblock, prev_LHB, DEBUG=DEBUG)
+            user.Lhashblock = LHBlistStr
             db.session.commit()
         else:
             text = '[error:login:post] other case'
@@ -250,9 +246,8 @@ class logout(Resource):
         if not prev_LHB:
             print("[info:logout:post] GO TO OTP")
         else:
-            new_LHB = update_loginhashblock(prev_LHB)
-            Lhashblock = update_loginhashblocklist(user.Lhashblock, new_LHB)
-            user.Lhashblock = Lhashblock
+            LHBlistStr = update_loginhashblocklist(user.Lhashblock, prev_LHB, DEBUG=DEBUG)
+            user.Lhashblock = LHBlistStr
             db.session.commit()
 
         condition = True

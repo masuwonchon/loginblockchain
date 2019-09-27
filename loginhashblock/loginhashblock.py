@@ -72,7 +72,6 @@ def create_salt(length, RAND_CHARS=None, DEBUG=False):
     :param RAND_CHARS: random chars
     :return:
     """
-
     if not RAND_CHARS:
         RAND_CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#%^&*()"
 
@@ -82,6 +81,14 @@ def create_salt(length, RAND_CHARS=None, DEBUG=False):
 
     salt = ''.join(randx)
     return salt
+
+def create_loginhashblocklist(prev_LHBlistStr, DEBUG=DEBUG):
+
+    devid = create_deviceId(DEBUG=DEBUG)
+    LHB = create_loginhashblock(devid, DEBUG=DEBUG)
+    LHBlistStr = update_loginhashblocklist(prev_LHBlistStr, LHB)
+
+    return LHBlistStr
 
 def update_loginhashblocklist(LHBlistStr, prev_LHB, DEBUG=False):
     """

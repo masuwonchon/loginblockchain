@@ -11,51 +11,13 @@ class bcolors:
 
 DEBUG = False
 
-def cprint(message):
+def unittest_print(message):
     print(bcolors.WARNING + message + bcolors.ENDC)
 
-def unittest_01():
-    pre_loginhashblock = 'aCIXQRZ1$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a1'
-    pre_loginhashblocklist = ''
+def unittest_title_print(message):
+    print(bcolors.OKGREEN + message + bcolors.ENDC)
 
-    new_loginhashblock = update_loginhashblock(pre_loginhashblock, DEBUG=DEBUG)
-    new_loginhashblocklist = update_loginhashblocklist(pre_loginhashblocklist, new_loginhashblock, DEBUG=DEBUG)
-
-    if new_loginhashblocklist == new_loginhashblock:
-        cprint("unittest_01: Success")
-    else:
-        cprint("unittest_01: Fail")
-
-    pre_loginhashblocklist = 'aCIXQRZ1$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a2,aCIXQRZ2$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a3'
-    new_loginhashblock = update_loginhashblock(pre_loginhashblock, DEBUG=DEBUG)
-    new_loginhashblocklist = update_loginhashblocklist(pre_loginhashblocklist, new_loginhashblock, DEBUG=DEBUG)
-    res = pre_loginhashblocklist.split(',')
-
-    if new_loginhashblocklist == '{},{}'.format(new_loginhashblock, res[1]):
-        cprint("unittest_01: Success")
-    else:
-        cprint("unittest_01: Fail")
-
-    pre_loginhashblocklist = ''
-    new_loginhashblock = update_loginhashblock(pre_loginhashblock, DEBUG=DEBUG)
-    new_loginhashblocklist = update_loginhashblocklist(pre_loginhashblocklist, new_loginhashblock, DEBUG=DEBUG)
-
-    if new_loginhashblocklist == new_loginhashblock:
-        cprint("unittest_01: Success")
-    else:
-        cprint("unittest_01: Fail")
-
-    pre_loginhashblocklist = 'aCIXQRZ2$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a2,aCIXQRZ3$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a3'
-    new_loginhashblock = update_loginhashblock(pre_loginhashblock, DEBUG=DEBUG)
-    new_loginhashblocklist = update_loginhashblocklist(pre_loginhashblocklist, new_loginhashblock, DEBUG=DEBUG)
-    res = pre_loginhashblocklist.split(',')
-
-    if new_loginhashblocklist == '{},{}'.format(pre_loginhashblocklist, new_loginhashblock):
-        cprint("unittest_01: Success")
-    else:
-        cprint("unittest_01: Fail")
-
-def unittest_02():
+def unittest_update_loginhashblocklist():
     # case 01
     prev_LHB = 'aCIXQRZ1$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a1'
     LHBlistStr = ''
@@ -65,10 +27,11 @@ def unittest_02():
     source = prev_LHB.split('$')
     target = NewLHBlistStr.split('$')
 
+    unittest_title_print("LHB is one, LHBlist is null")
     if source[0] == target[0] and source[1] != target[1]:
-        cprint("unittest_02-01: Success")
+        unittest_print("unittest_update_loginhashblocklist-01: Success")
     else:
-        cprint("unittest_02-01: Fail")
+        unittest_print("unittest_update_loginhashblocklist-01: Fail")
 
     # case 02
     LHBlistStr = 'aCIXQRZ1$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a2,aCIXQRZ2$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a3'
@@ -78,15 +41,16 @@ def unittest_02():
     targetList = NewLHBlistStr.split(',')
     target = targetList[0].split('$')
 
+    unittest_title_print("LHB is one, LHBlist is two")
     if source[0] == target[0] and source[1] != target[1] and LHBlist[1] == targetList[1]:
-        cprint("unittest_02-02: Success")
+        unittest_print("unittest_update_loginhashblocklist-01: Success")
     else:
-        cprint("unittest_02-02: Fail")
+        unittest_print("unittest_update_loginhashblocklist-01: Fail")
 
     if LHBlistStr != NewLHBlistStr:
-        cprint("unittest_02-03: Success")
+        unittest_print("unittest_update_loginhashblocklist-02: Success")
     else:
-        cprint("unittest_02-03: Fail")
+        unittest_print("unittest_update_loginhashblocklist-02: Fail")
 
     # case 03
     LHBlistStr = 'aCIXQRZ3$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a2'
@@ -96,20 +60,21 @@ def unittest_02():
     targetList = NewLHBlistStr.split(',')
     target = targetList[1].split('$')
 
+    unittest_title_print("LHB is one, LHBlist is one, but devid is different so LHBlist will be updated LHB")
     if source[0] == target[0] and source[1] != target[1]:
-        cprint("unittest_02-04: Success")
+        unittest_print("unittest_update_loginhashblocklist-01: Success")
     else:
-        cprint("unittest_02-04: Fail")
+        unittest_print("unittest_update_loginhashblocklist-01: Fail")
 
     if LHBlistStr != NewLHBlistStr:
-        cprint("unittest_02-05: Success")
+        unittest_print("unittest_update_loginhashblocklist-02: Success")
     else:
-        cprint("unittest_02-05: Fail")
+        unittest_print("unittest_update_loginhashblocklist-02: Fail")
 
     if len(targetList) == 2:
-        cprint("unittest_02-06: Success")
+        unittest_print("unittest_update_loginhashblocklist-03: Success")
     else:
-        cprint("unittest_02-06: Fail")
+        unittest_print("unittest_update_loginhashblocklist-03: Fail")
 
     # case 04
     prev_LHB = ''
@@ -119,16 +84,17 @@ def unittest_02():
     NewLHBlistStr = update_loginhashblocklist(LHBlistStr, prev_LHB, DEBUG=DEBUG)
     targetList = NewLHBlistStr.split(',')
 
+    unittest_title_print("LHB is null, LHBlist is one, su LHBlist will be maintained")
     if LHBlistStr == NewLHBlistStr:
-        cprint("unittest_02-07: Success")
+        unittest_print("unittest_update_loginhashblocklist-01: Success")
     else:
-        cprint("unittest_02-07: Fail")
+        unittest_print("unittest_update_loginhashblocklist-01: Fail")
 
     if len(targetList) == 1:
-        cprint("unittest_02-08: Success")
+        unittest_print("unittest_update_loginhashblocklist-02: Success")
     else:
-        cprint("unittest_02-08: Fail")
+        unittest_print("unittest_update_loginhashblocklist-02: Fail")
 
-#unittest_01()
 DEBUG = False
-unittest_02()
+unittest_update_loginhashblocklist()
+

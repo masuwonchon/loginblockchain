@@ -1,0 +1,68 @@
+\hypertarget{classmain_1_1twofactor}{}\section{main.\+twofactor Class Reference}
+\label{classmain_1_1twofactor}\index{main.\+twofactor@{main.\+twofactor}}
+
+
+Inheritance diagram for main.\+twofactor\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=168pt]{classmain_1_1twofactor__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for main.\+twofactor\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=168pt]{classmain_1_1twofactor__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classmain_1_1twofactor_a87a3b360a2540681f4620d2820f8bb31}{get} (self)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 124 of file main.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\index{main\+::twofactor@{main\+::twofactor}!get@{get}}
+\index{get@{get}!main\+::twofactor@{main\+::twofactor}}
+\subsubsection[{\texorpdfstring{get(self)}{get(self)}}]{\setlength{\rightskip}{0pt plus 5cm}def main.\+twofactor.\+get (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1twofactor_a87a3b360a2540681f4620d2820f8bb31}{}\label{classmain_1_1twofactor_a87a3b360a2540681f4620d2820f8bb31}
+
+
+Definition at line 125 of file main.\+py.
+
+
+\begin{DoxyCode}
+125     \textcolor{keyword}{def }\hyperlink{classmain_1_1twofactor_a87a3b360a2540681f4620d2820f8bb31}{get}(self):
+126         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'username'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} session:
+127             \textcolor{keywordflow}{return} redirect(url\_for(\textcolor{stringliteral}{'index'}))
+128 
+129         user = User.query.filter\_by(username=session[\textcolor{stringliteral}{'username'}]).first()
+130 
+131         \textcolor{keywordflow}{if} user \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+132             \textcolor{keywordflow}{return} redirect(url\_for(\textcolor{stringliteral}{'index'}))
+133 
+134         param = \{\textcolor{stringliteral}{'Cache-Control'}: \textcolor{stringliteral}{'no-cache, no-store, must-revalidate'}, \textcolor{stringliteral}{'Pragma'}: \textcolor{stringliteral}{'no-cache'}, \textcolor{stringliteral}{'Expires'}: \textcolor{stringliteral}{'
+      0'}\}
+135         response = make\_response(render\_template(\textcolor{stringliteral}{'two-factor-setup.html'}), 200, param)
+136         \textcolor{keywordflow}{return} response
+137 
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+example/\hyperlink{main_8py}{main.\+py}\end{DoxyCompactItemize}

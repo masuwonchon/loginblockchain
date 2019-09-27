@@ -1,0 +1,105 @@
+\hypertarget{classmain_1_1command}{}\section{main.\+command Class Reference}
+\label{classmain_1_1command}\index{main.\+command@{main.\+command}}
+
+
+Inheritance diagram for main.\+command\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=172pt]{classmain_1_1command__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for main.\+command\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=172pt]{classmain_1_1command__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classmain_1_1command_a45d94d28b30ca81f482a4bca1bb3bc96}{get} (self)
+\item 
+def \hyperlink{classmain_1_1command_aad57d3ca75e00b96364b4dd9971f8d34}{post} (self)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 270 of file main.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\index{main\+::command@{main\+::command}!get@{get}}
+\index{get@{get}!main\+::command@{main\+::command}}
+\subsubsection[{\texorpdfstring{get(self)}{get(self)}}]{\setlength{\rightskip}{0pt plus 5cm}def main.\+command.\+get (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1command_a45d94d28b30ca81f482a4bca1bb3bc96}{}\label{classmain_1_1command_a45d94d28b30ca81f482a4bca1bb3bc96}
+
+
+Definition at line 271 of file main.\+py.
+
+
+\begin{DoxyCode}
+271     \textcolor{keyword}{def }\hyperlink{classmain_1_1command_a45d94d28b30ca81f482a4bca1bb3bc96}{get}(self):
+272         response = make\_response(render\_template(\textcolor{stringliteral}{'command.html'}))
+273         \textcolor{keywordflow}{return} response
+274 
+\end{DoxyCode}
+\index{main\+::command@{main\+::command}!post@{post}}
+\index{post@{post}!main\+::command@{main\+::command}}
+\subsubsection[{\texorpdfstring{post(self)}{post(self)}}]{\setlength{\rightskip}{0pt plus 5cm}def main.\+command.\+post (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1command_aad57d3ca75e00b96364b4dd9971f8d34}{}\label{classmain_1_1command_aad57d3ca75e00b96364b4dd9971f8d34}
+
+
+Definition at line 275 of file main.\+py.
+
+
+\begin{DoxyCode}
+275     \textcolor{keyword}{def }\hyperlink{classmain_1_1command_aad57d3ca75e00b96364b4dd9971f8d34}{post}(self):
+276         username = request.form.get(\textcolor{stringliteral}{'username'})
+277         command = request.form.get(\textcolor{stringliteral}{'command'})
+278         loginhashblock = request.form.get(\textcolor{stringliteral}{'loginhashblock'})
+279         text = \textcolor{stringliteral}{"[info:command] username: \{\}, command: \{\}, loginhashblock: \{\}"}.format(username, command, 
+      loginhashblock)
+280         print(text)
+281 
+282         user = User.query.filter\_by(username=username).first()
+283 
+284         \textcolor{keywordflow}{if} command == str(3):
+285             loginhashblock = user.Lhashblock
+286 
+287         \textcolor{keywordflow}{if} command == str(4):
+288             user.Lhashblock = loginhashblock
+289             db.session.commit()
+290 
+291         resp = \{\textcolor{stringliteral}{'username'}:username, \textcolor{stringliteral}{'command'}:command, \textcolor{stringliteral}{'loginhashblock'}:loginhashblock\}
+292         \textcolor{keywordflow}{return} make\_response(resp, command)
+293 
+294 db.create\_all()
+295 
+296 api.add\_resource(index, \textcolor{stringliteral}{'/'})
+297 api.add\_resource(logout, \textcolor{stringliteral}{'/logout'})
+298 api.add\_resource(register, \textcolor{stringliteral}{'/register'})
+299 api.add\_resource(twofactor, \textcolor{stringliteral}{'/twofactor'})
+300 api.add\_resource(qrcode, \textcolor{stringliteral}{'/qrcode'})
+301 api.add\_resource(login, \textcolor{stringliteral}{'/login'})
+302 api.add\_resource(command, \textcolor{stringliteral}{'/command'})
+303 
+304 @app.errorhandler(404)
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+example/\hyperlink{main_8py}{main.\+py}\end{DoxyCompactItemize}

@@ -1,0 +1,11 @@
+<map id="loginhashblock.create_salt" name="loginhashblock.create_salt">
+<area shape="rect" id="node2" href="$namespaceloginhashblock.html#a1bd31fe2f0ea4e6673127d72b6c42826" title="loginhashblock.create\l_deviceId" alt="" coords="455,5,617,47"/>
+<area shape="rect" id="node6" href="$namespaceloginhashblock.html#ad3ef8dab740c69ca8424797f9c146a53" title="loginhashblock.create\l_loginhashblock" alt="" coords="244,64,405,105"/>
+<area shape="rect" id="node3" href="$namespaceloginhashblock.html#ab3608ba58ffedb0bd8bba86ce71fdefe" title="loginhashblock.create\l_loginhashblocklist" alt="" coords="887,15,1049,56"/>
+<area shape="rect" id="node4" href="$classmain_1_1login.html#a71ff3f89aaf0f0c8502577445ab38744" title="main.login.post" alt="" coords="1130,51,1250,78"/>
+<area shape="rect" id="node5" href="$namespaceunittest.html#a0e10bea14aac2cc6a08d76f422b9328d" title="unittest.unittest_create\l_loginhashblocklist" alt="" coords="1104,128,1276,169"/>
+<area shape="rect" id="node7" href="$namespaceloginhashblock.html#ab6bafe3dab103cc698822367e53d4a64" title="loginhashblock.update\l_loginhashblock" alt="" coords="453,123,619,164"/>
+<area shape="rect" id="node8" href="$namespaceloginhashblock.html#a7baa4021b9f57044f8227c2e0320ee2b" title="loginhashblock.update\l_loginhashblocklist" alt="" coords="667,123,832,164"/>
+<area shape="rect" id="node9" href="$classmain_1_1logout.html#a726ef779e6bf4da8974eae3209276922" title="main.logout.post" alt="" coords="903,131,1033,158"/>
+<area shape="rect" id="node10" href="$namespaceunittest.html#a9e16eaba67b93461be6ea8ef6332507a" title="unittest.unittest_update\l_loginhashblocklist" alt="" coords="880,183,1056,224"/>
+</map>

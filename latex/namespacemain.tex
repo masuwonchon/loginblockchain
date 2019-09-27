@@ -1,0 +1,138 @@
+\hypertarget{namespacemain}{}\section{main Namespace Reference}
+\label{namespacemain}\index{main@{main}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classmain_1_1command}{command}
+\item 
+class \hyperlink{classmain_1_1index}{index}
+\item 
+class \hyperlink{classmain_1_1login}{login}
+\item 
+class \hyperlink{classmain_1_1logout}{logout}
+\item 
+class \hyperlink{classmain_1_1qrcode}{qrcode}
+\item 
+class \hyperlink{classmain_1_1register}{register}
+\item 
+class \hyperlink{classmain_1_1RegisterForm}{Register\+Form}
+\item 
+class \hyperlink{classmain_1_1twofactor}{twofactor}
+\item 
+class \hyperlink{classmain_1_1User}{User}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespacemain_a64310d76bee3c7581aaa85925bf1bb53}{load\+\_\+user} (user\+\_\+id)
+\item 
+def \hyperlink{namespacemain_a0803c7dc3e1c168a3fbcf5b054109aa1}{not\+\_\+found} (e)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{namespacemain_ad2cce3c3d1036d38f161e4814c97e1b5}{D\+E\+B\+UG} = False
+\item 
+\hyperlink{namespacemain_a5fa94f0581009434c7a63791944d6ff4}{app} = Flask(\+\_\+\+\_\+name\+\_\+\+\_\+)
+\item 
+\hyperlink{namespacemain_a2f0b4b807236469879d595c7f18850aa}{api} = Api(\hyperlink{namespacemain_a5fa94f0581009434c7a63791944d6ff4}{app})
+\item 
+\hyperlink{namespacemain_a2799db3c64165e5659fada6c15d90aea}{bootstrap} = Bootstrap(\hyperlink{namespacemain_a5fa94f0581009434c7a63791944d6ff4}{app})
+\item 
+\hyperlink{namespacemain_afadee2a30284fe18a4fee574c23c94e3}{db} = S\+Q\+L\+Alchemy(\hyperlink{namespacemain_a5fa94f0581009434c7a63791944d6ff4}{app})
+\item 
+\hyperlink{namespacemain_aaf584fa2bbd608ba30fe2a84f4a6e604}{lm} = Login\+Manager(\hyperlink{namespacemain_a5fa94f0581009434c7a63791944d6ff4}{app})
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}This is example web site using python flask based on LHB(login hash block) module.
+@version: 1.0.0
+@authour: suwonchon(suwonchon@gmail.com)
+@contact http://github.com/masuwonchon/loginblockchain
+@license: MIT
+\end{DoxyVerb}
+ 
+
+\subsection{Function Documentation}
+\index{main@{main}!load\+\_\+user@{load\+\_\+user}}
+\index{load\+\_\+user@{load\+\_\+user}!main@{main}}
+\subsubsection[{\texorpdfstring{load\+\_\+user(user\+\_\+id)}{load_user(user_id)}}]{\setlength{\rightskip}{0pt plus 5cm}def main.\+load\+\_\+user (
+\begin{DoxyParamCaption}
+\item[{}]{user\+\_\+id}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacemain_a64310d76bee3c7581aaa85925bf1bb53}{}\label{namespacemain_a64310d76bee3c7581aaa85925bf1bb53}
+\begin{DoxyVerb}User loader callback for Flask-Login.\end{DoxyVerb}
+ 
+
+Definition at line 79 of file main.\+py.
+
+
+\begin{DoxyCode}
+79 \textcolor{keyword}{def }\hyperlink{namespacemain_a64310d76bee3c7581aaa85925bf1bb53}{load\_user}(user\_id):
+80     \textcolor{stringliteral}{"""User loader callback for Flask-Login."""}
+81     \textcolor{keywordflow}{return} User.query.get(int(user\_id))
+82 
+\end{DoxyCode}
+\index{main@{main}!not\+\_\+found@{not\+\_\+found}}
+\index{not\+\_\+found@{not\+\_\+found}!main@{main}}
+\subsubsection[{\texorpdfstring{not\+\_\+found(e)}{not_found(e)}}]{\setlength{\rightskip}{0pt plus 5cm}def main.\+not\+\_\+found (
+\begin{DoxyParamCaption}
+\item[{}]{e}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacemain_a0803c7dc3e1c168a3fbcf5b054109aa1}{}\label{namespacemain_a0803c7dc3e1c168a3fbcf5b054109aa1}
+
+
+Definition at line 305 of file main.\+py.
+
+
+\begin{DoxyCode}
+305 \textcolor{keyword}{def }\hyperlink{namespacemain_a0803c7dc3e1c168a3fbcf5b054109aa1}{not\_found}(e):
+306     \textcolor{keywordflow}{return} \textcolor{stringliteral}{''}, 404
+307 
+308 \end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\index{main@{main}!api@{api}}
+\index{api@{api}!main@{main}}
+\subsubsection[{\texorpdfstring{api}{api}}]{\setlength{\rightskip}{0pt plus 5cm}main.\+api = Api({\bf app})}\hypertarget{namespacemain_a2f0b4b807236469879d595c7f18850aa}{}\label{namespacemain_a2f0b4b807236469879d595c7f18850aa}
+
+
+Definition at line 33 of file main.\+py.
+
+\index{main@{main}!app@{app}}
+\index{app@{app}!main@{main}}
+\subsubsection[{\texorpdfstring{app}{app}}]{\setlength{\rightskip}{0pt plus 5cm}main.\+app = Flask(\+\_\+\+\_\+name\+\_\+\+\_\+)}\hypertarget{namespacemain_a5fa94f0581009434c7a63791944d6ff4}{}\label{namespacemain_a5fa94f0581009434c7a63791944d6ff4}
+
+
+Definition at line 32 of file main.\+py.
+
+\index{main@{main}!bootstrap@{bootstrap}}
+\index{bootstrap@{bootstrap}!main@{main}}
+\subsubsection[{\texorpdfstring{bootstrap}{bootstrap}}]{\setlength{\rightskip}{0pt plus 5cm}main.\+bootstrap = Bootstrap({\bf app})}\hypertarget{namespacemain_a2799db3c64165e5659fada6c15d90aea}{}\label{namespacemain_a2799db3c64165e5659fada6c15d90aea}
+
+
+Definition at line 37 of file main.\+py.
+
+\index{main@{main}!db@{db}}
+\index{db@{db}!main@{main}}
+\subsubsection[{\texorpdfstring{db}{db}}]{\setlength{\rightskip}{0pt plus 5cm}main.\+db = S\+Q\+L\+Alchemy({\bf app})}\hypertarget{namespacemain_afadee2a30284fe18a4fee574c23c94e3}{}\label{namespacemain_afadee2a30284fe18a4fee574c23c94e3}
+
+
+Definition at line 38 of file main.\+py.
+
+\index{main@{main}!D\+E\+B\+UG@{D\+E\+B\+UG}}
+\index{D\+E\+B\+UG@{D\+E\+B\+UG}!main@{main}}
+\subsubsection[{\texorpdfstring{D\+E\+B\+UG}{DEBUG}}]{\setlength{\rightskip}{0pt plus 5cm}bool main.\+D\+E\+B\+UG = False}\hypertarget{namespacemain_ad2cce3c3d1036d38f161e4814c97e1b5}{}\label{namespacemain_ad2cce3c3d1036d38f161e4814c97e1b5}
+
+
+Definition at line 29 of file main.\+py.
+
+\index{main@{main}!lm@{lm}}
+\index{lm@{lm}!main@{main}}
+\subsubsection[{\texorpdfstring{lm}{lm}}]{\setlength{\rightskip}{0pt plus 5cm}main.\+lm = Login\+Manager({\bf app})}\hypertarget{namespacemain_aaf584fa2bbd608ba30fe2a84f4a6e604}{}\label{namespacemain_aaf584fa2bbd608ba30fe2a84f4a6e604}
+
+
+Definition at line 39 of file main.\+py.
+

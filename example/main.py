@@ -192,7 +192,7 @@ class login(Resource):
             prev_LHB = None
 
         if user.verify_password(password) and user.verify_totp(token):
-            LHBlistStr = create_loginhashblocklist(user.Lhashblock, DEBUG=DEBUG):
+            LHBlistStr = create_loginhashblocklist(user.Lhashblock, DEBUG=DEBUG)
             user.Lhashblock = LHBlistStr
             db.session.commit()
         elif not prev_LHB:

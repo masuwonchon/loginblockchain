@@ -24,7 +24,7 @@ import sys
 
 # import LHB library
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-from loginhashblock.loginhashblock import create_deviceId, create_loginhashblock, update_loginhashblocklist, valid_loginhashblock, isRegistedLHB, update_loginhashblock
+from loginhashblock.loginhashblock import create_deviceId, create_loginhashblock, update_loginhashblocklist, valid_loginhashblock, isRegistedLHB, update_loginhashblock, verify_loginhashblock
 
 DEBUG = False
 
@@ -187,7 +187,7 @@ class login(Resource):
         if DEBUG:
             print_LHBlist(user.Lhashblock)
         '''
-
+        '''
         if prev_LHB == 'null':
             prev_LHB = None
 
@@ -218,7 +218,41 @@ class login(Resource):
             text = '[error:login:post] other case'
             print(text)
             raise ValueError("[error:login:post] exit")
+        '''
+        if not user.verify_password(password):
+            flash('password was wrong')
+            return make_response('Error', 302)
 
+        if token:
+            if not user.verify_totp(token):
+                flash('OTP was wrong')
+                return make_response('Error', 302)
+
+            if prev_LHB:
+                if not valid_loginhashblock(prev_LHB):
+                    flash('1')
+                    return make_response('Error', 302)
+
+                LHBlistStr, new_LHB = update_loginhashblocklist(user.Lhashblock, prev_LHB, DEBUG=DEBUG)
+            else:
+                LHBlistStr, new_LHB = create_loginhashblocklist(user.Lhashblock, DEBUG=DEBUG)
+        else:
+            if prev_LHB:
+                if not valid_loginhashblock(prev_LHB):
+                    flash('2')
+                    return make_response('Error', 302)
+
+                if not verify_loginhashblock(user.Lhashblock, prev_LHB):
+                    flash('3')
+                    return make_response('Error', 302)
+
+                LHBlistStr, new_LHB = update_loginhashblocklist(user.Lhashblock, prev_LHB, DEBUG=DEBUG)
+            else:
+                flash('4')
+                return make_response('Error', 302)
+
+        user.Lhashblock = LHBlistStr
+        db.session.commit()
 
         if DEBUG:
             text = "[info:login:post]\nprev_hashblock[{}]: {}\nnext_hashblock[{}]: {}".format(username,prev_LHB,username,new_LHB)
@@ -246,7 +280,7 @@ class logout(Resource):
         if not prev_LHB:
             print("[info:logout:post] GO TO OTP")
         else:
-            LHBlistStr = update_loginhashblocklist(user.Lhashblock, prev_LHB, DEBUG=DEBUG)
+            LHBlistStr, new_LHB = update_loginhashblocklist(user.Lhashblock, prev_LHB, DEBUG=DEBUG)
             user.Lhashblock = LHBlistStr
             db.session.commit()
 

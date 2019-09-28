@@ -1,9 +1,10 @@
 <map id="loginhashblock.create_loginhashblock" name="loginhashblock.create_loginhashblock">
-<area shape="rect" id="node2" href="$namespaceloginhashblock.html#ab3608ba58ffedb0bd8bba86ce71fdefe" title="loginhashblock.create\l_loginhashblocklist" alt="" coords="649,5,810,47"/>
-<area shape="rect" id="node5" href="$namespaceloginhashblock.html#ab6bafe3dab103cc698822367e53d4a64" title="loginhashblock.update\l_loginhashblock" alt="" coords="215,64,380,105"/>
-<area shape="rect" id="node3" href="$classmain_1_1login.html#a71ff3f89aaf0f0c8502577445ab38744" title="main.login.post" alt="" coords="891,42,1011,69"/>
-<area shape="rect" id="node4" href="$namespaceunittest.html#a0e10bea14aac2cc6a08d76f422b9328d" title="unittest.unittest_create\l_loginhashblocklist" alt="" coords="865,119,1037,160"/>
-<area shape="rect" id="node6" href="$namespaceloginhashblock.html#a7baa4021b9f57044f8227c2e0320ee2b" title="loginhashblock.update\l_loginhashblocklist" alt="" coords="428,64,593,105"/>
-<area shape="rect" id="node7" href="$classmain_1_1logout.html#a726ef779e6bf4da8974eae3209276922" title="main.logout.post" alt="" coords="664,122,795,149"/>
-<area shape="rect" id="node8" href="$namespaceunittest.html#a9e16eaba67b93461be6ea8ef6332507a" title="unittest.unittest_update\l_loginhashblocklist" alt="" coords="641,173,817,215"/>
+<area shape="rect" id="node1" title=" " alt="" coords="820,35,970,73"/>
+<area shape="rect" id="node2" href="$namespaceloginhashblock.html#a550707107141dfb228ca4294d7ea31b4" title=" " alt="" coords="213,5,364,44"/>
+<area shape="rect" id="node5" href="$namespaceloginhashblock.html#afef75d97c834ce0fda711b93d0b56b00" title=" " alt="" coords="618,63,772,101"/>
+<area shape="rect" id="node3" href="$classmain_1_1login.html#a71ff3f89aaf0f0c8502577445ab38744" title=" " alt="" coords="28,41,139,67"/>
+<area shape="rect" id="node4" href="$namespaceunittest.html#a0e10bea14aac2cc6a08d76f422b9328d" title=" " alt="" coords="5,116,161,155"/>
+<area shape="rect" id="node6" href="$namespaceloginhashblock.html#a2bcc7ddd0fcc3788572dd77808cb624d" title=" " alt="" coords="416,63,570,101"/>
+<area shape="rect" id="node7" href="$classmain_1_1logout.html#a726ef779e6bf4da8974eae3209276922" title=" " alt="" coords="229,120,348,145"/>
+<area shape="rect" id="node8" href="$namespaceunittest.html#a9e16eaba67b93461be6ea8ef6332507a" title=" " alt="" coords="209,169,368,208"/>
 </map>

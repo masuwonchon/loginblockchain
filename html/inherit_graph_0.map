@@ -1,9 +1,10 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node2" href="$classmain_1_1command.html" title="main.command" alt="" coords="133,5,256,32"/>
-<area shape="rect" id="node3" href="$classmain_1_1index.html" title="main.index" alt="" coords="149,56,241,83"/>
-<area shape="rect" id="node4" href="$classmain_1_1login.html" title="main.login" alt="" coords="151,107,239,133"/>
-<area shape="rect" id="node5" href="$classmain_1_1logout.html" title="main.logout" alt="" coords="145,157,244,184"/>
-<area shape="rect" id="node6" href="$classmain_1_1qrcode.html" title="main.qrcode" alt="" coords="143,208,246,235"/>
-<area shape="rect" id="node7" href="$classmain_1_1register.html" title="main.register" alt="" coords="141,259,248,285"/>
-<area shape="rect" id="node8" href="$classmain_1_1twofactor.html" title="main.twofactor" alt="" coords="136,309,253,336"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,153,84,179"/>
+<area shape="rect" id="node2" href="$classmain_1_1command.html" title=" " alt="" coords="132,5,244,31"/>
+<area shape="rect" id="node3" href="$classmain_1_1index.html" title=" " alt="" coords="145,55,231,80"/>
+<area shape="rect" id="node4" href="$classmain_1_1login.html" title=" " alt="" coords="147,104,229,129"/>
+<area shape="rect" id="node5" href="$classmain_1_1logout.html" title=" " alt="" coords="143,153,233,179"/>
+<area shape="rect" id="node6" href="$classmain_1_1qrcode.html" title=" " alt="" coords="141,203,235,228"/>
+<area shape="rect" id="node7" href="$classmain_1_1register.html" title=" " alt="" coords="139,252,237,277"/>
+<area shape="rect" id="node8" href="$classmain_1_1twofactor.html" title=" " alt="" coords="134,301,242,327"/>
 </map>

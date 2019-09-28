@@ -1,8 +1,9 @@
 <map id="loginhashblock.update_loginhashblock" name="loginhashblock.update_loginhashblock">
-<area shape="rect" id="node2" href="$namespaceloginhashblock.html#a7baa4021b9f57044f8227c2e0320ee2b" title="loginhashblock.update\l_loginhashblocklist" alt="" coords="219,51,384,92"/>
-<area shape="rect" id="node3" href="$classmain_1_1login.html#a71ff3f89aaf0f0c8502577445ab38744" title="main.login.post" alt="" coords="682,57,802,83"/>
-<area shape="rect" id="node4" href="$classmain_1_1logout.html#a726ef779e6bf4da8974eae3209276922" title="main.logout.post" alt="" coords="455,29,585,55"/>
-<area shape="rect" id="node5" href="$namespaceloginhashblock.html#ab3608ba58ffedb0bd8bba86ce71fdefe" title="loginhashblock.create\l_loginhashblocklist" alt="" coords="439,80,601,121"/>
-<area shape="rect" id="node7" href="$namespaceunittest.html#a9e16eaba67b93461be6ea8ef6332507a" title="unittest.unittest_update\l_loginhashblocklist" alt="" coords="432,145,608,187"/>
-<area shape="rect" id="node6" href="$namespaceunittest.html#a0e10bea14aac2cc6a08d76f422b9328d" title="unittest.unittest_create\l_loginhashblocklist" alt="" coords="656,111,828,152"/>
+<area shape="rect" id="node1" title=" " alt="" coords="618,58,772,96"/>
+<area shape="rect" id="node2" href="$namespaceloginhashblock.html#a7baa4021b9f57044f8227c2e0320ee2b" title=" " alt="" coords="416,58,570,96"/>
+<area shape="rect" id="node3" href="$namespaceloginhashblock.html#ab3608ba58ffedb0bd8bba86ce71fdefe" title=" " alt="" coords="213,30,364,68"/>
+<area shape="rect" id="node4" href="$classmain_1_1login.html#a71ff3f89aaf0f0c8502577445ab38744" title=" " alt="" coords="28,8,139,34"/>
+<area shape="rect" id="node6" href="$classmain_1_1logout.html#a726ef779e6bf4da8974eae3209276922" title=" " alt="" coords="229,92,348,118"/>
+<area shape="rect" id="node7" href="$namespaceunittest.html#a9e16eaba67b93461be6ea8ef6332507a" title=" " alt="" coords="209,142,368,180"/>
+<area shape="rect" id="node5" href="$namespaceunittest.html#a0e10bea14aac2cc6a08d76f422b9328d" title=" " alt="" coords="5,86,161,124"/>
 </map>

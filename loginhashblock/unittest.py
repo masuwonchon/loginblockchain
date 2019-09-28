@@ -22,10 +22,10 @@ def unittest_update_loginhashblocklist():
     prev_LHB = 'aCIXQRZ1$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a1'
     LHBlistStr = ''
 
-    NewLHBlistStr = update_loginhashblocklist(LHBlistStr, prev_LHB, DEBUG=DEBUG)
+    updatedLHBlistStr, LHBstr = update_loginhashblocklist(LHBlistStr, prev_LHB, DEBUG=DEBUG)
 
     source = prev_LHB.split('$')
-    target = NewLHBlistStr.split('$')
+    target = updatedLHBlistStr.split('$')
 
     unittest_title_print("LHB is one, LHBlist is null")
     if source[0] == target[0] and source[1] != target[1]:
@@ -37,8 +37,8 @@ def unittest_update_loginhashblocklist():
     LHBlistStr = 'aCIXQRZ1$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a2,aCIXQRZ2$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a3'
 
     LHBlist = LHBlistStr.split(',')
-    NewLHBlistStr = update_loginhashblocklist(LHBlistStr, prev_LHB, DEBUG=DEBUG)
-    targetList = NewLHBlistStr.split(',')
+    updatedLHBlistStr, LHBstr = update_loginhashblocklist(LHBlistStr, prev_LHB, DEBUG=DEBUG)
+    targetList = updatedLHBlistStr.split(',')
     target = targetList[0].split('$')
 
     unittest_title_print("LHB is one, LHBlist is two")
@@ -47,7 +47,7 @@ def unittest_update_loginhashblocklist():
     else:
         unittest_print("TestCase-01: Fail")
 
-    if LHBlistStr != NewLHBlistStr:
+    if LHBlistStr != updatedLHBlistStr:
         unittest_print("TestCase-02: Success")
     else:
         unittest_print("TestCase-02: Fail")
@@ -56,8 +56,8 @@ def unittest_update_loginhashblocklist():
     LHBlistStr = 'aCIXQRZ3$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a2'
 
     LHBlist = LHBlistStr.split(',')
-    NewLHBlistStr = update_loginhashblocklist(LHBlistStr, prev_LHB, DEBUG=DEBUG)
-    targetList = NewLHBlistStr.split(',')
+    updatedLHBlistStr, LHBstr = update_loginhashblocklist(LHBlistStr, prev_LHB, DEBUG=DEBUG)
+    targetList = updatedLHBlistStr.split(',')
     target = targetList[1].split('$')
 
     unittest_title_print("LHB is one, LHBlist is one, but devid is different so LHBlist will be updated LHB")
@@ -66,7 +66,7 @@ def unittest_update_loginhashblocklist():
     else:
         unittest_print("TestCase-01: Fail")
 
-    if LHBlistStr != NewLHBlistStr:
+    if LHBlistStr != updatedLHBlistStr:
         unittest_print("TestCase-02: Success")
     else:
         unittest_print("TestCase-02: Fail")
@@ -81,11 +81,11 @@ def unittest_update_loginhashblocklist():
     LHBlistStr = 'aCIXQRZ3$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a2'
 
     LHBlist = LHBlistStr.split(',')
-    NewLHBlistStr = update_loginhashblocklist(LHBlistStr, prev_LHB, DEBUG=DEBUG)
-    targetList = NewLHBlistStr.split(',')
+    updatedLHBlistStr, LHBstr = update_loginhashblocklist(LHBlistStr, prev_LHB, DEBUG=DEBUG)
+    targetList = updatedLHBlistStr.split(',')
 
     unittest_title_print("LHB is null, LHBlist is one, su LHBlist will be maintained")
-    if LHBlistStr == NewLHBlistStr:
+    if LHBlistStr == updatedLHBlistStr:
         unittest_print("TestCase-01: Success")
     else:
         unittest_print("TestCase-01: Fail")
@@ -97,18 +97,18 @@ def unittest_update_loginhashblocklist():
 
 def unittest_create_loginhashblocklist():
 
-    prev_LHBlistStr = 'aCIXQRZ1$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a1'
+    LHBlistStr = 'aCIXQRZ1$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a1'
 
-    LHBlistStr = create_loginhashblocklist(prev_LHBlistStr, DEBUG=DEBUG)
-    LHBlist = LHBlistStr.split(',')
+    updatedLHBlistStr, LHBstr = create_loginhashblocklist(LHBlistStr, DEBUG=DEBUG)
+    LHBlist = updatedLHBlistStr.split(',')
 
-    unittest_title_print("Create LHB and updated LHBlistStr")
+    ("Create LHB and updated LHBlistStr")
     if len(LHBlist) == 2:
         unittest_print("TestCase-01: Success")
     else:
         unittest_print("TestCase-01: Fail")
 
-    if LHBlist[0] == prev_LHBlistStr:
+    if LHBlist[0] == LHBlistStr:
         unittest_print("TestCase-02: Success")
     else:
         unittest_print("TestCase-02: Fail")

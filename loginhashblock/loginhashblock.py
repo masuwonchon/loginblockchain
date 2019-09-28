@@ -18,22 +18,22 @@ import binascii
 DEBUG = False
 
 
-def print_LHBlist(LHBliststr, DEBUG=False):
+def print_LHBlist(LHBlistStr, DEBUG=False):
     """
     The function prints login hash block list for debug.
-    :param LHBliststr:
+    :param LHBlistStr:
     :return:
     """
 
-    if LHBliststr == None:
-        text = '[info:print_LHBlist] user.Lhashblock:\n{}'.format(LHBliststr)
+    if LHBlistStr == None:
+        text = '[info:print_LHBlist] user.Lhashblock:\n{}'.format(LHBlistStr)
         return True
 
-    if len(LHBliststr) < 1:
-        text = '[info:print_LHBlist] user.Lhashblock:\n{}'.format(LHBliststr)
+    if len(LHBlistStr) < 1:
+        text = '[info:print_LHBlist] user.Lhashblock:\n{}'.format(LHBlistStr)
         print(text)
     else:
-        hblist = LHBliststr.split(',')
+        hblist = LHBlistStr.split(',')
         text = '[info:print_LHBlist] user.Lhashblock:'
         print(text)
         for i in hblist:
@@ -51,7 +51,6 @@ def pbkdf2_hash(data, salt, iterations, dklen=None, hash_name="sha256", DEBUG=Fa
     :param iterations: The number of iterations should be chosen based on the hash algorithm and computing power. As of 2013, at least 100,000 iterations of SHA-256 are suggested.
     :param dklen: dklen is the length of the derived key. If dklen is None then the digest size of the hash algorithm hash_name is used, e.g. 64 for SHA-512.
     :param hash_name: hash_name is the desired name of the hash digest algorithm for HMAC(default: sha256)
-    :param DEBUG: debug option flags
     :return:
     """
 
@@ -82,50 +81,60 @@ def create_salt(length, RAND_CHARS=None, DEBUG=False):
     salt = ''.join(randx)
     return salt
 
-def create_loginhashblocklist(prev_LHBlistStr, DEBUG=DEBUG):
+def create_loginhashblocklist(LHBlistStr, DEBUG=DEBUG):
+    """
+    This function generate login hash block list
+    :param LHBlistStr: previous login hash block list
+    :return:
+    """
 
     devid = create_deviceId(DEBUG=DEBUG)
-    LHB = create_loginhashblock(devid, DEBUG=DEBUG)
-    LHBlistStr = update_loginhashblocklist(prev_LHBlistStr, LHB)
+    LHBstr = create_loginhashblock(devid, DEBUG=DEBUG)
+    uLHBlistStr, uLHBstr = update_loginhashblocklist(LHBlistStr, LHBstr)
 
-    return LHBlistStr
+    return uLHBlistStr, uLHBstr
 
-def update_loginhashblocklist(LHBlistStr, prev_LHB, DEBUG=False):
+def update_loginhashblocklist(LHBlistStr, prevLHBstr, DEBUG=False):
     """
     This function update login hash block list.
-    :param LHBlistStr: login hash block list
-    :param loginhashblock: login hash block
-    :return: updated login hash block list
+    :param LHBlistStr: login hash block list string
+    :param LHBstr: login hash block
+    :return:
     """
 
-    loginhashblock = update_loginhashblock(prev_LHB, DEBUG=False)
+    LHBstr = update_loginhashblock(prevLHBstr, DEBUG=False)
 
-    if not loginhashblock:
-        return LHBlistStr
+    if not LHBstr:
+        return LHBlistStr, LHBstr
 
-    devid = get_deviceId(loginhashblock, DEBUG=DEBUG)
+    devid = get_deviceId(LHBstr, DEBUG=DEBUG)
 
-    if not LHBlistStr :
+    if not LHBlistStr:
+        LHBlistStr = LHBstr
+        
         if DEBUG:
             print("[info:update_loginhashblocklist] LHBlistStr is null")
 
-        return loginhashblock
+        return LHBlistStr, LHBstr
 
     LHBlist = LHBlistStr.split(',')
 
     for i,v in enumerate(LHBlist):
         _devid = get_deviceId(v, DEBUG=DEBUG)
         if devid == _devid:
-            LHBlist[i] = loginhashblock
-            return ",".join(LHBlist)
+            LHBlist[i] = LHBstr
+            LHBlistStr = ",".join(LHBlist)
+            return LHBlistStr, LHBstr
 
-    LHBlist.append(loginhashblock)
+    LHBlist.append(LHBstr)
 
     if DEBUG:
         print("[info:update_loginhashblocklist] devid: {}".format(devid))
         print("[info:update_loginhashblocklist] db_hashblock: {}".format(len(LHBlist)))
 
-    return ",".join(LHBlist)
+    LHBlistStr = ",".join(LHBlist)
+
+    return LHBlistStr, LHBstr
 
 def create_hash(salt, target, hash_name="sha256", iterations=100000, kdf=None, DEBUG=False):
     """
@@ -134,7 +143,7 @@ def create_hash(salt, target, hash_name="sha256", iterations=100000, kdf=None, D
     :param hash_name: The string hash_name is the desired name of the hash digest algorithm for HMAC
     :param iterations: The number of iterations should be chosen based on the hash algorithm and computing power. As of 2013, at least 100,000 iterations of SHA-256 are suggested.
     :param kdf: key derivation function(ex, bcrypt, PBKDF2 etc)
-    :return: hash, method
+    :return:
     """
 
     if not target or not salt:
@@ -184,30 +193,28 @@ def valid_hash(target_hash, salt, target, method, DEBUG=False):
 
     return ret
 
-def get_deviceId(loginhashblock, DEBUG=False):
+def get_deviceId(LHBstr, DEBUG=False):
     """
     This function is to get device id from login hash block
-    :param hashblock:
-    :param DEBUG:
+    :param LHBstr:
     :return:
     """
 
     if DEBUG:
-        print("[info:get_deviceId] loginhashblock: {}".format(loginhashblock))
+        print("[info:get_deviceId] LHBstr: {}".format(LHBstr))
 
-    if not loginhashblock:
+    if not LHBstr:
         raise ValueError("[info:get_deviceId] login hash block is null")
 
-    if not valid_loginhashblock(loginhashblock, DEBUG=DEBUG):
+    if not valid_loginhashblock(LHBstr, DEBUG=DEBUG):
         raise ValueError("[info:get_deviceId] Invalid login hash block")
 
-    devid, loginhash = loginhashblock.split("$", 1)
+    devid, loginhash = LHBstr.split("$", 1)
     return devid
 
 def create_deviceId(DEBUG=False):
     """
-    This function is to make device Id
-    :param DEBUG:
+    This function is to generate device Id
     :return:
     """
 
@@ -226,7 +233,7 @@ def compare_loginhashblock(a, b, DEBUG=False):
     :param a: compare login hash block
     :param b: compare login hash block
     :param DEBUG:
-    :return: BOOL
+    :return:
     """
 
     if DEBUG:
@@ -248,25 +255,46 @@ def compare_loginhashblock(a, b, DEBUG=False):
 
     return True
 
-def valid_loginhashblock(loginhashblock, DEBUG=False):
+def verify_loginhashblock(LHBlistStr, LHBstr, DEBUG=False):
+    """
+    This function verify login hash block list.
+    :param LHBlistStr: login hash block list
+    :param LHBstr: login hash block
+    :return:
+    """
+
+    if not LHBlistStr :
+        return False
+
+    devid = get_deviceId(LHBstr, DEBUG=DEBUG)
+    LHBlist = LHBlistStr.split(',')
+
+    for i,v in enumerate(LHBlist):
+        _devid = get_deviceId(v, DEBUG=DEBUG)
+        if devid == _devid:
+            return True
+
+    return False
+
+def valid_loginhashblock(LHBstr, DEBUG=False):
     """
     This function is to check login hash block
     hashblock format: deviceid(8)+$+hash
     ex)jUs6LQMX$jUs6LQMX$ceccffbfa52e55825f87573b068c8d759b1540f9833a7d7ebd7a27c993ffd316
-    :param hashblock:
+    :param LHBstr:
     :return: BOOL
     """
-    if not loginhashblock:
+    if not LHBstr:
         if DEBUG:
             print('[info:valid_loginhashblock] Null')
         return False
 
-    if loginhashblock.count("$") != 1:
+    if LHBstr.count("$") != 1:
         if DEBUG:
             print('[info:valid_loginhashblock] Invalid format')
         return False
 
-    devid, hash = loginhashblock.split("$", 1)
+    devid, hash = LHBstr.split("$", 1)
 
     if len(devid) != 8:
         if DEBUG:
@@ -278,78 +306,77 @@ def valid_loginhashblock(loginhashblock, DEBUG=False):
 
     return True
 
-def update_loginhashblock(prev_loginhashblock, DEBUG=False):
+def update_loginhashblock(prevLHBstr, DEBUG=False):
     """
     This function is to update login hash block with old login hash block
-    :param prev_loginhashblock:
+    :param prevLHBstr:
     :param DEBUG:
     :return: updated login hash block
     """
 
-    if not prev_loginhashblock:
+    if not prevLHBstr:
         return None
 
-    if not valid_loginhashblock(prev_loginhashblock, DEBUG=DEBUG):
+    if not valid_loginhashblock(prevLHBstr, DEBUG=DEBUG):
         raise ValueError("[info:update_loginhashblock] Invalid login hash block")
 
-    devid = get_deviceId(prev_loginhashblock, DEBUG=DEBUG)
-    loginhashblock = create_loginhashblock(devid, DEBUG=DEBUG)
+    devid = get_deviceId(prevLHBstr, DEBUG=DEBUG)
+    LHBstr = create_loginhashblock(devid, DEBUG=DEBUG)
 
     if DEBUG:
-        text = '[info:update_loginhashblock] \npre_loginhashblock: {}\nnew_loginhashblock: {}'.format(prev_loginhashblock,loginhashblock)
+        text = '[info:update_loginhashblock] \npre_loginhashblock: {}\nnew_loginhashblock: {}'.format(prevLHBstr,LHBstr)
         print(text)
 
-    return loginhashblock
+    return LHBstr
 
-def isRegistedLHB(client_loginhashblock, LHBliststr, DEBUG=False):
+def isRegistedLHB(LHBstr, LHBlistStr, DEBUG=False):
     """
     This function is to check valid previous login hash block.
-    :client_loginhashblock: client's login hash block
-    :LHBliststr: client's login has block in database
+    :LHBstr: client's login hash block
+    :LHBlistStr: client's login has block in database
     """
 
-    server_loginhashblocklist = LHBliststr.split(',')
+    LHBlist = LHBlistStr.split(',')
 
-    if not valid_loginhashblock(client_loginhashblock, DEBUG=DEBUG):
+    if not valid_loginhashblock(LHBstr, DEBUG=DEBUG):
         return False
 
-    devid = get_deviceId(client_loginhashblock, DEBUG=DEBUG)
-    server_loginhashblock = get_loginhashblock(devid, server_loginhashblocklist, DEBUG=DEBUG)
+    devid = get_deviceId(LHBstr, DEBUG=DEBUG)
+    target_LHBstr = get_loginhashblock(devid, LHBlist, DEBUG=DEBUG)
 
     if DEBUG:
-        print("[info:isRegistedLHB]\nclient_loginhashblock: {}\nserver_loginhashblock: {}".format(client_loginhashblock, server_loginhashblock))
+        print("[info:isRegistedLHB]\nclient_loginhashblock: {}\nserver_loginhashblock: {}".format(LHBstr, target_LHBstr))
 
-    if client_loginhashblock == server_loginhashblock:
+    if LHBstr == target_LHBstr:
         return True
 
     return False
 
-def get_loginhashblock(devid, loginhashblocklist, DEBUG=False):
+def get_loginhashblock(devid, LHBlist, DEBUG=False):
     """
     This function is to get login hash block by device id in login hash block list.
     :devid: device id
-    :loginhashblocklist: client's login has block in database
+    :LHBlist: client's login has block in database
     :return:
     """
 
-    for i in loginhashblocklist:
-        _devid = get_deviceId(i, DEBUG=DEBUG)
+    for LHBstr in LHBlist:
+        _devid = get_deviceId(LHBstr, DEBUG=DEBUG)
         if devid == _devid:
             if DEBUG:
                 print('[info:get_loginhashblock] devid is found in login hash block list')
-            return i
+            return LHBstr
 
     if DEBUG:
         print('[info:get_loginhashblock] devid is not found in login hash block list')
 
-    return False
+    return ''
 
 def create_loginhashblock(devid, key=None, DEBUG=False):
     """
     This functions is to generate login hash block with devid
     :param devid:
     :param key:
-    :param DEBUG:
     :return: login hash block
     """
 
@@ -368,6 +395,6 @@ def create_loginhashblock(devid, key=None, DEBUG=False):
         text = "[info:create_loginhashblock] salt: {}, method: {}, hash: {}, devid: {}".format(salt, method, hash, devid)
         print(text)
 
-    loginhashblock = '{}${}'.format(devid, hash)
+    LHBstr = '{}${}'.format(devid, hash)
 
-    return loginhashblock
+    return LHBstr

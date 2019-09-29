@@ -30,7 +30,7 @@ def \mbox{\hyperlink{classmain_1_1logout_a014267caa3d9cc9e42fdb71ef54ce43b}{get}
 \doxysubsection{Detailed Description}
 
 
-Definition at line 231 of file main.\+py.
+Definition at line 237 of file main.\+py.
 
 
 
@@ -43,17 +43,17 @@ Definition at line 231 of file main.\+py.
 
 
 
-Definition at line 261 of file main.\+py.
+Definition at line 267 of file main.\+py.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{261     \textcolor{keyword}{def }get(self):}
-\DoxyCodeLine{262         \textcolor{keywordflow}{if} current\_user.is\_active == \textcolor{keyword}{False}:}
-\DoxyCodeLine{263             \textcolor{keywordflow}{return} redirect(url\_for(\textcolor{stringliteral}{'index'}))}
-\DoxyCodeLine{264 }
-\DoxyCodeLine{265         response = make\_response(render\_template(\textcolor{stringliteral}{'logout.html'}))}
-\DoxyCodeLine{266         \textcolor{keywordflow}{return} response}
-\DoxyCodeLine{267 }
+\DoxyCodeLine{267     \textcolor{keyword}{def }get(self):}
+\DoxyCodeLine{268         \textcolor{keywordflow}{if} current\_user.is\_active == \textcolor{keyword}{False}:}
+\DoxyCodeLine{269             \textcolor{keywordflow}{return} redirect(url\_for(\textcolor{stringliteral}{'index'}))}
+\DoxyCodeLine{270 }
+\DoxyCodeLine{271         response = make\_response(render\_template(\textcolor{stringliteral}{'logout.html'}))}
+\DoxyCodeLine{272         \textcolor{keywordflow}{return} response}
+\DoxyCodeLine{273 }
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classmain_1_1logout_a726ef779e6bf4da8974eae3209276922}\label{classmain_1_1logout_a726ef779e6bf4da8974eae3209276922}} 
@@ -64,39 +64,39 @@ Definition at line 261 of file main.\+py.
 
 
 
-Definition at line 232 of file main.\+py.
+Definition at line 238 of file main.\+py.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{232     \textcolor{keyword}{def }post(self):}
-\DoxyCodeLine{233         username = request.form.get(\textcolor{stringliteral}{'username'})}
-\DoxyCodeLine{234         prev\_LHB = request.form.get(\textcolor{stringliteral}{'loginhashblock'})}
-\DoxyCodeLine{235 }
-\DoxyCodeLine{236         \textcolor{keywordflow}{if} current\_user.is\_active == \textcolor{keyword}{False}:}
-\DoxyCodeLine{237             \textcolor{keywordflow}{return} redirect(url\_for(\textcolor{stringliteral}{'index'}))}
-\DoxyCodeLine{238 }
-\DoxyCodeLine{239         user = User.query.filter\_by(username=username).first()}
-\DoxyCodeLine{240 }
-\DoxyCodeLine{241         \textcolor{keywordflow}{if} DEBUG:}
-\DoxyCodeLine{242             \mbox{\hyperlink{namespaceloginhashblock_a1096aa8494b9c5875decc029d8b40ea9}{print\_LHBlist}}(user.Lhashblock)}
-\DoxyCodeLine{243 }
-\DoxyCodeLine{244         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} prev\_LHB:}
-\DoxyCodeLine{245             print(\textcolor{stringliteral}{"[info:logout:post] GO TO OTP"})}
-\DoxyCodeLine{246         \textcolor{keywordflow}{else}:}
-\DoxyCodeLine{247             LHBlistStr, new\_LHB = \mbox{\hyperlink{namespaceloginhashblock_a2bcc7ddd0fcc3788572dd77808cb624d}{update\_loginhashblocklist}}(user.Lhashblock, prev\_LHB, DEBUG=DEBUG)}
-\DoxyCodeLine{248             user.Lhashblock = LHBlistStr}
-\DoxyCodeLine{249             db.session.commit()}
-\DoxyCodeLine{250 }
-\DoxyCodeLine{251         condition = \textcolor{keyword}{True}}
-\DoxyCodeLine{252         logout\_user()}
-\DoxyCodeLine{253 }
-\DoxyCodeLine{254         \textcolor{keywordflow}{if} DEBUG:}
-\DoxyCodeLine{255             text = \textcolor{stringliteral}{"[info:logout:post]\(\backslash\)nprev\_hashblock[\{\}]: \{\}\(\backslash\)nnext\_hashblock[\{\}]: \{\}"}.format(username,prev\_LHB,username,new\_LHB)}
-\DoxyCodeLine{256             print(text)}
-\DoxyCodeLine{257 }
-\DoxyCodeLine{258         response = make\_response(render\_template(\textcolor{stringliteral}{'index.html'}, condition=condition, username=username, LoginHB=new\_LHB))}
-\DoxyCodeLine{259         \textcolor{keywordflow}{return} response}
-\DoxyCodeLine{260 }
+\DoxyCodeLine{238     \textcolor{keyword}{def }post(self):}
+\DoxyCodeLine{239         username = request.form.get(\textcolor{stringliteral}{'username'})}
+\DoxyCodeLine{240         prev\_LHB = request.form.get(\textcolor{stringliteral}{'loginhashblock'})}
+\DoxyCodeLine{241 }
+\DoxyCodeLine{242         \textcolor{keywordflow}{if} current\_user.is\_active == \textcolor{keyword}{False}:}
+\DoxyCodeLine{243             \textcolor{keywordflow}{return} redirect(url\_for(\textcolor{stringliteral}{'index'}))}
+\DoxyCodeLine{244 }
+\DoxyCodeLine{245         user = User.query.filter\_by(username=username).first()}
+\DoxyCodeLine{246 }
+\DoxyCodeLine{247         \textcolor{keywordflow}{if} DEBUG:}
+\DoxyCodeLine{248             \mbox{\hyperlink{namespaceloginhashblock_a1096aa8494b9c5875decc029d8b40ea9}{print\_LHBlist}}(user.Lhashblock)}
+\DoxyCodeLine{249 }
+\DoxyCodeLine{250         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} prev\_LHB:}
+\DoxyCodeLine{251             print(\textcolor{stringliteral}{"[info:logout:post] GO TO OTP"})}
+\DoxyCodeLine{252         \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{253             LHBlistStr, new\_LHB = \mbox{\hyperlink{namespaceloginhashblock_a2bcc7ddd0fcc3788572dd77808cb624d}{update\_loginhashblocklist}}(user.Lhashblock, prev\_LHB, DEBUG=DEBUG)}
+\DoxyCodeLine{254             user.Lhashblock = LHBlistStr}
+\DoxyCodeLine{255             db.session.commit()}
+\DoxyCodeLine{256 }
+\DoxyCodeLine{257         condition = \textcolor{keyword}{True}}
+\DoxyCodeLine{258         logout\_user()}
+\DoxyCodeLine{259 }
+\DoxyCodeLine{260         \textcolor{keywordflow}{if} DEBUG:}
+\DoxyCodeLine{261             text = \textcolor{stringliteral}{"[info:logout:post]\(\backslash\)nprev\_hashblock[\{\}]: \{\}\(\backslash\)nnext\_hashblock[\{\}]: \{\}"}.format(username,prev\_LHB,username,new\_LHB)}
+\DoxyCodeLine{262             print(text)}
+\DoxyCodeLine{263 }
+\DoxyCodeLine{264         response = make\_response(render\_template(\textcolor{stringliteral}{'index.html'}, condition=condition, username=username, LoginHB=new\_LHB))}
+\DoxyCodeLine{265         \textcolor{keywordflow}{return} response}
+\DoxyCodeLine{266 }
 
 \end{DoxyCode}
 Here is the call graph for this function\+:\nopagebreak

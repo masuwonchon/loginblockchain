@@ -107,33 +107,39 @@ Definition at line 166 of file main.\+py.
 \DoxyCodeLine{201             \textcolor{keywordflow}{else}:}
 \DoxyCodeLine{202                 LHBlistStr, new\_LHB = \mbox{\hyperlink{namespaceloginhashblock_a550707107141dfb228ca4294d7ea31b4}{create\_loginhashblocklist}}(user.Lhashblock, DEBUG=DEBUG)}
 \DoxyCodeLine{203         \textcolor{keywordflow}{else}:}
-\DoxyCodeLine{204             \textcolor{keywordflow}{if} prev\_LHB:}
-\DoxyCodeLine{205                 \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} \mbox{\hyperlink{namespaceloginhashblock_adb424539d851426da7b65d53c5a6d577}{valid\_loginhashblock}}(prev\_LHB):}
-\DoxyCodeLine{206                     flash(\textcolor{stringliteral}{'Your account is suspected of being stolen. OTP is required.'})}
-\DoxyCodeLine{207                     \textcolor{keywordflow}{return} make\_response(\textcolor{stringliteral}{'Error'}, 302)}
-\DoxyCodeLine{208 }
-\DoxyCodeLine{209                 \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} \mbox{\hyperlink{namespaceloginhashblock_aa5bb94484a68d0bbebce23b4cfeeb4b7}{verify\_loginhashblock}}(user.Lhashblock, prev\_LHB):}
+\DoxyCodeLine{204             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} user.Lhashblock:}
+\DoxyCodeLine{205                 flash(\textcolor{stringliteral}{'Your account is first login, OTP is required.'})}
+\DoxyCodeLine{206                 \textcolor{keywordflow}{return} make\_response(\textcolor{stringliteral}{'Error'}, 302)}
+\DoxyCodeLine{207 }
+\DoxyCodeLine{208             \textcolor{keywordflow}{if} prev\_LHB:}
+\DoxyCodeLine{209                 \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} \mbox{\hyperlink{namespaceloginhashblock_adb424539d851426da7b65d53c5a6d577}{valid\_loginhashblock}}(prev\_LHB):}
 \DoxyCodeLine{210                     flash(\textcolor{stringliteral}{'Your account is suspected of being stolen. OTP is required.'})}
-\DoxyCodeLine{211                     \textcolor{keywordflow}{return} make\_response(\textcolor{stringliteral}{'Error'}, 302)}
-\DoxyCodeLine{212 }
-\DoxyCodeLine{213                 LHBlistStr, new\_LHB = \mbox{\hyperlink{namespaceloginhashblock_a2bcc7ddd0fcc3788572dd77808cb624d}{update\_loginhashblocklist}}(user.Lhashblock, prev\_LHB, DEBUG=DEBUG)}
-\DoxyCodeLine{214             \textcolor{keywordflow}{else}:}
-\DoxyCodeLine{215                 flash(\textcolor{stringliteral}{'Error! Debug Mode'})}
-\DoxyCodeLine{216                 \textcolor{keywordflow}{return} make\_response(\textcolor{stringliteral}{'Error'}, 302)}
-\DoxyCodeLine{217 }
-\DoxyCodeLine{218         user.Lhashblock = LHBlistStr}
-\DoxyCodeLine{219         db.session.commit()}
-\DoxyCodeLine{220 }
-\DoxyCodeLine{221         \textcolor{keywordflow}{if} DEBUG:}
-\DoxyCodeLine{222             text = \textcolor{stringliteral}{"[info:login:post]\(\backslash\)nprev\_hashblock[\{\}]: \{\}\(\backslash\)nnext\_hashblock[\{\}]: \{\}"}.format(username,prev\_LHB,username,new\_LHB)}
-\DoxyCodeLine{223             print(text)}
-\DoxyCodeLine{224 }
-\DoxyCodeLine{225         login\_user(user)}
-\DoxyCodeLine{226         flash(\textcolor{stringliteral}{'You are now logged in!'})}
-\DoxyCodeLine{227         condition = \textcolor{keyword}{True}}
-\DoxyCodeLine{228         response = make\_response(render\_template(\textcolor{stringliteral}{'index.html'}, condition=condition, username=username, LoginHB=new\_LHB))}
-\DoxyCodeLine{229         \textcolor{keywordflow}{return} response}
+\DoxyCodeLine{211                     print(\textcolor{stringliteral}{"Error valid\_loginhashblock"})}
+\DoxyCodeLine{212                     \textcolor{keywordflow}{return} make\_response(\textcolor{stringliteral}{'Error'}, 302)}
+\DoxyCodeLine{213 }
+\DoxyCodeLine{214                 \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} \mbox{\hyperlink{namespaceloginhashblock_aa5bb94484a68d0bbebce23b4cfeeb4b7}{verify\_loginhashblock}}(user.Lhashblock, prev\_LHB):}
+\DoxyCodeLine{215                     flash(\textcolor{stringliteral}{'Your account is suspected of being stolen. OTP is required.'})}
+\DoxyCodeLine{216                     print(\textcolor{stringliteral}{"Error verify\_loginhashblock"})}
+\DoxyCodeLine{217                     \textcolor{keywordflow}{return} make\_response(\textcolor{stringliteral}{'Error'}, 302)}
+\DoxyCodeLine{218 }
+\DoxyCodeLine{219                 LHBlistStr, new\_LHB = \mbox{\hyperlink{namespaceloginhashblock_a2bcc7ddd0fcc3788572dd77808cb624d}{update\_loginhashblocklist}}(user.Lhashblock, prev\_LHB, DEBUG=DEBUG)}
+\DoxyCodeLine{220             \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{221                 flash(\textcolor{stringliteral}{'Error! Debug Mode'})}
+\DoxyCodeLine{222                 \textcolor{keywordflow}{return} make\_response(\textcolor{stringliteral}{'Error'}, 302)}
+\DoxyCodeLine{223 }
+\DoxyCodeLine{224         user.Lhashblock = LHBlistStr}
+\DoxyCodeLine{225         db.session.commit()}
+\DoxyCodeLine{226 }
+\DoxyCodeLine{227         \textcolor{keywordflow}{if} DEBUG:}
+\DoxyCodeLine{228             text = \textcolor{stringliteral}{"[info:login:post]\(\backslash\)nprev\_hashblock[\{\}]: \{\}\(\backslash\)nnext\_hashblock[\{\}]: \{\}"}.format(username,prev\_LHB,username,new\_LHB)}
+\DoxyCodeLine{229             print(text)}
 \DoxyCodeLine{230 }
+\DoxyCodeLine{231         login\_user(user)}
+\DoxyCodeLine{232         flash(\textcolor{stringliteral}{'You are now logged in!'})}
+\DoxyCodeLine{233         condition = \textcolor{keyword}{True}}
+\DoxyCodeLine{234         response = make\_response(render\_template(\textcolor{stringliteral}{'index.html'}, condition=condition, username=username, LoginHB=new\_LHB))}
+\DoxyCodeLine{235         \textcolor{keywordflow}{return} response}
+\DoxyCodeLine{236 }
 
 \end{DoxyCode}
 Here is the call graph for this function\+:\nopagebreak

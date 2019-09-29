@@ -74,7 +74,7 @@ function handleServerResponse() {
             // get login hash block for username
             var respJson=JSON.parse(xmlhttp.responseText);
             loginhashblock = localStorage.getItem(respJson['username']);
-            document.getElementById("resp").innerHTML = 'usename: '+respJson['username']+'<br> command: '+respJson['command']+'<br> LHB: '+loginhashblock;
+            document.getElementById("resp").innerHTML = 'usename: '+respJson['username']+'<br> command: '+respJson['command']+'<br> LHB:<br> '+loginhashblock;
         }
         else {
             document.getElementById("resp").innerHTML = 'command is not list.';

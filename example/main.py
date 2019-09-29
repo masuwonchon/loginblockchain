@@ -201,13 +201,19 @@ class login(Resource):
             else:
                 LHBlistStr, new_LHB = create_loginhashblocklist(user.Lhashblock, DEBUG=DEBUG)
         else:
+            if not user.Lhashblock:
+                flash('Your account is first login, OTP is required.')
+                return make_response('Error', 302)
+
             if prev_LHB:
                 if not valid_loginhashblock(prev_LHB):
                     flash('Your account is suspected of being stolen. OTP is required.')
+                    print("Error valid_loginhashblock")
                     return make_response('Error', 302)
 
                 if not verify_loginhashblock(user.Lhashblock, prev_LHB):
                     flash('Your account is suspected of being stolen. OTP is required.')
+                    print("Error verify_loginhashblock")
                     return make_response('Error', 302)
 
                 LHBlistStr, new_LHB = update_loginhashblocklist(user.Lhashblock, prev_LHB, DEBUG=DEBUG)
@@ -278,6 +284,10 @@ class command(Resource):
         print(text)
 
         user = User.query.filter_by(username=username).first()
+
+        if not user:
+            resp = {'username':'None', 'command':command, 'loginhashblock':'None'}
+            return make_response(resp, command)
 
         if command == str(3):
             loginhashblock = user.Lhashblock

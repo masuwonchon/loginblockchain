@@ -30,7 +30,7 @@ def \mbox{\hyperlink{classmain_1_1command_aad57d3ca75e00b96364b4dd9971f8d34}{pos
 \doxysubsection{Detailed Description}
 
 
-Definition at line 304 of file main.\+py.
+Definition at line 268 of file main.\+py.
 
 
 
@@ -43,14 +43,14 @@ Definition at line 304 of file main.\+py.
 
 
 
-Definition at line 305 of file main.\+py.
+Definition at line 269 of file main.\+py.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{305     \textcolor{keyword}{def }get(self):}
-\DoxyCodeLine{306         response = make\_response(render\_template(\textcolor{stringliteral}{'command.html'}))}
-\DoxyCodeLine{307         \textcolor{keywordflow}{return} response}
-\DoxyCodeLine{308 }
+\DoxyCodeLine{269     \textcolor{keyword}{def }get(self):}
+\DoxyCodeLine{270         response = make\_response(render\_template(\textcolor{stringliteral}{'command.html'}))}
+\DoxyCodeLine{271         \textcolor{keywordflow}{return} response}
+\DoxyCodeLine{272 }
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classmain_1_1command_aad57d3ca75e00b96364b4dd9971f8d34}\label{classmain_1_1command_aad57d3ca75e00b96364b4dd9971f8d34}} 
@@ -61,40 +61,40 @@ Definition at line 305 of file main.\+py.
 
 
 
-Definition at line 309 of file main.\+py.
+Definition at line 273 of file main.\+py.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{309     \textcolor{keyword}{def }post(self):}
-\DoxyCodeLine{310         username = request.form.get(\textcolor{stringliteral}{'username'})}
-\DoxyCodeLine{311         command = request.form.get(\textcolor{stringliteral}{'command'})}
-\DoxyCodeLine{312         loginhashblock = request.form.get(\textcolor{stringliteral}{'loginhashblock'})}
-\DoxyCodeLine{313         text = \textcolor{stringliteral}{"[info:command] username: \{\}, command: \{\}, loginhashblock: \{\}"}.format(username, command, loginhashblock)}
-\DoxyCodeLine{314         print(text)}
-\DoxyCodeLine{315 }
-\DoxyCodeLine{316         user = User.query.filter\_by(username=username).first()}
-\DoxyCodeLine{317 }
-\DoxyCodeLine{318         \textcolor{keywordflow}{if} command == str(3):}
-\DoxyCodeLine{319             loginhashblock = user.Lhashblock}
-\DoxyCodeLine{320 }
-\DoxyCodeLine{321         \textcolor{keywordflow}{if} command == str(4):}
-\DoxyCodeLine{322             user.Lhashblock = loginhashblock}
-\DoxyCodeLine{323             db.session.commit()}
-\DoxyCodeLine{324 }
-\DoxyCodeLine{325         resp = \{\textcolor{stringliteral}{'username'}:username, \textcolor{stringliteral}{'command'}:command, \textcolor{stringliteral}{'loginhashblock'}:loginhashblock\}}
-\DoxyCodeLine{326         \textcolor{keywordflow}{return} make\_response(resp, command)}
-\DoxyCodeLine{327 }
-\DoxyCodeLine{328 db.create\_all()}
-\DoxyCodeLine{329 }
-\DoxyCodeLine{330 api.add\_resource(index, \textcolor{stringliteral}{'/'})}
-\DoxyCodeLine{331 api.add\_resource(logout, \textcolor{stringliteral}{'/logout'})}
-\DoxyCodeLine{332 api.add\_resource(register, \textcolor{stringliteral}{'/register'})}
-\DoxyCodeLine{333 api.add\_resource(twofactor, \textcolor{stringliteral}{'/twofactor'})}
-\DoxyCodeLine{334 api.add\_resource(qrcode, \textcolor{stringliteral}{'/qrcode'})}
-\DoxyCodeLine{335 api.add\_resource(login, \textcolor{stringliteral}{'/login'})}
-\DoxyCodeLine{336 api.add\_resource(command, \textcolor{stringliteral}{'/command'})}
-\DoxyCodeLine{337 }
-\DoxyCodeLine{338 @app.errorhandler(404)}
+\DoxyCodeLine{273     \textcolor{keyword}{def }post(self):}
+\DoxyCodeLine{274         username = request.form.get(\textcolor{stringliteral}{'username'})}
+\DoxyCodeLine{275         command = request.form.get(\textcolor{stringliteral}{'command'})}
+\DoxyCodeLine{276         loginhashblock = request.form.get(\textcolor{stringliteral}{'loginhashblock'})}
+\DoxyCodeLine{277         text = \textcolor{stringliteral}{"[info:command] username: \{\}, command: \{\}, loginhashblock: \{\}"}.format(username, command, loginhashblock)}
+\DoxyCodeLine{278         print(text)}
+\DoxyCodeLine{279 }
+\DoxyCodeLine{280         user = User.query.filter\_by(username=username).first()}
+\DoxyCodeLine{281 }
+\DoxyCodeLine{282         \textcolor{keywordflow}{if} command == str(3):}
+\DoxyCodeLine{283             loginhashblock = user.Lhashblock}
+\DoxyCodeLine{284 }
+\DoxyCodeLine{285         \textcolor{keywordflow}{if} command == str(4):}
+\DoxyCodeLine{286             user.Lhashblock = loginhashblock}
+\DoxyCodeLine{287             db.session.commit()}
+\DoxyCodeLine{288 }
+\DoxyCodeLine{289         resp = \{\textcolor{stringliteral}{'username'}:username, \textcolor{stringliteral}{'command'}:command, \textcolor{stringliteral}{'loginhashblock'}:loginhashblock\}}
+\DoxyCodeLine{290         \textcolor{keywordflow}{return} make\_response(resp, command)}
+\DoxyCodeLine{291 }
+\DoxyCodeLine{292 db.create\_all()}
+\DoxyCodeLine{293 }
+\DoxyCodeLine{294 api.add\_resource(index, \textcolor{stringliteral}{'/'})}
+\DoxyCodeLine{295 api.add\_resource(logout, \textcolor{stringliteral}{'/logout'})}
+\DoxyCodeLine{296 api.add\_resource(register, \textcolor{stringliteral}{'/register'})}
+\DoxyCodeLine{297 api.add\_resource(twofactor, \textcolor{stringliteral}{'/twofactor'})}
+\DoxyCodeLine{298 api.add\_resource(qrcode, \textcolor{stringliteral}{'/qrcode'})}
+\DoxyCodeLine{299 api.add\_resource(login, \textcolor{stringliteral}{'/login'})}
+\DoxyCodeLine{300 api.add\_resource(command, \textcolor{stringliteral}{'/command'})}
+\DoxyCodeLine{301 }
+\DoxyCodeLine{302 @app.errorhandler(404)}
 
 \end{DoxyCode}
 

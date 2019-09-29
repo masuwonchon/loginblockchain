@@ -1,8 +1,11 @@
 var searchData=
 [
-  ['valid_5fhash_120',['valid_hash',['../namespaceloginhashblock.html#ac7faa165bc305e611390727f11946424',1,'loginhashblock']]],
-  ['valid_5floginhashblock_121',['valid_loginhashblock',['../namespaceloginhashblock.html#adb424539d851426da7b65d53c5a6d577',1,'loginhashblock']]],
-  ['verify_5floginhashblock_122',['verify_loginhashblock',['../classmain_1_1User.html#a147049a30fbe51d6192d320aa3ea5409',1,'main.User.verify_loginhashblock()'],['../namespaceloginhashblock.html#aa5bb94484a68d0bbebce23b4cfeeb4b7',1,'loginhashblock.verify_loginhashblock()']]],
-  ['verify_5fpassword_123',['verify_password',['../classmain_1_1User.html#a8acfe5aa75f7a958346bcb2d156586d9',1,'main::User']]],
-  ['verify_5ftotp_124',['verify_totp',['../classmain_1_1User.html#a390f1500b4c2fe34d0ba3cf8d1d54906',1,'main::User']]]
+  ['unittest_5fcreate_5floginhashblocklist_118',['unittest_create_loginhashblocklist',['../namespaceunittest.html#a0e10bea14aac2cc6a08d76f422b9328d',1,'unittest']]],
+  ['unittest_5fprint_119',['unittest_print',['../namespaceunittest.html#a217a1a3af5bc9748f2f6194bf79402bc',1,'unittest']]],
+  ['unittest_5frequest_5flogin_5fnotoken_120',['unittest_request_login_notoken',['../namespaceunittest.html#a8b30a1b14f91e9e9d093c13a7e68ee93',1,'unittest']]],
+  ['unittest_5frequest_5flogin_5ftoken_121',['unittest_request_login_token',['../namespaceunittest.html#aa1c9f3b8631f7f60770414cf8958e2be',1,'unittest']]],
+  ['unittest_5ftitle_5fprint_122',['unittest_title_print',['../namespaceunittest.html#a642ec5401fe406315f1489d237ba826e',1,'unittest']]],
+  ['unittest_5fupdate_5floginhashblocklist_123',['unittest_update_loginhashblocklist',['../namespaceunittest.html#a9e16eaba67b93461be6ea8ef6332507a',1,'unittest']]],
+  ['update_5floginhashblock_124',['update_loginhashblock',['../namespaceloginhashblock.html#afef75d97c834ce0fda711b93d0b56b00',1,'loginhashblock']]],
+  ['update_5floginhashblocklist_125',['update_loginhashblocklist',['../namespaceloginhashblock.html#a2bcc7ddd0fcc3788572dd77808cb624d',1,'loginhashblock']]]
 ];

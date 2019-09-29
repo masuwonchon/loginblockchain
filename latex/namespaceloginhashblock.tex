@@ -239,36 +239,36 @@ Here is the caller graph for this function\+:
 \end{DoxyVerb}
  
 
-Definition at line 375 of file loginhashblock.\+py.
+Definition at line 381 of file loginhashblock.\+py.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{375 \textcolor{keyword}{def }\mbox{\hyperlink{namespaceloginhashblock_ad3ef8dab740c69ca8424797f9c146a53}{create\_loginhashblock}}(devid, key=None, DEBUG=False):}
-\DoxyCodeLine{376     \textcolor{stringliteral}{"""}}
-\DoxyCodeLine{377 \textcolor{stringliteral}{    This functions is to generate login hash block with devid}}
-\DoxyCodeLine{378 \textcolor{stringliteral}{    :param devid:}}
-\DoxyCodeLine{379 \textcolor{stringliteral}{    :param key:}}
-\DoxyCodeLine{380 \textcolor{stringliteral}{    :return: login hash block}}
-\DoxyCodeLine{381 \textcolor{stringliteral}{    """}}
-\DoxyCodeLine{382 }
-\DoxyCodeLine{383     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} devid:}
-\DoxyCodeLine{384         \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{"[info:create\_loginhashblock] devid is null"})}
-\DoxyCodeLine{385 }
-\DoxyCodeLine{386     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} key:}
-\DoxyCodeLine{387         key = \textcolor{stringliteral}{'HKAHJFKIIJF'}}
+\DoxyCodeLine{381 \textcolor{keyword}{def }\mbox{\hyperlink{namespaceloginhashblock_ad3ef8dab740c69ca8424797f9c146a53}{create\_loginhashblock}}(devid, key=None, DEBUG=False):}
+\DoxyCodeLine{382     \textcolor{stringliteral}{"""}}
+\DoxyCodeLine{383 \textcolor{stringliteral}{    This functions is to generate login hash block with devid}}
+\DoxyCodeLine{384 \textcolor{stringliteral}{    :param devid:}}
+\DoxyCodeLine{385 \textcolor{stringliteral}{    :param key:}}
+\DoxyCodeLine{386 \textcolor{stringliteral}{    :return: login hash block}}
+\DoxyCodeLine{387 \textcolor{stringliteral}{    """}}
 \DoxyCodeLine{388 }
-\DoxyCodeLine{389     length = 8}
-\DoxyCodeLine{390     kdf = \textcolor{stringliteral}{'pbkdf2'}}
-\DoxyCodeLine{391     salt = \mbox{\hyperlink{namespaceloginhashblock_afe116dea3aaff238a5fa2bcd6edf2281}{create\_salt}}(length)}
-\DoxyCodeLine{392     hash, method = \mbox{\hyperlink{namespaceloginhashblock_a935d8ae1c51e50f9e5db6a1d5f02b1b8}{create\_hash}}(salt, key, kdf=kdf)}
-\DoxyCodeLine{393 }
-\DoxyCodeLine{394     \textcolor{keywordflow}{if} DEBUG:}
-\DoxyCodeLine{395         text = \textcolor{stringliteral}{"[info:create\_loginhashblock] salt: \{\}, method: \{\}, hash: \{\}, devid: \{\}"}.format(salt, method, hash, devid)}
-\DoxyCodeLine{396         print(text)}
-\DoxyCodeLine{397 }
-\DoxyCodeLine{398     LHBstr = \textcolor{stringliteral}{'\{\}\$\{\}'}.format(devid, hash)}
+\DoxyCodeLine{389     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} devid:}
+\DoxyCodeLine{390         \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{"[info:create\_loginhashblock] devid is null"})}
+\DoxyCodeLine{391 }
+\DoxyCodeLine{392     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} key:}
+\DoxyCodeLine{393         key = \textcolor{stringliteral}{'HKAHJFKIIJF'}}
+\DoxyCodeLine{394 }
+\DoxyCodeLine{395     length = 8}
+\DoxyCodeLine{396     kdf = \textcolor{stringliteral}{'pbkdf2'}}
+\DoxyCodeLine{397     salt = \mbox{\hyperlink{namespaceloginhashblock_afe116dea3aaff238a5fa2bcd6edf2281}{create\_salt}}(length)}
+\DoxyCodeLine{398     hash, method = \mbox{\hyperlink{namespaceloginhashblock_a935d8ae1c51e50f9e5db6a1d5f02b1b8}{create\_hash}}(salt, key, kdf=kdf)}
 \DoxyCodeLine{399 }
-\DoxyCodeLine{400     \textcolor{keywordflow}{return} LHBstr}
+\DoxyCodeLine{400     \textcolor{keywordflow}{if} DEBUG:}
+\DoxyCodeLine{401         text = \textcolor{stringliteral}{"[info:create\_loginhashblock] salt: \{\}, method: \{\}, hash: \{\}, devid: \{\}"}.format(salt, method, hash, devid)}
+\DoxyCodeLine{402         print(text)}
+\DoxyCodeLine{403 }
+\DoxyCodeLine{404     LHBstr = \textcolor{stringliteral}{'\{\}\$\{\}'}.format(devid, hash)}
+\DoxyCodeLine{405 }
+\DoxyCodeLine{406     \textcolor{keywordflow}{return} LHBstr}
 
 \end{DoxyCode}
 Here is the call graph for this function\+:\nopagebreak
@@ -317,8 +317,7 @@ Definition at line 84 of file loginhashblock.\+py.
 \DoxyCodeLine{96 }
 
 \end{DoxyCode}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -330,7 +329,7 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=345pt]{namespaceloginhashblock_a550707107141dfb228ca4294d7ea31b4_icgraph}
+\includegraphics[width=350pt]{namespaceloginhashblock_a550707107141dfb228ca4294d7ea31b4_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{namespaceloginhashblock_afe116dea3aaff238a5fa2bcd6edf2281}\label{namespaceloginhashblock_afe116dea3aaff238a5fa2bcd6edf2281}} 
@@ -414,8 +413,7 @@ Definition at line 196 of file loginhashblock.\+py.
 \DoxyCodeLine{214 }
 
 \end{DoxyCode}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -443,42 +441,40 @@ Here is the caller graph for this function\+:
 \end{DoxyVerb}
  
 
-Definition at line 355 of file loginhashblock.\+py.
+Definition at line 361 of file loginhashblock.\+py.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{355 \textcolor{keyword}{def }\mbox{\hyperlink{namespaceloginhashblock_a6187961cb9009c7836e7e6e639085f93}{get\_loginhashblock}}(devid, LHBlist, DEBUG=False):}
-\DoxyCodeLine{356     \textcolor{stringliteral}{"""}}
-\DoxyCodeLine{357 \textcolor{stringliteral}{    This function is to get login hash block by device id in login hash block list.}}
-\DoxyCodeLine{358 \textcolor{stringliteral}{    :devid: device id}}
-\DoxyCodeLine{359 \textcolor{stringliteral}{    :LHBlist: client's login has block in database}}
-\DoxyCodeLine{360 \textcolor{stringliteral}{    :return:}}
-\DoxyCodeLine{361 \textcolor{stringliteral}{    """}}
-\DoxyCodeLine{362 }
-\DoxyCodeLine{363     \textcolor{keywordflow}{for} LHBstr \textcolor{keywordflow}{in} LHBlist:}
-\DoxyCodeLine{364         \_devid = \mbox{\hyperlink{namespaceloginhashblock_a17417f2f6bca76ab51170082a562e5f6}{get\_deviceId}}(LHBstr, DEBUG=DEBUG)}
-\DoxyCodeLine{365         \textcolor{keywordflow}{if} devid == \_devid:}
-\DoxyCodeLine{366             \textcolor{keywordflow}{if} DEBUG:}
-\DoxyCodeLine{367                 print(\textcolor{stringliteral}{'[info:get\_loginhashblock] devid is found in login hash block list'})}
-\DoxyCodeLine{368             \textcolor{keywordflow}{return} LHBstr}
-\DoxyCodeLine{369 }
-\DoxyCodeLine{370     \textcolor{keywordflow}{if} DEBUG:}
-\DoxyCodeLine{371         print(\textcolor{stringliteral}{'[info:get\_loginhashblock] devid is not found in login hash block list'})}
-\DoxyCodeLine{372 }
-\DoxyCodeLine{373     \textcolor{keywordflow}{return} \textcolor{stringliteral}{''}}
-\DoxyCodeLine{374 }
+\DoxyCodeLine{361 \textcolor{keyword}{def }\mbox{\hyperlink{namespaceloginhashblock_a6187961cb9009c7836e7e6e639085f93}{get\_loginhashblock}}(devid, LHBlist, DEBUG=False):}
+\DoxyCodeLine{362     \textcolor{stringliteral}{"""}}
+\DoxyCodeLine{363 \textcolor{stringliteral}{    This function is to get login hash block by device id in login hash block list.}}
+\DoxyCodeLine{364 \textcolor{stringliteral}{    :devid: device id}}
+\DoxyCodeLine{365 \textcolor{stringliteral}{    :LHBlist: client's login has block in database}}
+\DoxyCodeLine{366 \textcolor{stringliteral}{    :return:}}
+\DoxyCodeLine{367 \textcolor{stringliteral}{    """}}
+\DoxyCodeLine{368 }
+\DoxyCodeLine{369     \textcolor{keywordflow}{for} LHBstr \textcolor{keywordflow}{in} LHBlist:}
+\DoxyCodeLine{370         \_devid = \mbox{\hyperlink{namespaceloginhashblock_a17417f2f6bca76ab51170082a562e5f6}{get\_deviceId}}(LHBstr, DEBUG=DEBUG)}
+\DoxyCodeLine{371         \textcolor{keywordflow}{if} devid == \_devid:}
+\DoxyCodeLine{372             \textcolor{keywordflow}{if} DEBUG:}
+\DoxyCodeLine{373                 print(\textcolor{stringliteral}{'[info:get\_loginhashblock] devid is found in login hash block list'})}
+\DoxyCodeLine{374             \textcolor{keywordflow}{return} LHBstr}
+\DoxyCodeLine{375 }
+\DoxyCodeLine{376     \textcolor{keywordflow}{if} DEBUG:}
+\DoxyCodeLine{377         print(\textcolor{stringliteral}{'[info:get\_loginhashblock] devid is not found in login hash block list'})}
+\DoxyCodeLine{378 }
+\DoxyCodeLine{379     \textcolor{keywordflow}{return} \textcolor{stringliteral}{''}}
+\DoxyCodeLine{380 }
 
 \end{DoxyCode}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{namespaceloginhashblock_a6187961cb9009c7836e7e6e639085f93_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -497,37 +493,36 @@ Here is the caller graph for this function\+:
 \end{DoxyVerb}
  
 
-Definition at line 332 of file loginhashblock.\+py.
+Definition at line 338 of file loginhashblock.\+py.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{332 \textcolor{keyword}{def }\mbox{\hyperlink{namespaceloginhashblock_a746d5c48cd93a76b78c90c34419ebdaa}{isRegistedLHB}}(LHBstr, LHBlistStr, DEBUG=False):}
-\DoxyCodeLine{333     \textcolor{stringliteral}{"""}}
-\DoxyCodeLine{334 \textcolor{stringliteral}{    This function is to check valid previous login hash block.}}
-\DoxyCodeLine{335 \textcolor{stringliteral}{    :LHBstr: client's login hash block}}
-\DoxyCodeLine{336 \textcolor{stringliteral}{    :LHBlistStr: client's login has block in database}}
-\DoxyCodeLine{337 \textcolor{stringliteral}{    """}}
-\DoxyCodeLine{338 }
-\DoxyCodeLine{339     LHBlist = LHBlistStr.split(\textcolor{stringliteral}{','})}
-\DoxyCodeLine{340 }
-\DoxyCodeLine{341     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} \mbox{\hyperlink{namespaceloginhashblock_adb424539d851426da7b65d53c5a6d577}{valid\_loginhashblock}}(LHBstr, DEBUG=DEBUG):}
-\DoxyCodeLine{342         \textcolor{keywordflow}{return} \textcolor{keyword}{False}}
-\DoxyCodeLine{343 }
-\DoxyCodeLine{344     devid = \mbox{\hyperlink{namespaceloginhashblock_a17417f2f6bca76ab51170082a562e5f6}{get\_deviceId}}(LHBstr, DEBUG=DEBUG)}
-\DoxyCodeLine{345     target\_LHBstr = \mbox{\hyperlink{namespaceloginhashblock_a6187961cb9009c7836e7e6e639085f93}{get\_loginhashblock}}(devid, LHBlist, DEBUG=DEBUG)}
+\DoxyCodeLine{338 \textcolor{keyword}{def }\mbox{\hyperlink{namespaceloginhashblock_a746d5c48cd93a76b78c90c34419ebdaa}{isRegistedLHB}}(LHBstr, LHBlistStr, DEBUG=False):}
+\DoxyCodeLine{339     \textcolor{stringliteral}{"""}}
+\DoxyCodeLine{340 \textcolor{stringliteral}{    This function is to check valid previous login hash block.}}
+\DoxyCodeLine{341 \textcolor{stringliteral}{    :LHBstr: client's login hash block}}
+\DoxyCodeLine{342 \textcolor{stringliteral}{    :LHBlistStr: client's login has block in database}}
+\DoxyCodeLine{343 \textcolor{stringliteral}{    """}}
+\DoxyCodeLine{344 }
+\DoxyCodeLine{345     LHBlist = LHBlistStr.split(\textcolor{stringliteral}{','})}
 \DoxyCodeLine{346 }
-\DoxyCodeLine{347     \textcolor{keywordflow}{if} DEBUG:}
-\DoxyCodeLine{348         print(\textcolor{stringliteral}{"[info:isRegistedLHB]\(\backslash\)nclient\_loginhashblock: \{\}\(\backslash\)nserver\_loginhashblock: \{\}"}.format(LHBstr, target\_LHBstr))}
+\DoxyCodeLine{347     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} \mbox{\hyperlink{namespaceloginhashblock_adb424539d851426da7b65d53c5a6d577}{valid\_loginhashblock}}(LHBstr, DEBUG=DEBUG):}
+\DoxyCodeLine{348         \textcolor{keywordflow}{return} \textcolor{keyword}{False}}
 \DoxyCodeLine{349 }
-\DoxyCodeLine{350     \textcolor{keywordflow}{if} LHBstr == target\_LHBstr:}
-\DoxyCodeLine{351         \textcolor{keywordflow}{return} \textcolor{keyword}{True}}
+\DoxyCodeLine{350     devid = \mbox{\hyperlink{namespaceloginhashblock_a17417f2f6bca76ab51170082a562e5f6}{get\_deviceId}}(LHBstr, DEBUG=DEBUG)}
+\DoxyCodeLine{351     target\_LHBstr = \mbox{\hyperlink{namespaceloginhashblock_a6187961cb9009c7836e7e6e639085f93}{get\_loginhashblock}}(devid, LHBlist, DEBUG=DEBUG)}
 \DoxyCodeLine{352 }
-\DoxyCodeLine{353     \textcolor{keywordflow}{return} \textcolor{keyword}{False}}
-\DoxyCodeLine{354 }
+\DoxyCodeLine{353     \textcolor{keywordflow}{if} DEBUG:}
+\DoxyCodeLine{354         print(\textcolor{stringliteral}{"[info:isRegistedLHB]\(\backslash\)nclient\_loginhashblock: \{\}\(\backslash\)nserver\_loginhashblock: \{\}"}.format(LHBstr, target\_LHBstr))}
+\DoxyCodeLine{355 }
+\DoxyCodeLine{356     \textcolor{keywordflow}{if} LHBstr == target\_LHBstr:}
+\DoxyCodeLine{357         \textcolor{keywordflow}{return} \textcolor{keyword}{True}}
+\DoxyCodeLine{358 }
+\DoxyCodeLine{359     \textcolor{keywordflow}{return} \textcolor{keyword}{False}}
+\DoxyCodeLine{360 }
 
 \end{DoxyCode}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -630,8 +625,7 @@ Definition at line 21 of file loginhashblock.\+py.
 \DoxyCodeLine{43 }
 
 \end{DoxyCode}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -651,37 +645,36 @@ Here is the caller graph for this function\+:
 \end{DoxyVerb}
  
 
-Definition at line 309 of file loginhashblock.\+py.
+Definition at line 315 of file loginhashblock.\+py.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{309 \textcolor{keyword}{def }\mbox{\hyperlink{namespaceloginhashblock_afef75d97c834ce0fda711b93d0b56b00}{update\_loginhashblock}}(prevLHBstr, DEBUG=False):}
-\DoxyCodeLine{310     \textcolor{stringliteral}{"""}}
-\DoxyCodeLine{311 \textcolor{stringliteral}{    This function is to update login hash block with old login hash block}}
-\DoxyCodeLine{312 \textcolor{stringliteral}{    :param prevLHBstr:}}
-\DoxyCodeLine{313 \textcolor{stringliteral}{    :param DEBUG:}}
-\DoxyCodeLine{314 \textcolor{stringliteral}{    :return: updated login hash block}}
-\DoxyCodeLine{315 \textcolor{stringliteral}{    """}}
-\DoxyCodeLine{316 }
-\DoxyCodeLine{317     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} prevLHBstr:}
-\DoxyCodeLine{318         \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}}
-\DoxyCodeLine{319 }
-\DoxyCodeLine{320     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} \mbox{\hyperlink{namespaceloginhashblock_adb424539d851426da7b65d53c5a6d577}{valid\_loginhashblock}}(prevLHBstr, DEBUG=DEBUG):}
-\DoxyCodeLine{321         \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{"[info:update\_loginhashblock] Invalid login hash block"})}
+\DoxyCodeLine{315 \textcolor{keyword}{def }\mbox{\hyperlink{namespaceloginhashblock_afef75d97c834ce0fda711b93d0b56b00}{update\_loginhashblock}}(prevLHBstr, DEBUG=False):}
+\DoxyCodeLine{316     \textcolor{stringliteral}{"""}}
+\DoxyCodeLine{317 \textcolor{stringliteral}{    This function is to update login hash block with old login hash block}}
+\DoxyCodeLine{318 \textcolor{stringliteral}{    :param prevLHBstr:}}
+\DoxyCodeLine{319 \textcolor{stringliteral}{    :param DEBUG:}}
+\DoxyCodeLine{320 \textcolor{stringliteral}{    :return: updated login hash block}}
+\DoxyCodeLine{321 \textcolor{stringliteral}{    """}}
 \DoxyCodeLine{322 }
-\DoxyCodeLine{323     devid = \mbox{\hyperlink{namespaceloginhashblock_a17417f2f6bca76ab51170082a562e5f6}{get\_deviceId}}(prevLHBstr, DEBUG=DEBUG)}
-\DoxyCodeLine{324     LHBstr = \mbox{\hyperlink{namespaceloginhashblock_ad3ef8dab740c69ca8424797f9c146a53}{create\_loginhashblock}}(devid, DEBUG=DEBUG)}
+\DoxyCodeLine{323     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} prevLHBstr:}
+\DoxyCodeLine{324         \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}}
 \DoxyCodeLine{325 }
-\DoxyCodeLine{326     \textcolor{keywordflow}{if} DEBUG:}
-\DoxyCodeLine{327         text = \textcolor{stringliteral}{'[info:update\_loginhashblock] \(\backslash\)npre\_loginhashblock: \{\}\(\backslash\)nnew\_loginhashblock: \{\}'}.format(prevLHBstr,LHBstr)}
-\DoxyCodeLine{328         print(text)}
-\DoxyCodeLine{329 }
-\DoxyCodeLine{330     \textcolor{keywordflow}{return} LHBstr}
+\DoxyCodeLine{326     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} \mbox{\hyperlink{namespaceloginhashblock_adb424539d851426da7b65d53c5a6d577}{valid\_loginhashblock}}(prevLHBstr, DEBUG=DEBUG):}
+\DoxyCodeLine{327         \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{"[info:update\_loginhashblock] Invalid login hash block"})}
+\DoxyCodeLine{328 }
+\DoxyCodeLine{329     devid = \mbox{\hyperlink{namespaceloginhashblock_a17417f2f6bca76ab51170082a562e5f6}{get\_deviceId}}(prevLHBstr, DEBUG=DEBUG)}
+\DoxyCodeLine{330     LHBstr = \mbox{\hyperlink{namespaceloginhashblock_ad3ef8dab740c69ca8424797f9c146a53}{create\_loginhashblock}}(devid, DEBUG=DEBUG)}
 \DoxyCodeLine{331 }
+\DoxyCodeLine{332     \textcolor{keywordflow}{if} DEBUG:}
+\DoxyCodeLine{333         text = \textcolor{stringliteral}{'[info:update\_loginhashblock] \(\backslash\)npre\_loginhashblock: \{\}\(\backslash\)nnew\_loginhashblock: \{\}'}.format(prevLHBstr,LHBstr)}
+\DoxyCodeLine{334         print(text)}
+\DoxyCodeLine{335 }
+\DoxyCodeLine{336     \textcolor{keywordflow}{return} LHBstr}
+\DoxyCodeLine{337 }
 
 \end{DoxyCode}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -757,8 +750,7 @@ Definition at line 97 of file loginhashblock.\+py.
 \DoxyCodeLine{138 }
 
 \end{DoxyCode}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -839,40 +831,43 @@ ex)jUs6LQMX$jUs6LQMX$ceccffbfa52e55825f87573b068c8d759b1540f9833a7d7ebd7a27c993f
 \end{DoxyVerb}
  
 
-Definition at line 279 of file loginhashblock.\+py.
+Definition at line 282 of file loginhashblock.\+py.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{279 \textcolor{keyword}{def }\mbox{\hyperlink{namespaceloginhashblock_adb424539d851426da7b65d53c5a6d577}{valid\_loginhashblock}}(LHBstr, DEBUG=False):}
-\DoxyCodeLine{280     \textcolor{stringliteral}{"""}}
-\DoxyCodeLine{281 \textcolor{stringliteral}{    This function is to check login hash block}}
-\DoxyCodeLine{282 \textcolor{stringliteral}{    hashblock format: deviceid(8)+\$+hash}}
-\DoxyCodeLine{283 \textcolor{stringliteral}{    ex)jUs6LQMX\$jUs6LQMX\$ceccffbfa52e55825f87573b068c8d759b1540f9833a7d7ebd7a27c993ffd316}}
-\DoxyCodeLine{284 \textcolor{stringliteral}{    :param LHBstr:}}
-\DoxyCodeLine{285 \textcolor{stringliteral}{    :return: BOOL}}
-\DoxyCodeLine{286 \textcolor{stringliteral}{    """}}
-\DoxyCodeLine{287     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} LHBstr:}
-\DoxyCodeLine{288         \textcolor{keywordflow}{if} DEBUG:}
-\DoxyCodeLine{289             print(\textcolor{stringliteral}{'[info:valid\_loginhashblock] Null'})}
-\DoxyCodeLine{290         \textcolor{keywordflow}{return} \textcolor{keyword}{False}}
-\DoxyCodeLine{291 }
-\DoxyCodeLine{292     \textcolor{keywordflow}{if} LHBstr.count(\textcolor{stringliteral}{"\$"}) != 1:}
-\DoxyCodeLine{293         \textcolor{keywordflow}{if} DEBUG:}
-\DoxyCodeLine{294             print(\textcolor{stringliteral}{'[info:valid\_loginhashblock] Invalid format'})}
-\DoxyCodeLine{295         \textcolor{keywordflow}{return} \textcolor{keyword}{False}}
-\DoxyCodeLine{296 }
-\DoxyCodeLine{297     devid, hash = LHBstr.split(\textcolor{stringliteral}{"\$"}, 1)}
-\DoxyCodeLine{298 }
-\DoxyCodeLine{299     \textcolor{keywordflow}{if} len(devid) != 8:}
-\DoxyCodeLine{300         \textcolor{keywordflow}{if} DEBUG:}
-\DoxyCodeLine{301             print(\textcolor{stringliteral}{'[info:valid\_loginhashblock] Invalid deviceid'})}
-\DoxyCodeLine{302         \textcolor{keywordflow}{return} \textcolor{keyword}{False}}
-\DoxyCodeLine{303 }
-\DoxyCodeLine{304     \textcolor{keywordflow}{if} DEBUG:}
-\DoxyCodeLine{305         print(\textcolor{stringliteral}{'[info:valid\_loginhashblock] login hash block is valid'})}
+\DoxyCodeLine{282 \textcolor{keyword}{def }\mbox{\hyperlink{namespaceloginhashblock_adb424539d851426da7b65d53c5a6d577}{valid\_loginhashblock}}(LHBstr, DEBUG=False):}
+\DoxyCodeLine{283     \textcolor{stringliteral}{"""}}
+\DoxyCodeLine{284 \textcolor{stringliteral}{    This function is to check login hash block}}
+\DoxyCodeLine{285 \textcolor{stringliteral}{    hashblock format: deviceid(8)+\$+hash}}
+\DoxyCodeLine{286 \textcolor{stringliteral}{    ex)jUs6LQMX\$jUs6LQMX\$ceccffbfa52e55825f87573b068c8d759b1540f9833a7d7ebd7a27c993ffd316}}
+\DoxyCodeLine{287 \textcolor{stringliteral}{    :param LHBstr:}}
+\DoxyCodeLine{288 \textcolor{stringliteral}{    :return: BOOL}}
+\DoxyCodeLine{289 \textcolor{stringliteral}{    """}}
+\DoxyCodeLine{290     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} LHBstr:}
+\DoxyCodeLine{291         \textcolor{keywordflow}{if} DEBUG:}
+\DoxyCodeLine{292             print(\textcolor{stringliteral}{'[info:valid\_loginhashblock] Null'})}
+\DoxyCodeLine{293         \textcolor{keywordflow}{return} \textcolor{keyword}{False}}
+\DoxyCodeLine{294 }
+\DoxyCodeLine{295     \textcolor{keywordflow}{if} LHBstr.count(\textcolor{stringliteral}{"\$"}) != 1:}
+\DoxyCodeLine{296         \textcolor{keywordflow}{if} DEBUG:}
+\DoxyCodeLine{297             print(\textcolor{stringliteral}{'[info:valid\_loginhashblock] Invalid format'})}
+\DoxyCodeLine{298         \textcolor{keywordflow}{return} \textcolor{keyword}{False}}
+\DoxyCodeLine{299 }
+\DoxyCodeLine{300     devid, hash = LHBstr.split(\textcolor{stringliteral}{"\$"}, 1)}
+\DoxyCodeLine{301 }
+\DoxyCodeLine{302     \textcolor{keywordflow}{if} len(devid) != 8:}
+\DoxyCodeLine{303         \textcolor{keywordflow}{if} DEBUG:}
+\DoxyCodeLine{304             print(\textcolor{stringliteral}{'[info:valid\_loginhashblock] Invalid deviceid'})}
+\DoxyCodeLine{305         \textcolor{keywordflow}{return} \textcolor{keyword}{False}}
 \DoxyCodeLine{306 }
-\DoxyCodeLine{307     \textcolor{keywordflow}{return} \textcolor{keyword}{True}}
-\DoxyCodeLine{308 }
+\DoxyCodeLine{307     \textcolor{keywordflow}{if} len(hash) != 64:}
+\DoxyCodeLine{308         \textcolor{keywordflow}{return} \textcolor{keyword}{False}}
+\DoxyCodeLine{309 }
+\DoxyCodeLine{310     \textcolor{keywordflow}{if} DEBUG:}
+\DoxyCodeLine{311         print(\textcolor{stringliteral}{'[info:valid\_loginhashblock] login hash block is valid'})}
+\DoxyCodeLine{312 }
+\DoxyCodeLine{313     \textcolor{keywordflow}{return} \textcolor{keyword}{True}}
+\DoxyCodeLine{314 }
 
 \end{DoxyCode}
 Here is the caller graph for this function\+:
@@ -917,14 +912,16 @@ Definition at line 258 of file loginhashblock.\+py.
 \DoxyCodeLine{272     \textcolor{keywordflow}{for} i,v \textcolor{keywordflow}{in} enumerate(LHBlist):}
 \DoxyCodeLine{273         \_devid = \mbox{\hyperlink{namespaceloginhashblock_a17417f2f6bca76ab51170082a562e5f6}{get\_deviceId}}(v, DEBUG=DEBUG)}
 \DoxyCodeLine{274         \textcolor{keywordflow}{if} devid == \_devid:}
-\DoxyCodeLine{275             \textcolor{keywordflow}{return} \textcolor{keyword}{True}}
-\DoxyCodeLine{276 }
-\DoxyCodeLine{277     \textcolor{keywordflow}{return} \textcolor{keyword}{False}}
-\DoxyCodeLine{278 }
+\DoxyCodeLine{275             \textcolor{keywordflow}{if} v == LHBstr:}
+\DoxyCodeLine{276                 \textcolor{keywordflow}{return} \textcolor{keyword}{True}}
+\DoxyCodeLine{277             \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{278                 \textcolor{keywordflow}{return} \textcolor{keyword}{False}}
+\DoxyCodeLine{279 }
+\DoxyCodeLine{280     \textcolor{keywordflow}{return} \textcolor{keyword}{False}}
+\DoxyCodeLine{281 }
 
 \end{DoxyCode}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -936,7 +933,7 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=308pt]{namespaceloginhashblock_aa5bb94484a68d0bbebce23b4cfeeb4b7_icgraph}
+\includegraphics[width=350pt]{namespaceloginhashblock_aa5bb94484a68d0bbebce23b4cfeeb4b7_icgraph}
 \end{center}
 \end{figure}
 

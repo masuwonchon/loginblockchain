@@ -1,13 +1,16 @@
 <map id="loginhashblock.pbkdf2_hash" name="loginhashblock.pbkdf2_hash">
-<area shape="rect" id="node1" title=" " alt="" coords="1280,69,1469,95"/>
-<area shape="rect" id="node2" href="$namespaceloginhashblock.html#a935d8ae1c51e50f9e5db6a1d5f02b1b8" title=" " alt="" coords="1045,69,1232,95"/>
-<area shape="rect" id="node3" href="$namespaceloginhashblock.html#ad3ef8dab740c69ca8424797f9c146a53" title=" " alt="" coords="833,35,984,73"/>
-<area shape="rect" id="node11" href="$namespaceloginhashblock.html#ac7faa165bc305e611390727f11946424" title=" " alt="" coords="820,97,997,123"/>
-<area shape="rect" id="node4" href="$namespaceloginhashblock.html#a550707107141dfb228ca4294d7ea31b4" title=" " alt="" coords="213,5,364,44"/>
-<area shape="rect" id="node7" href="$namespaceloginhashblock.html#afef75d97c834ce0fda711b93d0b56b00" title=" " alt="" coords="618,63,772,101"/>
-<area shape="rect" id="node5" href="$classmain_1_1login.html#a71ff3f89aaf0f0c8502577445ab38744" title=" " alt="" coords="28,41,139,67"/>
-<area shape="rect" id="node6" href="$namespaceunittest.html#a0e10bea14aac2cc6a08d76f422b9328d" title=" " alt="" coords="5,116,161,155"/>
-<area shape="rect" id="node8" href="$namespaceloginhashblock.html#a2bcc7ddd0fcc3788572dd77808cb624d" title=" " alt="" coords="416,63,570,101"/>
-<area shape="rect" id="node9" href="$classmain_1_1logout.html#a726ef779e6bf4da8974eae3209276922" title=" " alt="" coords="229,120,348,145"/>
-<area shape="rect" id="node10" href="$namespaceunittest.html#a9e16eaba67b93461be6ea8ef6332507a" title=" " alt="" coords="209,169,368,208"/>
+<area shape="rect" id="node1" title=" " alt="" coords="1711,105,1901,130"/>
+<area shape="rect" id="node2" href="$namespaceloginhashblock.html#a935d8ae1c51e50f9e5db6a1d5f02b1b8" title=" " alt="" coords="1477,105,1663,130"/>
+<area shape="rect" id="node3" href="$namespaceloginhashblock.html#ad3ef8dab740c69ca8424797f9c146a53" title=" " alt="" coords="1265,70,1415,109"/>
+<area shape="rect" id="node14" href="$namespaceloginhashblock.html#ac7faa165bc305e611390727f11946424" title=" " alt="" coords="1252,133,1429,158"/>
+<area shape="rect" id="node4" href="$namespaceloginhashblock.html#a550707107141dfb228ca4294d7ea31b4" title=" " alt="" coords="649,27,799,66"/>
+<area shape="rect" id="node10" href="$namespaceloginhashblock.html#afef75d97c834ce0fda711b93d0b56b00" title=" " alt="" coords="1050,98,1204,137"/>
+<area shape="rect" id="node5" href="$namespaceunittest.html#afeccd95cc658ca5f2ffb4df7a1edbbd2" title=" " alt="" coords="216,89,394,114"/>
+<area shape="rect" id="node8" href="$classmain_1_1login.html#a71ff3f89aaf0f0c8502577445ab38744" title=" " alt="" coords="466,91,577,117"/>
+<area shape="rect" id="node9" href="$namespaceunittest.html#a0e10bea14aac2cc6a08d76f422b9328d" title=" " alt="" coords="444,29,599,67"/>
+<area shape="rect" id="node6" href="$namespaceunittest.html#a8b30a1b14f91e9e9d093c13a7e68ee93" title=" " alt="" coords="5,50,168,89"/>
+<area shape="rect" id="node7" href="$namespaceunittest.html#aa1c9f3b8631f7f60770414cf8958e2be" title=" " alt="" coords="5,113,168,151"/>
+<area shape="rect" id="node11" href="$namespaceloginhashblock.html#a2bcc7ddd0fcc3788572dd77808cb624d" title=" " alt="" coords="847,110,1002,149"/>
+<area shape="rect" id="node12" href="$classmain_1_1logout.html#a726ef779e6bf4da8974eae3209276922" title=" " alt="" coords="665,193,784,218"/>
+<area shape="rect" id="node13" href="$namespaceunittest.html#a9e16eaba67b93461be6ea8ef6332507a" title=" " alt="" coords="442,214,601,253"/>
 </map>

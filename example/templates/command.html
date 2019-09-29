@@ -60,7 +60,7 @@ function handleServerResponse() {
                 loginhashblock = loginhashblock+bufSplit[i]+'<br>';
             }
 
-            document.getElementById("resp").innerHTML = 'usename: '+respJson['username']+'<br> command: '+respJson['command']+'<br> LHB: '+loginhashblock;
+            document.getElementById("resp").innerHTML = 'usename: '+respJson['username']+'<br> command: '+respJson['command']+'<br> LHB:<br>'+loginhashblock;
             //console.log(respJson);
         }
         else if(xmlhttp.status == 2) {

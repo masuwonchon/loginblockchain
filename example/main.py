@@ -183,42 +183,6 @@ class login(Resource):
             flash('not registered username')
             return make_response('Error', 302)
 
-        '''
-        if DEBUG:
-            print_LHBlist(user.Lhashblock)
-        '''
-        '''
-        if prev_LHB == 'null':
-            prev_LHB = None
-
-        if user.verify_password(password) and user.verify_totp(token):
-            LHBlistStr = create_loginhashblocklist(user.Lhashblock, DEBUG=DEBUG)
-            user.Lhashblock = LHBlistStr
-            db.session.commit()
-        elif not prev_LHB:
-            if not user.verify_password(password) or not user.verify_totp(token):
-                print('[info:login:post] Invalid username, password or OTP token')
-                flash('Your account is suspected of being stolen. OTP is required.')
-                return make_response('Error', 302)
-        elif prev_LHB:
-            if not user.verify_password(password):
-                flash('your password is wrong')
-                return make_response('Error', 302)
-            if not valid_loginhashblock(prev_LHB):
-                flash('Your account is suspected of being stolen. OTP is required.')
-                return make_response('Error', 302)
-            if not isRegistedLHB(prev_LHB, user.Lhashblock, DEBUG=DEBUG):
-                flash('Your account is suspected of being stolen. OTP is required.')
-                return make_response('Error', 302)
-
-            LHBlistStr = update_loginhashblocklist(user.Lhashblock, prev_LHB, DEBUG=DEBUG)
-            user.Lhashblock = LHBlistStr
-            db.session.commit()
-        else:
-            text = '[error:login:post] other case'
-            print(text)
-            raise ValueError("[error:login:post] exit")
-        '''
         if not user.verify_password(password):
             flash('password was wrong')
             return make_response('Error', 302)
@@ -230,7 +194,7 @@ class login(Resource):
 
             if prev_LHB:
                 if not valid_loginhashblock(prev_LHB):
-                    flash('1')
+                    flash('Your account is suspected of being stolen. OTP is required.')
                     return make_response('Error', 302)
 
                 LHBlistStr, new_LHB = update_loginhashblocklist(user.Lhashblock, prev_LHB, DEBUG=DEBUG)
@@ -239,16 +203,16 @@ class login(Resource):
         else:
             if prev_LHB:
                 if not valid_loginhashblock(prev_LHB):
-                    flash('2')
+                    flash('Your account is suspected of being stolen. OTP is required.')
                     return make_response('Error', 302)
 
                 if not verify_loginhashblock(user.Lhashblock, prev_LHB):
-                    flash('3')
+                    flash('Your account is suspected of being stolen. OTP is required.')
                     return make_response('Error', 302)
 
                 LHBlistStr, new_LHB = update_loginhashblocklist(user.Lhashblock, prev_LHB, DEBUG=DEBUG)
             else:
-                flash('4')
+                flash('Error! Debug Mode')
                 return make_response('Error', 302)
 
         user.Lhashblock = LHBlistStr

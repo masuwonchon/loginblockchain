@@ -272,7 +272,10 @@ def verify_loginhashblock(LHBlistStr, LHBstr, DEBUG=False):
     for i,v in enumerate(LHBlist):
         _devid = get_deviceId(v, DEBUG=DEBUG)
         if devid == _devid:
-            return True
+            if v == LHBstr:
+                return True
+            else:
+                return False
 
     return False
 
@@ -299,6 +302,9 @@ def valid_loginhashblock(LHBstr, DEBUG=False):
     if len(devid) != 8:
         if DEBUG:
             print('[info:valid_loginhashblock] Invalid deviceid')
+        return False
+
+    if len(hash) != 64:
         return False
 
     if DEBUG:

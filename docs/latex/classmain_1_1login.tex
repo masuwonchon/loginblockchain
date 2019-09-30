@@ -1,0 +1,168 @@
+\hypertarget{classmain_1_1login}{}\section{main.\+login Class Reference}
+\label{classmain_1_1login}\index{main.\+login@{main.\+login}}
+
+
+Inheritance diagram for main.\+login\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=146pt]{classmain_1_1login__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for main.\+login\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=146pt]{classmain_1_1login__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classmain_1_1login_a842b5fefc13556cbae749a8dc58d8e31}{get} (self)
+\item 
+def \hyperlink{classmain_1_1login_a71ff3f89aaf0f0c8502577445ab38744}{post} (self)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 157 of file main.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\index{main\+::login@{main\+::login}!get@{get}}
+\index{get@{get}!main\+::login@{main\+::login}}
+\subsubsection[{\texorpdfstring{get(self)}{get(self)}}]{\setlength{\rightskip}{0pt plus 5cm}def main.\+login.\+get (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1login_a842b5fefc13556cbae749a8dc58d8e31}{}\label{classmain_1_1login_a842b5fefc13556cbae749a8dc58d8e31}
+
+
+Definition at line 158 of file main.\+py.
+
+
+\begin{DoxyCode}
+158     \textcolor{keyword}{def }\hyperlink{classmain_1_1login_a842b5fefc13556cbae749a8dc58d8e31}{get}(self):
+159         \textcolor{keywordflow}{if} current\_user.is\_authenticated:
+160             \textcolor{keywordflow}{return} redirect(url\_for(\textcolor{stringliteral}{'index'}))
+161 
+162         response = make\_response(render\_template(\textcolor{stringliteral}{'login.html'}))
+163 
+164         \textcolor{keywordflow}{return} response
+165 
+\end{DoxyCode}
+\index{main\+::login@{main\+::login}!post@{post}}
+\index{post@{post}!main\+::login@{main\+::login}}
+\subsubsection[{\texorpdfstring{post(self)}{post(self)}}]{\setlength{\rightskip}{0pt plus 5cm}def main.\+login.\+post (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1login_a71ff3f89aaf0f0c8502577445ab38744}{}\label{classmain_1_1login_a71ff3f89aaf0f0c8502577445ab38744}
+
+
+Definition at line 166 of file main.\+py.
+
+
+\begin{DoxyCode}
+166     \textcolor{keyword}{def }\hyperlink{classmain_1_1login_a71ff3f89aaf0f0c8502577445ab38744}{post}(self):
+167         username = request.form.get(\textcolor{stringliteral}{'username'})
+168         password = request.form.get(\textcolor{stringliteral}{'password'})
+169         token = request.form.get(\textcolor{stringliteral}{'token'})
+170         prev\_LHB = request.form.get(\textcolor{stringliteral}{'loginhashblock'})
+171 
+172         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} username:
+173             flash(\textcolor{stringliteral}{'username is null'})
+174             \textcolor{keywordflow}{return} make\_response(\textcolor{stringliteral}{'Error'}, 302)
+175 
+176         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} password:
+177             flash(\textcolor{stringliteral}{'password is null'})
+178             \textcolor{keywordflow}{return} make\_response(\textcolor{stringliteral}{'Error'}, 302)
+179 
+180         user = User.query.filter\_by(username=username).first()
+181 
+182         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} user:
+183             flash(\textcolor{stringliteral}{'not registered username'})
+184             \textcolor{keywordflow}{return} make\_response(\textcolor{stringliteral}{'Error'}, 302)
+185 
+186         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} user.verify\_password(password):
+187             flash(\textcolor{stringliteral}{'password was wrong'})
+188             \textcolor{keywordflow}{return} make\_response(\textcolor{stringliteral}{'Error'}, 302)
+189 
+190         \textcolor{keywordflow}{if} token:
+191             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} user.verify\_totp(token):
+192                 flash(\textcolor{stringliteral}{'OTP was wrong'})
+193                 \textcolor{keywordflow}{return} make\_response(\textcolor{stringliteral}{'Error'}, 302)
+194 
+195             \textcolor{keywordflow}{if} prev\_LHB:
+196                 \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} \hyperlink{namespaceloginhashblock_adb424539d851426da7b65d53c5a6d577}{valid\_loginhashblock}(prev\_LHB):
+197                     flash(\textcolor{stringliteral}{'Your account is suspected of being stolen. OTP is required.'})
+198                     \textcolor{keywordflow}{return} make\_response(\textcolor{stringliteral}{'Error'}, 302)
+199 
+200                 LHBlistStr, new\_LHB = \hyperlink{namespaceloginhashblock_a2bcc7ddd0fcc3788572dd77808cb624d}{update\_loginhashblocklist}(user.Lhashblock, 
+      prev\_LHB, DEBUG=DEBUG)
+201             \textcolor{keywordflow}{else}:
+202                 LHBlistStr, new\_LHB = \hyperlink{namespaceloginhashblock_a550707107141dfb228ca4294d7ea31b4}{create\_loginhashblocklist}(user.Lhashblock, 
+      DEBUG=DEBUG)
+203         \textcolor{keywordflow}{else}:
+204             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} user.Lhashblock:
+205                 flash(\textcolor{stringliteral}{'Your account is first login, OTP is required.'})
+206                 \textcolor{keywordflow}{return} make\_response(\textcolor{stringliteral}{'Error'}, 302)
+207 
+208             \textcolor{keywordflow}{if} prev\_LHB:
+209                 \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} \hyperlink{namespaceloginhashblock_adb424539d851426da7b65d53c5a6d577}{valid\_loginhashblock}(prev\_LHB):
+210                     flash(\textcolor{stringliteral}{'Your account is suspected of being stolen. OTP is required.'})
+211                     print(\textcolor{stringliteral}{"Error valid\_loginhashblock"})
+212                     \textcolor{keywordflow}{return} make\_response(\textcolor{stringliteral}{'Error'}, 302)
+213 
+214                 \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} \hyperlink{namespaceloginhashblock_aa5bb94484a68d0bbebce23b4cfeeb4b7}{verify\_loginhashblock}(user.Lhashblock, prev\_LHB):
+215                     flash(\textcolor{stringliteral}{'Your account is suspected of being stolen. OTP is required.'})
+216                     print(\textcolor{stringliteral}{"Error verify\_loginhashblock"})
+217                     \textcolor{keywordflow}{return} make\_response(\textcolor{stringliteral}{'Error'}, 302)
+218 
+219                 LHBlistStr, new\_LHB = \hyperlink{namespaceloginhashblock_a2bcc7ddd0fcc3788572dd77808cb624d}{update\_loginhashblocklist}(user.Lhashblock, 
+      prev\_LHB, DEBUG=DEBUG)
+220             \textcolor{keywordflow}{else}:
+221                 flash(\textcolor{stringliteral}{'Error! Debug Mode'})
+222                 \textcolor{keywordflow}{return} make\_response(\textcolor{stringliteral}{'Error'}, 302)
+223 
+224         user.Lhashblock = LHBlistStr
+225         db.session.commit()
+226 
+227         \textcolor{keywordflow}{if} DEBUG:
+228             text = \textcolor{stringliteral}{"[info:login:post]\(\backslash\)nprev\_hashblock[\{\}]: \{\}\(\backslash\)nnext\_hashblock[\{\}]: \{\}"}.format(username,
+      prev\_LHB,username,new\_LHB)
+229             print(text)
+230 
+231         login\_user(user)
+232         flash(\textcolor{stringliteral}{'You are now logged in!'})
+233         condition = \textcolor{keyword}{True}
+234         response = make\_response(render\_template(\textcolor{stringliteral}{'index.html'}, condition=condition, username=username, 
+      LoginHB=new\_LHB))
+235         \textcolor{keywordflow}{return} response
+236 
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmain_1_1login_a71ff3f89aaf0f0c8502577445ab38744_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+example/\hyperlink{main_8py}{main.\+py}\end{DoxyCompactItemize}

@@ -1,0 +1,75 @@
+\hypertarget{classmain_1_1qrcode}{}\section{main.\+qrcode Class Reference}
+\label{classmain_1_1qrcode}\index{main.\+qrcode@{main.\+qrcode}}
+
+
+Inheritance diagram for main.\+qrcode\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=157pt]{classmain_1_1qrcode__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for main.\+qrcode\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=157pt]{classmain_1_1qrcode__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classmain_1_1qrcode_af826915a83b6a4d5c91686b332662da3}{get} (self)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 138 of file main.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\index{main\+::qrcode@{main\+::qrcode}!get@{get}}
+\index{get@{get}!main\+::qrcode@{main\+::qrcode}}
+\subsubsection[{\texorpdfstring{get(self)}{get(self)}}]{\setlength{\rightskip}{0pt plus 5cm}def main.\+qrcode.\+get (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}\hypertarget{classmain_1_1qrcode_af826915a83b6a4d5c91686b332662da3}{}\label{classmain_1_1qrcode_af826915a83b6a4d5c91686b332662da3}
+
+
+Definition at line 139 of file main.\+py.
+
+
+\begin{DoxyCode}
+139     \textcolor{keyword}{def }\hyperlink{classmain_1_1qrcode_af826915a83b6a4d5c91686b332662da3}{get}(self):
+140         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'username'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} session:
+141             abort(404)
+142 
+143         user = User.query.filter\_by(username=session[\textcolor{stringliteral}{'username'}]).first()
+144 
+145         \textcolor{keywordflow}{if} user \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+146             abort(404)
+147 
+148         del session[\textcolor{stringliteral}{'username'}]
+149 
+150         url = pyqrcode.create(user.get\_totp\_uri())
+151         stream = BytesIO()
+152         url.svg(stream, scale=3)
+153         param = \{\textcolor{stringliteral}{'Content-Type'}: \textcolor{stringliteral}{'image/svg+xml'}, \textcolor{stringliteral}{'Cache-Control'}: \textcolor{stringliteral}{'no-cache, no-store, must-revalidate'},\textcolor{stringliteral}{'
+      Pragma'}: \textcolor{stringliteral}{'no-cache'}, \textcolor{stringliteral}{'Expires'}: \textcolor{stringliteral}{'0'}\}
+154         response = make\_response(stream.getvalue(), 200, param)
+155         \textcolor{keywordflow}{return} response
+156 
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+example/\hyperlink{main_8py}{main.\+py}\end{DoxyCompactItemize}

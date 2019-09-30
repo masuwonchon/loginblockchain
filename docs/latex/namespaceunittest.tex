@@ -1,0 +1,625 @@
+\hypertarget{namespaceunittest}{}\section{unittest Namespace Reference}
+\label{namespaceunittest}\index{unittest@{unittest}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classunittest_1_1bcolors}{bcolors}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\+\_\+print} (message)
+\item 
+def \hyperlink{namespaceunittest_a642ec5401fe406315f1489d237ba826e}{unittest\+\_\+title\+\_\+print} (message)
+\item 
+def \hyperlink{namespaceunittest_a9e16eaba67b93461be6ea8ef6332507a}{unittest\+\_\+update\+\_\+loginhashblocklist} ()
+\item 
+def \hyperlink{namespaceunittest_a0e10bea14aac2cc6a08d76f422b9328d}{unittest\+\_\+create\+\_\+loginhashblocklist} ()
+\item 
+def \hyperlink{namespaceunittest_aa1c9f3b8631f7f60770414cf8958e2be}{unittest\+\_\+request\+\_\+login\+\_\+token} ()
+\item 
+def \hyperlink{namespaceunittest_a8b30a1b14f91e9e9d093c13a7e68ee93}{unittest\+\_\+request\+\_\+login\+\_\+notoken} ()
+\item 
+def \hyperlink{namespaceunittest_afeccd95cc658ca5f2ffb4df7a1edbbd2}{mok\+\_\+request\+\_\+post} (token, prev\+\_\+\+L\+HB, verify\+\_\+totp, L\+H\+Blist\+Str)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{namespaceunittest_a6f95c254ae4668ea73efe6cf7ca3c36d}{D\+E\+B\+UG} = False
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{unittest@{unittest}!mok\+\_\+request\+\_\+post@{mok\+\_\+request\+\_\+post}}
+\index{mok\+\_\+request\+\_\+post@{mok\+\_\+request\+\_\+post}!unittest@{unittest}}
+\subsubsection[{\texorpdfstring{mok\+\_\+request\+\_\+post(token, prev\+\_\+\+L\+H\+B, verify\+\_\+totp, L\+H\+Blist\+Str)}{mok_request_post(token, prev_LHB, verify_totp, LHBlistStr)}}]{\setlength{\rightskip}{0pt plus 5cm}def unittest.\+mok\+\_\+request\+\_\+post (
+\begin{DoxyParamCaption}
+\item[{}]{token, }
+\item[{}]{prev\+\_\+\+L\+HB, }
+\item[{}]{verify\+\_\+totp, }
+\item[{}]{L\+H\+Blist\+Str}
+\end{DoxyParamCaption}
+)}\hypertarget{namespaceunittest_afeccd95cc658ca5f2ffb4df7a1edbbd2}{}\label{namespaceunittest_afeccd95cc658ca5f2ffb4df7a1edbbd2}
+
+
+Definition at line 297 of file unittest.\+py.
+
+
+\begin{DoxyCode}
+297 \textcolor{keyword}{def }\hyperlink{namespaceunittest_afeccd95cc658ca5f2ffb4df7a1edbbd2}{mok\_request\_post}(token, prev\_LHB, verify\_totp, LHBlistStr):
+298     status = 0
+299     new\_LHB = \textcolor{stringliteral}{''}
+300 
+301     \textcolor{keywordflow}{if} token:
+302         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} verify\_totp:
+303             \textcolor{keywordflow}{return} LHBlistStr, new\_LHB, 1
+304 
+305         \textcolor{keywordflow}{if} prev\_LHB:
+306             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} \hyperlink{namespaceloginhashblock_adb424539d851426da7b65d53c5a6d577}{valid\_loginhashblock}(prev\_LHB):
+307                 \textcolor{keywordflow}{return} LHBlistStr, new\_LHB, 2
+308 
+309             LHBlistStr, new\_LHB = \hyperlink{namespaceloginhashblock_a2bcc7ddd0fcc3788572dd77808cb624d}{update\_loginhashblocklist}(LHBlistStr, prev\_LHB, 
+      DEBUG=DEBUG)
+310         \textcolor{keywordflow}{else}:
+311             LHBlistStr, new\_LHB = \hyperlink{namespaceloginhashblock_a550707107141dfb228ca4294d7ea31b4}{create\_loginhashblocklist}(LHBlistStr, DEBUG=
+      DEBUG)
+312     \textcolor{keywordflow}{else}:
+313         \textcolor{keywordflow}{if} prev\_LHB:
+314             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} \hyperlink{namespaceloginhashblock_adb424539d851426da7b65d53c5a6d577}{valid\_loginhashblock}(prev\_LHB):
+315                 \textcolor{keywordflow}{return} LHBlistStr, new\_LHB, 3
+316 
+317             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} \hyperlink{namespaceloginhashblock_aa5bb94484a68d0bbebce23b4cfeeb4b7}{verify\_loginhashblock}(LHBlistStr, prev\_LHB):
+318                 \textcolor{keywordflow}{return} LHBlistStr, new\_LHB, 4
+319 
+320             LHBlistStr, new\_LHB = \hyperlink{namespaceloginhashblock_a2bcc7ddd0fcc3788572dd77808cb624d}{update\_loginhashblocklist}(LHBlistStr, prev\_LHB, 
+      DEBUG=DEBUG)
+321         \textcolor{keywordflow}{else}:
+322             \textcolor{keywordflow}{return} LHBlistStr, new\_LHB, 5
+323 
+324     LHBlistStr = LHBlistStr
+325 
+326     \textcolor{keywordflow}{return} LHBlistStr, new\_LHB, status
+327 
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceunittest_afeccd95cc658ca5f2ffb4df7a1edbbd2_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceunittest_afeccd95cc658ca5f2ffb4df7a1edbbd2_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{unittest@{unittest}!unittest\+\_\+create\+\_\+loginhashblocklist@{unittest\+\_\+create\+\_\+loginhashblocklist}}
+\index{unittest\+\_\+create\+\_\+loginhashblocklist@{unittest\+\_\+create\+\_\+loginhashblocklist}!unittest@{unittest}}
+\subsubsection[{\texorpdfstring{unittest\+\_\+create\+\_\+loginhashblocklist()}{unittest_create_loginhashblocklist()}}]{\setlength{\rightskip}{0pt plus 5cm}def unittest.\+unittest\+\_\+create\+\_\+loginhashblocklist (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{namespaceunittest_a0e10bea14aac2cc6a08d76f422b9328d}{}\label{namespaceunittest_a0e10bea14aac2cc6a08d76f422b9328d}
+
+
+Definition at line 99 of file unittest.\+py.
+
+
+\begin{DoxyCode}
+99 \textcolor{keyword}{def }\hyperlink{namespaceunittest_a0e10bea14aac2cc6a08d76f422b9328d}{unittest\_create\_loginhashblocklist}():
+100 
+101     LHBlistStr = \textcolor{stringliteral}{'aCIXQRZ1$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a1'}
+102 
+103     updatedLHBlistStr, LHBstr = \hyperlink{namespaceloginhashblock_a550707107141dfb228ca4294d7ea31b4}{create\_loginhashblocklist}(LHBlistStr, DEBUG=DEBUG)
+104     LHBlist = updatedLHBlistStr.split(\textcolor{stringliteral}{','})
+105 
+106     (\textcolor{stringliteral}{"Create LHB and updated LHBlistStr"})
+107     \textcolor{keywordflow}{if} len(LHBlist) == 2:
+108         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-01: Success"})
+109     \textcolor{keywordflow}{else}:
+110         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-01: Fail"})
+111 
+112     \textcolor{keywordflow}{if} LHBlist[0] == LHBlistStr:
+113         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-02: Success"})
+114     \textcolor{keywordflow}{else}:
+115         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-02: Fail"})
+116 
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceunittest_a0e10bea14aac2cc6a08d76f422b9328d_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceunittest_a0e10bea14aac2cc6a08d76f422b9328d_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{unittest@{unittest}!unittest\+\_\+print@{unittest\+\_\+print}}
+\index{unittest\+\_\+print@{unittest\+\_\+print}!unittest@{unittest}}
+\subsubsection[{\texorpdfstring{unittest\+\_\+print(message)}{unittest_print(message)}}]{\setlength{\rightskip}{0pt plus 5cm}def unittest.\+unittest\+\_\+print (
+\begin{DoxyParamCaption}
+\item[{}]{message}
+\end{DoxyParamCaption}
+)}\hypertarget{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{}\label{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}
+
+
+Definition at line 15 of file unittest.\+py.
+
+
+\begin{DoxyCode}
+15 \textcolor{keyword}{def }\hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(message):
+16     print(bcolors.WARNING + message + bcolors.ENDC)
+17 
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{unittest@{unittest}!unittest\+\_\+request\+\_\+login\+\_\+notoken@{unittest\+\_\+request\+\_\+login\+\_\+notoken}}
+\index{unittest\+\_\+request\+\_\+login\+\_\+notoken@{unittest\+\_\+request\+\_\+login\+\_\+notoken}!unittest@{unittest}}
+\subsubsection[{\texorpdfstring{unittest\+\_\+request\+\_\+login\+\_\+notoken()}{unittest_request_login_notoken()}}]{\setlength{\rightskip}{0pt plus 5cm}def unittest.\+unittest\+\_\+request\+\_\+login\+\_\+notoken (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{namespaceunittest_a8b30a1b14f91e9e9d093c13a7e68ee93}{}\label{namespaceunittest_a8b30a1b14f91e9e9d093c13a7e68ee93}
+
+
+Definition at line 220 of file unittest.\+py.
+
+
+\begin{DoxyCode}
+220 \textcolor{keyword}{def }\hyperlink{namespaceunittest_a8b30a1b14f91e9e9d093c13a7e68ee93}{unittest\_request\_login\_notoken}():
+221     \hyperlink{namespaceunittest_a642ec5401fe406315f1489d237ba826e}{unittest\_title\_print}(\textcolor{stringliteral}{"unittest request login with no token"})
+222     LHBlistStr = \textcolor{stringliteral}{'aCIXQRZ1$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a1'}
+223     prev\_LHB = \textcolor{stringliteral}{''}
+224     token=\textcolor{stringliteral}{''}
+225     verify\_totp = \textcolor{keyword}{False}
+226     updatedLHBlistStr, LHBstr, ret = \hyperlink{namespaceunittest_afeccd95cc658ca5f2ffb4df7a1edbbd2}{mok\_request\_post}(token, prev\_LHB, verify\_totp, 
+      LHBlistStr)
+227 
+228     \textcolor{keywordflow}{if} ret == 5:
+229         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-01: Success"})
+230     \textcolor{keywordflow}{else}:
+231         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-01: Fail"})
+232 
+233     prev\_LHB = \textcolor{stringliteral}{'aCIXQRZ1$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a2'}
+234     verify\_totp = \textcolor{keyword}{True}
+235     updatedLHBlistStr, LHBstr, ret = \hyperlink{namespaceunittest_afeccd95cc658ca5f2ffb4df7a1edbbd2}{mok\_request\_post}(token, prev\_LHB, verify\_totp, 
+      LHBlistStr)
+236 
+237     \textcolor{keywordflow}{if} ret  == 4:
+238         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-02: Success"})
+239     \textcolor{keywordflow}{else}:
+240         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-02: Fail"})
+241 
+242     prev\_LHB = \textcolor{stringliteral}{'aCIXQRZ1$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a'}
+243     verify\_totp = \textcolor{keyword}{True}
+244     updatedLHBlistStr, LHBstr, ret = \hyperlink{namespaceunittest_afeccd95cc658ca5f2ffb4df7a1edbbd2}{mok\_request\_post}(token, prev\_LHB, verify\_totp, 
+      LHBlistStr)
+245 
+246     \textcolor{keywordflow}{if} ret == 3:
+247         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-03: Success"})
+248     \textcolor{keywordflow}{else}:
+249         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-03: Fail"})
+250 
+251     prev\_LHB = \textcolor{stringliteral}{'aCIXQRZ11$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a1'}
+252     verify\_totp = \textcolor{keyword}{True}
+253     updatedLHBlistStr, LHBstr, ret = \hyperlink{namespaceunittest_afeccd95cc658ca5f2ffb4df7a1edbbd2}{mok\_request\_post}(token, prev\_LHB, verify\_totp, 
+      LHBlistStr)
+254 
+255     \textcolor{keywordflow}{if} ret == 3:
+256         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-04: Success"})
+257     \textcolor{keywordflow}{else}:
+258         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-04: Fail"})
+259 
+260     prev\_LHB = \textcolor{stringliteral}{'aCIXQRZ11$$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a1'}
+261     verify\_totp = \textcolor{keyword}{True}
+262     updatedLHBlistStr, LHBstr, ret = \hyperlink{namespaceunittest_afeccd95cc658ca5f2ffb4df7a1edbbd2}{mok\_request\_post}(token, prev\_LHB, verify\_totp, 
+      LHBlistStr)
+263 
+264     \textcolor{keywordflow}{if} ret == 3:
+265         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-05: Success"})
+266     \textcolor{keywordflow}{else}:
+267         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-05: Fail"})
+268 
+269     prev\_LHB = \textcolor{stringliteral}{'aCIXQRZ2$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a2'}
+270     verify\_totp = \textcolor{keyword}{True}
+271     updatedLHBlistStr, LHBstr, ret = \hyperlink{namespaceunittest_afeccd95cc658ca5f2ffb4df7a1edbbd2}{mok\_request\_post}(token, prev\_LHB, verify\_totp, 
+      LHBlistStr)
+272     updatedLHBlist = updatedLHBlistStr.split(\textcolor{stringliteral}{','})
+273 
+274     \textcolor{keywordflow}{if} ret == 4:
+275         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-06: Success"})
+276     \textcolor{keywordflow}{else}:
+277         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-06: Fail"})
+278 
+279     prev\_LHB   = \textcolor{stringliteral}{'aCIXQRZ1$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a1'}
+280     verify\_totp = \textcolor{keyword}{True}
+281     updatedLHBlistStr, LHBstr, ret = \hyperlink{namespaceunittest_afeccd95cc658ca5f2ffb4df7a1edbbd2}{mok\_request\_post}(token, prev\_LHB, verify\_totp, 
+      LHBlistStr)
+282     updatedLHBlist = updatedLHBlistStr.split(\textcolor{stringliteral}{','})
+283 
+284     \textcolor{keywordflow}{if} len(updatedLHBlist) == 1:
+285         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-07: Success"})
+286     \textcolor{keywordflow}{else}:
+287         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-07: Fail"})
+288 
+289     devid = \hyperlink{namespaceloginhashblock_a17417f2f6bca76ab51170082a562e5f6}{get\_deviceId}(updatedLHBlist[0], DEBUG=\textcolor{keyword}{False})
+290     devid\_ = \hyperlink{namespaceloginhashblock_a17417f2f6bca76ab51170082a562e5f6}{get\_deviceId}(prev\_LHB, DEBUG=\textcolor{keyword}{False})
+291 
+292     \textcolor{keywordflow}{if} devid == devid\_:
+293         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-08: Success"})
+294     \textcolor{keywordflow}{else}:
+295         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-08: Fail"})
+296 
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceunittest_a8b30a1b14f91e9e9d093c13a7e68ee93_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceunittest_a8b30a1b14f91e9e9d093c13a7e68ee93_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{unittest@{unittest}!unittest\+\_\+request\+\_\+login\+\_\+token@{unittest\+\_\+request\+\_\+login\+\_\+token}}
+\index{unittest\+\_\+request\+\_\+login\+\_\+token@{unittest\+\_\+request\+\_\+login\+\_\+token}!unittest@{unittest}}
+\subsubsection[{\texorpdfstring{unittest\+\_\+request\+\_\+login\+\_\+token()}{unittest_request_login_token()}}]{\setlength{\rightskip}{0pt plus 5cm}def unittest.\+unittest\+\_\+request\+\_\+login\+\_\+token (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{namespaceunittest_aa1c9f3b8631f7f60770414cf8958e2be}{}\label{namespaceunittest_aa1c9f3b8631f7f60770414cf8958e2be}
+
+
+Definition at line 117 of file unittest.\+py.
+
+
+\begin{DoxyCode}
+117 \textcolor{keyword}{def }\hyperlink{namespaceunittest_aa1c9f3b8631f7f60770414cf8958e2be}{unittest\_request\_login\_token}():
+118     \hyperlink{namespaceunittest_a642ec5401fe406315f1489d237ba826e}{unittest\_title\_print}(\textcolor{stringliteral}{"unittest request login with token"})
+119     LHBlistStr = \textcolor{stringliteral}{'aCIXQRZ1$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a1'}
+120     prev\_LHB = \textcolor{stringliteral}{''}
+121     token=\textcolor{stringliteral}{'123456'}
+122     verify\_totp = \textcolor{keyword}{False}
+123     updatedLHBlistStr, LHBstr, ret = \hyperlink{namespaceunittest_afeccd95cc658ca5f2ffb4df7a1edbbd2}{mok\_request\_post}(token, prev\_LHB, verify\_totp, 
+      LHBlistStr)
+124 
+125     \textcolor{keywordflow}{if} ret == 1:
+126         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-01: Success"})
+127     \textcolor{keywordflow}{else}:
+128         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-01: Fail"})
+129 
+130     verify\_totp = \textcolor{keyword}{True}
+131     updatedLHBlistStr, LHBstr, ret = \hyperlink{namespaceunittest_afeccd95cc658ca5f2ffb4df7a1edbbd2}{mok\_request\_post}(token, prev\_LHB, verify\_totp, 
+      LHBlistStr)
+132 
+133     LHBlist = updatedLHBlistStr.split(\textcolor{stringliteral}{','})
+134     \textcolor{keywordflow}{if} LHBlist[0] == LHBlistStr:
+135         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-02: Success"})
+136     \textcolor{keywordflow}{else}:
+137         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-02: Fail"})
+138 
+139     \textcolor{keywordflow}{if} len(LHBlist)  == 2:
+140         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-03: Success"})
+141     \textcolor{keywordflow}{else}:
+142         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-03: Fail"})
+143 
+144     prev\_LHB = \textcolor{stringliteral}{'aCIXQRZ1$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a'}
+145     verify\_totp = \textcolor{keyword}{True}
+146     updatedLHBlistStr, LHBstr, ret = \hyperlink{namespaceunittest_afeccd95cc658ca5f2ffb4df7a1edbbd2}{mok\_request\_post}(token, prev\_LHB, verify\_totp, 
+      LHBlistStr)
+147 
+148     \textcolor{keywordflow}{if} ret == 2:
+149         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-04: Success"})
+150     \textcolor{keywordflow}{else}:
+151         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-04: Fail"})
+152 
+153     prev\_LHB = \textcolor{stringliteral}{'aCIXQRZ11$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a1'}
+154     verify\_totp = \textcolor{keyword}{True}
+155     updatedLHBlistStr, LHBstr, ret = \hyperlink{namespaceunittest_afeccd95cc658ca5f2ffb4df7a1edbbd2}{mok\_request\_post}(token, prev\_LHB, verify\_totp, 
+      LHBlistStr)
+156 
+157     \textcolor{keywordflow}{if} ret == 2:
+158         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-05: Success"})
+159     \textcolor{keywordflow}{else}:
+160         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-05: Fail"})
+161 
+162     prev\_LHB = \textcolor{stringliteral}{'aCIXQRZ11$$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a1'}
+163     verify\_totp = \textcolor{keyword}{True}
+164     updatedLHBlistStr, LHBstr, ret = \hyperlink{namespaceunittest_afeccd95cc658ca5f2ffb4df7a1edbbd2}{mok\_request\_post}(token, prev\_LHB, verify\_totp, 
+      LHBlistStr)
+165 
+166     \textcolor{keywordflow}{if} ret == 2:
+167         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-05: Success"})
+168     \textcolor{keywordflow}{else}:
+169         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-05: Fail"})
+170 
+171     prev\_LHB = \textcolor{stringliteral}{'aCIXQRZ1$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a2'}
+172     verify\_totp = \textcolor{keyword}{True}
+173     updatedLHBlistStr, LHBstr, ret = \hyperlink{namespaceunittest_afeccd95cc658ca5f2ffb4df7a1edbbd2}{mok\_request\_post}(token, prev\_LHB, verify\_totp, 
+      LHBlistStr)
+174     updatedLHBlist = updatedLHBlistStr.split(\textcolor{stringliteral}{','})
+175 
+176     \textcolor{keywordflow}{if} LHBlistStr != updatedLHBlist[0]:
+177         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-06: Success"})
+178     \textcolor{keywordflow}{else}:
+179         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-06: Fail"})
+180 
+181     prev\_LHB = \textcolor{stringliteral}{'aCIXQRZ2$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a2'}
+182     verify\_totp = \textcolor{keyword}{True}
+183     updatedLHBlistStr, LHBstr, ret = \hyperlink{namespaceunittest_afeccd95cc658ca5f2ffb4df7a1edbbd2}{mok\_request\_post}(token, prev\_LHB, verify\_totp, 
+      LHBlistStr)
+184     updatedLHBlist = updatedLHBlistStr.split(\textcolor{stringliteral}{','})
+185 
+186     \textcolor{keywordflow}{if} len(updatedLHBlist) == 2:
+187         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-07: Success"})
+188     \textcolor{keywordflow}{else}:
+189         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-07: Fail"})
+190 
+191     prev\_LHB = \textcolor{stringliteral}{'aCIXQRZ2$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a2'}
+192     verify\_totp = \textcolor{keyword}{True}
+193     updatedLHBlistStr, LHBstr, ret = \hyperlink{namespaceunittest_afeccd95cc658ca5f2ffb4df7a1edbbd2}{mok\_request\_post}(token, prev\_LHB, verify\_totp, 
+      LHBlistStr)
+194     updatedLHBlist = updatedLHBlistStr.split(\textcolor{stringliteral}{','})
+195 
+196     \textcolor{keywordflow}{if} len(updatedLHBlist) == 2:
+197         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-07: Success"})
+198     \textcolor{keywordflow}{else}:
+199         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-07: Fail"})
+200 
+201     devid = \hyperlink{namespaceloginhashblock_a17417f2f6bca76ab51170082a562e5f6}{get\_deviceId}(updatedLHBlist[1], DEBUG=\textcolor{keyword}{False})
+202     devid\_ = \hyperlink{namespaceloginhashblock_a17417f2f6bca76ab51170082a562e5f6}{get\_deviceId}(prev\_LHB, DEBUG=\textcolor{keyword}{False})
+203 
+204     \textcolor{keywordflow}{if} devid == devid\_:
+205         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-08: Success"})
+206     \textcolor{keywordflow}{else}:
+207         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-08: Fail"})
+208 
+209     LHBlistStr = \textcolor{stringliteral}{''}
+210     prev\_LHB = \textcolor{stringliteral}{''}
+211     verify\_totp = \textcolor{keyword}{True}
+212     updatedLHBlistStr, LHBstr, ret = \hyperlink{namespaceunittest_afeccd95cc658ca5f2ffb4df7a1edbbd2}{mok\_request\_post}(token, prev\_LHB, verify\_totp, 
+      LHBlistStr)
+213     updatedLHBlist = updatedLHBlistStr.split(\textcolor{stringliteral}{','})
+214 
+215     \textcolor{keywordflow}{if} len(updatedLHBlist) == 1:
+216         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-09: Success"})
+217     \textcolor{keywordflow}{else}:
+218         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-09: Fail"})
+219 
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceunittest_aa1c9f3b8631f7f60770414cf8958e2be_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceunittest_aa1c9f3b8631f7f60770414cf8958e2be_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{unittest@{unittest}!unittest\+\_\+title\+\_\+print@{unittest\+\_\+title\+\_\+print}}
+\index{unittest\+\_\+title\+\_\+print@{unittest\+\_\+title\+\_\+print}!unittest@{unittest}}
+\subsubsection[{\texorpdfstring{unittest\+\_\+title\+\_\+print(message)}{unittest_title_print(message)}}]{\setlength{\rightskip}{0pt plus 5cm}def unittest.\+unittest\+\_\+title\+\_\+print (
+\begin{DoxyParamCaption}
+\item[{}]{message}
+\end{DoxyParamCaption}
+)}\hypertarget{namespaceunittest_a642ec5401fe406315f1489d237ba826e}{}\label{namespaceunittest_a642ec5401fe406315f1489d237ba826e}
+
+
+Definition at line 18 of file unittest.\+py.
+
+
+\begin{DoxyCode}
+18 \textcolor{keyword}{def }\hyperlink{namespaceunittest_a642ec5401fe406315f1489d237ba826e}{unittest\_title\_print}(message):
+19     print(bcolors.OKGREEN + message + bcolors.ENDC)
+20 
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceunittest_a642ec5401fe406315f1489d237ba826e_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{unittest@{unittest}!unittest\+\_\+update\+\_\+loginhashblocklist@{unittest\+\_\+update\+\_\+loginhashblocklist}}
+\index{unittest\+\_\+update\+\_\+loginhashblocklist@{unittest\+\_\+update\+\_\+loginhashblocklist}!unittest@{unittest}}
+\subsubsection[{\texorpdfstring{unittest\+\_\+update\+\_\+loginhashblocklist()}{unittest_update_loginhashblocklist()}}]{\setlength{\rightskip}{0pt plus 5cm}def unittest.\+unittest\+\_\+update\+\_\+loginhashblocklist (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{namespaceunittest_a9e16eaba67b93461be6ea8ef6332507a}{}\label{namespaceunittest_a9e16eaba67b93461be6ea8ef6332507a}
+
+
+Definition at line 21 of file unittest.\+py.
+
+
+\begin{DoxyCode}
+21 \textcolor{keyword}{def }\hyperlink{namespaceunittest_a9e16eaba67b93461be6ea8ef6332507a}{unittest\_update\_loginhashblocklist}():
+22     \textcolor{comment}{# case 01}
+23     prev\_LHB = \textcolor{stringliteral}{'aCIXQRZ1$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a1'}
+24     LHBlistStr = \textcolor{stringliteral}{''}
+25 
+26     updatedLHBlistStr, LHBstr = \hyperlink{namespaceloginhashblock_a2bcc7ddd0fcc3788572dd77808cb624d}{update\_loginhashblocklist}(LHBlistStr, prev\_LHB, 
+      DEBUG=DEBUG)
+27 
+28     source = prev\_LHB.split(\textcolor{stringliteral}{'$'})
+29     target = updatedLHBlistStr.split(\textcolor{stringliteral}{'$'})
+30 
+31     \hyperlink{namespaceunittest_a642ec5401fe406315f1489d237ba826e}{unittest\_title\_print}(\textcolor{stringliteral}{"LHB is one, LHBlist is null"})
+32     \textcolor{keywordflow}{if} source[0] == target[0] \textcolor{keywordflow}{and} source[1] != target[1]:
+33         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-01: Success"})
+34     \textcolor{keywordflow}{else}:
+35         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-01: Fail"})
+36 
+37     \textcolor{comment}{# case 02}
+38     LHBlistStr = \textcolor{stringliteral}{'
+      aCIXQRZ1$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a2,aCIXQRZ2$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a3'}
+39 
+40     LHBlist = LHBlistStr.split(\textcolor{stringliteral}{','})
+41     updatedLHBlistStr, LHBstr = \hyperlink{namespaceloginhashblock_a2bcc7ddd0fcc3788572dd77808cb624d}{update\_loginhashblocklist}(LHBlistStr, prev\_LHB, 
+      DEBUG=DEBUG)
+42     targetList = updatedLHBlistStr.split(\textcolor{stringliteral}{','})
+43     target = targetList[0].split(\textcolor{stringliteral}{'$'})
+44 
+45     \hyperlink{namespaceunittest_a642ec5401fe406315f1489d237ba826e}{unittest\_title\_print}(\textcolor{stringliteral}{"LHB is one, LHBlist is two"})
+46     \textcolor{keywordflow}{if} source[0] == target[0] \textcolor{keywordflow}{and} source[1] != target[1] \textcolor{keywordflow}{and} LHBlist[1] == targetList[1]:
+47         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-01: Success"})
+48     \textcolor{keywordflow}{else}:
+49         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-01: Fail"})
+50 
+51     \textcolor{keywordflow}{if} LHBlistStr != updatedLHBlistStr:
+52         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-02: Success"})
+53     \textcolor{keywordflow}{else}:
+54         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-02: Fail"})
+55 
+56     \textcolor{comment}{# case 03}
+57     LHBlistStr = \textcolor{stringliteral}{'aCIXQRZ3$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a2'}
+58 
+59     LHBlist = LHBlistStr.split(\textcolor{stringliteral}{','})
+60     updatedLHBlistStr, LHBstr = \hyperlink{namespaceloginhashblock_a2bcc7ddd0fcc3788572dd77808cb624d}{update\_loginhashblocklist}(LHBlistStr, prev\_LHB, 
+      DEBUG=DEBUG)
+61     targetList = updatedLHBlistStr.split(\textcolor{stringliteral}{','})
+62     target = targetList[1].split(\textcolor{stringliteral}{'$'})
+63 
+64     \hyperlink{namespaceunittest_a642ec5401fe406315f1489d237ba826e}{unittest\_title\_print}(\textcolor{stringliteral}{"LHB is one, LHBlist is one, but devid is different so LHBlist
+       will be updated LHB"})
+65     \textcolor{keywordflow}{if} source[0] == target[0] \textcolor{keywordflow}{and} source[1] != target[1]:
+66         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-01: Success"})
+67     \textcolor{keywordflow}{else}:
+68         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-01: Fail"})
+69 
+70     \textcolor{keywordflow}{if} LHBlistStr != updatedLHBlistStr:
+71         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-02: Success"})
+72     \textcolor{keywordflow}{else}:
+73         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-02: Fail"})
+74 
+75     \textcolor{keywordflow}{if} len(targetList) == 2:
+76         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-03: Success"})
+77     \textcolor{keywordflow}{else}:
+78         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-03: Fail"})
+79 
+80     \textcolor{comment}{# case 04}
+81     prev\_LHB = \textcolor{stringliteral}{''}
+82     LHBlistStr = \textcolor{stringliteral}{'aCIXQRZ3$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a2'}
+83 
+84     LHBlist = LHBlistStr.split(\textcolor{stringliteral}{','})
+85     updatedLHBlistStr, LHBstr = \hyperlink{namespaceloginhashblock_a2bcc7ddd0fcc3788572dd77808cb624d}{update\_loginhashblocklist}(LHBlistStr, prev\_LHB, 
+      DEBUG=DEBUG)
+86     targetList = updatedLHBlistStr.split(\textcolor{stringliteral}{','})
+87 
+88     \hyperlink{namespaceunittest_a642ec5401fe406315f1489d237ba826e}{unittest\_title\_print}(\textcolor{stringliteral}{"LHB is null, LHBlist is one, su LHBlist will be maintained"})
+89     \textcolor{keywordflow}{if} LHBlistStr == updatedLHBlistStr:
+90         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-01: Success"})
+91     \textcolor{keywordflow}{else}:
+92         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-01: Fail"})
+93 
+94     \textcolor{keywordflow}{if} len(targetList) == 1:
+95         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-02: Success"})
+96     \textcolor{keywordflow}{else}:
+97         \hyperlink{namespaceunittest_a217a1a3af5bc9748f2f6194bf79402bc}{unittest\_print}(\textcolor{stringliteral}{"TestCase-02: Fail"})
+98 
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceunittest_a9e16eaba67b93461be6ea8ef6332507a_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceunittest_a9e16eaba67b93461be6ea8ef6332507a_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Variable Documentation}
+\index{unittest@{unittest}!D\+E\+B\+UG@{D\+E\+B\+UG}}
+\index{D\+E\+B\+UG@{D\+E\+B\+UG}!unittest@{unittest}}
+\subsubsection[{\texorpdfstring{D\+E\+B\+UG}{DEBUG}}]{\setlength{\rightskip}{0pt plus 5cm}bool unittest.\+D\+E\+B\+UG = False}\hypertarget{namespaceunittest_a6f95c254ae4668ea73efe6cf7ca3c36d}{}\label{namespaceunittest_a6f95c254ae4668ea73efe6cf7ca3c36d}
+
+
+Definition at line 13 of file unittest.\+py.
+

@@ -1,0 +1,5 @@
+<map id="loginhashblock.create_loginhashblock" name="loginhashblock.create_loginhashblock">
+<area shape="rect" id="node2" href="$namespaceloginhashblock.html#afe116dea3aaff238a5fa2bcd6edf2281" title="loginhashblock.create_salt" alt="" coords="219,5,409,32"/>
+<area shape="rect" id="node3" href="$namespaceloginhashblock.html#a935d8ae1c51e50f9e5db6a1d5f02b1b8" title="loginhashblock.create_hash" alt="" coords="215,56,413,83"/>
+<area shape="rect" id="node4" href="$namespaceloginhashblock.html#a104d0a92cdfb6c337794b6ded42667d4" title="loginhashblock.pbkdf2_hash" alt="" coords="461,56,663,83"/>
+</map>

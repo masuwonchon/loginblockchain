@@ -21,7 +21,14 @@ Changelog
 +---------+------------+------------------------------------------------------+
 | Version | Date       | Changes                                              |
 +=========+============+======================================================+
-| 0.1.0   | 2019-09-19 | - initial public release                             |
+| 0.9.0   | 2019-09-30 | - documentation from the sources                     |
+|         |            | Online version is available here_. .. _here: https://masuwonchon.github.io/loginblockchain/html/index.html |
+|         |            | - fixed tests and build system                       |
++---------+------------+------------------------------------------------------+
+| 0.5.0   | 2019-09-19 | - internal code improvements                         |
+|         |            | - initial public release                             |
++---------+------------+------------------------------------------------------+
+| 0.5.0   | 2019-09-19 | - initial public release                             |
 +---------+------------+------------------------------------------------------+
 
 What is Login Block Chain?
@@ -86,12 +93,3 @@ License for this library is available in ``LICENSE.rst`` file, in the same
 directory. Online version is available here_.
 
 .. _here: https://github.com/masuwonchon/loginblockchain/blob/master/LICENSE.rst
-
-Reference
-=========
-
-``Documents for this library`` is available in ``docs`` file, in the same directory. Online version is available here .
-
-.. _here: https://masuwonchon.github.io/loginblockchain/html/index.html
-
-

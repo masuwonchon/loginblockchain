@@ -90,7 +90,8 @@ directory. Online version is available here_.
 Reference
 =========
 
-``Documents for this library`` is available in ``docs`` file, in the same directory. Online version is available here_.
+``Documents for this library`` is available in ``docs`` file, in the same directory. Online version is available here .
+
 .. _here: https://masuwonchon.github.io/loginblockchain/html/index.html
 
 

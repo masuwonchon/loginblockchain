@@ -22,7 +22,7 @@ Changelog
 | Version | Date       | Changes                                                                                                     |
 +=========+============+=============================================================================================================+
 | 0.9.0   | 2019-09-30 | - documentation from the sources                                                                            |
-|         |            | - Online version is available here_... _here: https://masuwonchon.github.io/loginblockchain/html/index.html |
+|         |            | - Online version is available `here <https://masuwonchon.github.io/loginblockchain/html/index.html>`_       |
 |         |            | - fixed tests and build system                                                                              |
 +---------+------------+-------------------------------------------------------------------------------------------------------------+
 | 0.5.0   | 2019-09-19 | - internal code improvements                                                                                |

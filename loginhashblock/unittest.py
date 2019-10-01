@@ -326,7 +326,20 @@ def mok_request_post(token, prev_LHB, verify_totp, LHBlistStr):
     return LHBlistStr, new_LHB, status
 
 DEBUG = False
+
+def unittest_subfunction_update_loginhashblock():
+    unittest_title_print("unittest sub function update_loginhashblock")
+    LHBlistStr = 'aCIXQRZ1$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a1'
+    prevLHBstr   = 'aCIXQRZ1$2b76784270f608bedf2757113041a6f6e81ab55faf787afde4e57e4376d302a2'
+    LHBlistStr, LHBstr = update_loginhashblocklist(LHBlistStr, prevLHBstr, DEBUG=False)
+    '''
+    print("LHBlistStr: {}".format(LHBlistStr))
+    print("LHBstr: {}".format(LHBstr))
+    '''
+
+
 unittest_update_loginhashblocklist()
 unittest_create_loginhashblocklist()
 unittest_request_login_token()
 unittest_request_login_notoken()
+unittest_subfunction_update_loginhashblock()

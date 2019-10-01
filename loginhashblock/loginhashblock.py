@@ -20,8 +20,7 @@ DEBUG = False
 
 def print_LHBlist(LHBlistStr, DEBUG=False):
     """
-    a
-The function prints login hash block list for debug. if login hash block list length is above 1, login hash block prints line by line.
+    The function prints login hash block list for debug. if login hash block list length is above 1, login hash block prints line by line.
     :param LHBlistStr:
     :return:
     """
@@ -95,7 +94,7 @@ def create_loginhashblocklist(LHBlistStr, DEBUG=DEBUG):
 
 def update_loginhashblocklist(LHBlistStr, prevLHBstr, DEBUG=False):
     """
-    This function update login hash block list.
+    This function update login hash block list. It's parsed device id from input login hash block and then it will be updat to new hash block binded parsed device id. If LHBlistStr is null, LHBlistStr will be prevLHBstr. And, the other case is updating login hash block from the list.
     :param LHBlistStr: login hash block list string
     :param LHBstr: login hash block
     :return:
@@ -229,11 +228,10 @@ devicd is created by random string as a magic number
 
 def compare_loginhashblock(a, b, DEBUG=False):
     """
-    This function compare two LHB in Python to check if they are identical.
+    This function is to compare tow login hash block. if these are same, it return True. others cases, it return False
     :param a: compare login hash block
     :param b: compare login hash block
-    :param DEBUG:
-    :return:
+    :return: Bool
     """
 
     if DEBUG:
@@ -314,7 +312,7 @@ def valid_loginhashblock(LHBstr, DEBUG=False):
 
 def update_loginhashblock(prevLHBstr, DEBUG=False):
     """
-    This function is to update login hash block with old login hash block
+    This function update login hash block with previous login hash block.
     :param prevLHBstr:
     :param DEBUG:
     :return: updated login hash block

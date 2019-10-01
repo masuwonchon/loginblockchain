@@ -33,6 +33,9 @@ app = Flask(__name__)
 api = Api(app)
 app.config.from_object('config')
 
+from datetime import timedelta
+app.config['PERMANENT_SESSION_LIFETIME'] =  timedelta(minutes=1)
+
 # initialize extensions
 bootstrap = Bootstrap(app)
 db = SQLAlchemy(app)

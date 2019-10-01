@@ -24,7 +24,7 @@ import sys
 
 # import LHB library
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-from loginhashblock.loginhashblock import create_deviceId, create_loginhashblock, update_loginhashblocklist, valid_loginhashblock, isRegistedLHB, update_loginhashblock, verify_loginhashblock
+from loginhashblock.loginhashblock import create_deviceId, create_loginhashblock, update_loginhashblocklist, valid_loginhashblock, isRegistedLHB, update_loginhashblock, verify_loginhashblock, create_loginhashblocklist
 
 DEBUG = False
 
@@ -194,6 +194,9 @@ class login(Resource):
             if not user.verify_totp(token):
                 flash('OTP was wrong')
                 return make_response('Error', 302)
+
+            if prev_LHB == 'null':
+                prev_LHB = None
 
             if prev_LHB:
                 if not valid_loginhashblock(prev_LHB):

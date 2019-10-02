@@ -2,7 +2,8 @@
 \label{classmain_1_1register}\index{main.\+register@{main.\+register}}
 
 
-Inheritance diagram for main.\+register\+:\nopagebreak
+Inheritance diagram for main.\+register\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -11,7 +12,8 @@ Inheritance diagram for main.\+register\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for main.\+register\+:\nopagebreak
+Collaboration diagram for main.\+register\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -30,7 +32,7 @@ def \hyperlink{classmain_1_1register_a890271e936f3717c3ac52428f7a058ef}{post} (s
 \subsection{Detailed Description}
 
 
-Definition at line 96 of file main.\+py.
+Definition at line 99 of file main.\+py.
 
 
 
@@ -44,18 +46,18 @@ Definition at line 96 of file main.\+py.
 )}\hypertarget{classmain_1_1register_a0bc316df389231c4741d9b2460b448f2}{}\label{classmain_1_1register_a0bc316df389231c4741d9b2460b448f2}
 
 
-Definition at line 97 of file main.\+py.
+Definition at line 100 of file main.\+py.
 
 
 \begin{DoxyCode}
-97     \textcolor{keyword}{def }\hyperlink{classmain_1_1register_a0bc316df389231c4741d9b2460b448f2}{get}(self):
-98         \textcolor{keywordflow}{if} current\_user.is\_authenticated:
-99             \textcolor{keywordflow}{return} redirect(url\_for(\textcolor{stringliteral}{'index'}))
-100 
-101         form = \hyperlink{classmain_1_1RegisterForm}{RegisterForm}()
-102         response = make\_response(render\_template(\textcolor{stringliteral}{'register.html'}, form=form))
-103         \textcolor{keywordflow}{return} response
-104 
+100     \textcolor{keyword}{def }\hyperlink{classmain_1_1register_a0bc316df389231c4741d9b2460b448f2}{get}(self):
+101         \textcolor{keywordflow}{if} current\_user.is\_authenticated:
+102             \textcolor{keywordflow}{return} redirect(url\_for(\textcolor{stringliteral}{'index'}))
+103 
+104         form = \hyperlink{classmain_1_1RegisterForm}{RegisterForm}()
+105         response = make\_response(render\_template(\textcolor{stringliteral}{'register.html'}, form=form))
+106         \textcolor{keywordflow}{return} response
+107 
 \end{DoxyCode}
 \index{main\+::register@{main\+::register}!post@{post}}
 \index{post@{post}!main\+::register@{main\+::register}}
@@ -66,29 +68,29 @@ Definition at line 97 of file main.\+py.
 )}\hypertarget{classmain_1_1register_a890271e936f3717c3ac52428f7a058ef}{}\label{classmain_1_1register_a890271e936f3717c3ac52428f7a058ef}
 
 
-Definition at line 105 of file main.\+py.
+Definition at line 108 of file main.\+py.
 
 
 \begin{DoxyCode}
-105     \textcolor{keyword}{def }\hyperlink{classmain_1_1register_a890271e936f3717c3ac52428f7a058ef}{post}(self):
-106         username = request.form.get(\textcolor{stringliteral}{'username'})
-107         password = request.form.get(\textcolor{stringliteral}{'password'})
-108         password\_again = request.form.get(\textcolor{stringliteral}{'password\_again'})
-109 
-110         user = User.query.filter\_by(username=username).first()
-111 
-112         \textcolor{keywordflow}{if} user \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-113             flash(\textcolor{stringliteral}{'Username already exists.'})
-114             \textcolor{keywordflow}{return} redirect(url\_for(\textcolor{stringliteral}{'register'}))
-115 
-116         user = \hyperlink{classmain_1_1User}{User}(username=username, password=password)
-117         db.session.add(user)
-118         db.session.commit()
-119 
-120         session[\textcolor{stringliteral}{'username'}] = user.username
-121 
-122         \textcolor{keywordflow}{return} redirect(url\_for(\textcolor{stringliteral}{'twofactor'}))
-123 
+108     \textcolor{keyword}{def }\hyperlink{classmain_1_1register_a890271e936f3717c3ac52428f7a058ef}{post}(self):
+109         username = request.form.get(\textcolor{stringliteral}{'username'})
+110         password = request.form.get(\textcolor{stringliteral}{'password'})
+111         password\_again = request.form.get(\textcolor{stringliteral}{'password\_again'})
+112 
+113         user = User.query.filter\_by(username=username).first()
+114 
+115         \textcolor{keywordflow}{if} user \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+116             flash(\textcolor{stringliteral}{'Username already exists.'})
+117             \textcolor{keywordflow}{return} redirect(url\_for(\textcolor{stringliteral}{'register'}))
+118 
+119         user = \hyperlink{classmain_1_1User}{User}(username=username, password=password)
+120         db.session.add(user)
+121         db.session.commit()
+122 
+123         session[\textcolor{stringliteral}{'username'}] = user.username
+124 
+125         \textcolor{keywordflow}{return} redirect(url\_for(\textcolor{stringliteral}{'twofactor'}))
+126 
 \end{DoxyCode}
 
 

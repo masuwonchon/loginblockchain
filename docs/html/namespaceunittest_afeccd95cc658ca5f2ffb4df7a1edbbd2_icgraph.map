@@ -1,4 +1,5 @@
 <map id="unittest.mok_request_post" name="unittest.mok_request_post">
 <area shape="rect" id="node2" href="$namespaceunittest.html#aa1c9f3b8631f7f60770414cf8958e2be" title="unittest.unittest_request\l_login_token" alt="" coords="248,5,428,47"/>
-<area shape="rect" id="node3" href="$namespaceunittest.html#a8b30a1b14f91e9e9d093c13a7e68ee93" title="unittest.unittest_request\l_login_notoken" alt="" coords="248,71,428,112"/>
+<area shape="rect" id="node4" href="$namespaceunittest.html#a8b30a1b14f91e9e9d093c13a7e68ee93" title="unittest.unittest_request\l_login_notoken" alt="" coords="248,71,428,112"/>
+<area shape="rect" id="node3" href="$namespaceunittest.html#a67d37c181ab73d9ac88a67b2f9ff2297" title="unittest.unittest_subfunction\l_update_loginhashblock" alt="" coords="476,39,681,80"/>
 </map>

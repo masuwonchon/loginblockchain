@@ -2,7 +2,8 @@
 \label{classmain_1_1logout}\index{main.\+logout@{main.\+logout}}
 
 
-Inheritance diagram for main.\+logout\+:\nopagebreak
+Inheritance diagram for main.\+logout\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -11,7 +12,8 @@ Inheritance diagram for main.\+logout\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for main.\+logout\+:\nopagebreak
+Collaboration diagram for main.\+logout\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -30,7 +32,7 @@ def \hyperlink{classmain_1_1logout_a014267caa3d9cc9e42fdb71ef54ce43b}{get} (self
 \subsection{Detailed Description}
 
 
-Definition at line 237 of file main.\+py.
+Definition at line 243 of file main.\+py.
 
 
 
@@ -44,17 +46,17 @@ Definition at line 237 of file main.\+py.
 )}\hypertarget{classmain_1_1logout_a014267caa3d9cc9e42fdb71ef54ce43b}{}\label{classmain_1_1logout_a014267caa3d9cc9e42fdb71ef54ce43b}
 
 
-Definition at line 267 of file main.\+py.
+Definition at line 273 of file main.\+py.
 
 
 \begin{DoxyCode}
-267     \textcolor{keyword}{def }\hyperlink{classmain_1_1logout_a014267caa3d9cc9e42fdb71ef54ce43b}{get}(self):
-268         \textcolor{keywordflow}{if} current\_user.is\_active == \textcolor{keyword}{False}:
-269             \textcolor{keywordflow}{return} redirect(url\_for(\textcolor{stringliteral}{'index'}))
-270 
-271         response = make\_response(render\_template(\textcolor{stringliteral}{'logout.html'}))
-272         \textcolor{keywordflow}{return} response
-273 
+273     \textcolor{keyword}{def }\hyperlink{classmain_1_1logout_a014267caa3d9cc9e42fdb71ef54ce43b}{get}(self):
+274         \textcolor{keywordflow}{if} current\_user.is\_active == \textcolor{keyword}{False}:
+275             \textcolor{keywordflow}{return} redirect(url\_for(\textcolor{stringliteral}{'index'}))
+276 
+277         response = make\_response(render\_template(\textcolor{stringliteral}{'logout.html'}))
+278         \textcolor{keywordflow}{return} response
+279 
 \end{DoxyCode}
 \index{main\+::logout@{main\+::logout}!post@{post}}
 \index{post@{post}!main\+::logout@{main\+::logout}}
@@ -65,42 +67,42 @@ Definition at line 267 of file main.\+py.
 )}\hypertarget{classmain_1_1logout_a726ef779e6bf4da8974eae3209276922}{}\label{classmain_1_1logout_a726ef779e6bf4da8974eae3209276922}
 
 
-Definition at line 238 of file main.\+py.
+Definition at line 244 of file main.\+py.
 
 
 \begin{DoxyCode}
-238     \textcolor{keyword}{def }\hyperlink{classmain_1_1logout_a726ef779e6bf4da8974eae3209276922}{post}(self):
-239         username = request.form.get(\textcolor{stringliteral}{'username'})
-240         prev\_LHB = request.form.get(\textcolor{stringliteral}{'loginhashblock'})
-241 
-242         \textcolor{keywordflow}{if} current\_user.is\_active == \textcolor{keyword}{False}:
-243             \textcolor{keywordflow}{return} redirect(url\_for(\textcolor{stringliteral}{'index'}))
-244 
-245         user = User.query.filter\_by(username=username).first()
-246 
-247         \textcolor{keywordflow}{if} DEBUG:
-248             \hyperlink{namespaceloginhashblock_a1096aa8494b9c5875decc029d8b40ea9}{print\_LHBlist}(user.Lhashblock)
-249 
-250         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} prev\_LHB:
-251             print(\textcolor{stringliteral}{"[info:logout:post] GO TO OTP"})
-252         \textcolor{keywordflow}{else}:
-253             LHBlistStr, new\_LHB = \hyperlink{namespaceloginhashblock_a2bcc7ddd0fcc3788572dd77808cb624d}{update\_loginhashblocklist}(user.Lhashblock, 
+244     \textcolor{keyword}{def }\hyperlink{classmain_1_1logout_a726ef779e6bf4da8974eae3209276922}{post}(self):
+245         username = request.form.get(\textcolor{stringliteral}{'username'})
+246         prev\_LHB = request.form.get(\textcolor{stringliteral}{'loginhashblock'})
+247 
+248         \textcolor{keywordflow}{if} current\_user.is\_active == \textcolor{keyword}{False}:
+249             \textcolor{keywordflow}{return} redirect(url\_for(\textcolor{stringliteral}{'index'}))
+250 
+251         user = User.query.filter\_by(username=username).first()
+252 
+253         \textcolor{keywordflow}{if} DEBUG:
+254             \hyperlink{namespaceloginhashblock_a1096aa8494b9c5875decc029d8b40ea9}{print\_LHBlist}(user.Lhashblock)
+255 
+256         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} prev\_LHB:
+257             print(\textcolor{stringliteral}{"[info:logout:post] GO TO OTP"})
+258         \textcolor{keywordflow}{else}:
+259             LHBlistStr, new\_LHB = \hyperlink{namespaceloginhashblock_a2bcc7ddd0fcc3788572dd77808cb624d}{update\_loginhashblocklist}(user.Lhashblock, 
       prev\_LHB, DEBUG=DEBUG)
-254             user.Lhashblock = LHBlistStr
-255             db.session.commit()
-256 
-257         condition = \textcolor{keyword}{True}
-258         logout\_user()
-259 
-260         \textcolor{keywordflow}{if} DEBUG:
-261             text = \textcolor{stringliteral}{"[info:logout:post]\(\backslash\)nprev\_hashblock[\{\}]: \{\}\(\backslash\)nnext\_hashblock[\{\}]: \{\}"}.format(username,
+260             user.Lhashblock = LHBlistStr
+261             db.session.commit()
+262 
+263         condition = \textcolor{keyword}{True}
+264         logout\_user()
+265 
+266         \textcolor{keywordflow}{if} DEBUG:
+267             text = \textcolor{stringliteral}{"[info:logout:post]\(\backslash\)nprev\_hashblock[\{\}]: \{\}\(\backslash\)nnext\_hashblock[\{\}]: \{\}"}.format(username,
       prev\_LHB,username,new\_LHB)
-262             print(text)
-263 
-264         response = make\_response(render\_template(\textcolor{stringliteral}{'index.html'}, condition=condition, username=username, 
+268             print(text)
+269 
+270         response = make\_response(render\_template(\textcolor{stringliteral}{'index.html'}, condition=condition, username=username, 
       LoginHB=new\_LHB))
-265         \textcolor{keywordflow}{return} response
-266 
+271         \textcolor{keywordflow}{return} response
+272 
 \end{DoxyCode}
 
 

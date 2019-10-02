@@ -20,7 +20,8 @@ DEBUG = False
 
 def print_LHBlist(LHBlistStr, DEBUG=False):
     """
-    The function prints login hash block list for debug. if login hash block list length is above 1, login hash block prints line by line.
+    The function prints login hash block list for debug. 
+    If login hash block list length is above 1, login hash block prints line by line.
     :param LHBlistStr:
     :return:
     """
@@ -43,11 +44,15 @@ def print_LHBlist(LHBlistStr, DEBUG=False):
 
 def pbkdf2_hash(data, salt, iterations, dklen=None, hash_name="sha256", DEBUG=False):
     """
-    The function generated hash using PKCS#5 password-based key derivation function. It uses HMAC as pseudorandom function and returns the hexadecimal representation of the binary data. Every byte of data is converted into the corresponding 2-digit hex representation.
+    The function generated hash using PKCS#5 password-based key derivation function. 
+    It uses HMAC as pseudorandom function and returns the hexadecimal representation of the binary data. 
+    Every byte of data is converted into the corresponding 2-digit hex representation.
     :param data: data and salt are interpreted as buffers of byte
     :param salt: data and salt are interpreted as buffers of byte
-    :param iterations: The number of iterations should be chosen based on the hash algorithm and computing power. As of 2013, at least 100,000 iterations of SHA-256 are suggested.
-    :param dklen: dklen is the length of the derived key. If dklen is None then the digest size of the hash algorithm hash_name is used, e.g. 64 for SHA-512.
+    :param iterations: The number of iterations should be chosen based on the hash algorithm and computing power. 
+                       As of 2013, at least 100,000 iterations of SHA-256 are suggested.
+    :param dklen: dklen is the length of the derived key. 
+                  If dklen is None then the digest size of the hash algorithm hash_name is used, e.g. 64 for SHA-512.
     :param hash_name: hash_name is the desired name of the hash digest algorithm for HMAC(default: sha256)
     :return:
     """
@@ -81,7 +86,8 @@ def create_salt(length, RAND_CHARS=None, DEBUG=False):
 
 def create_loginhashblocklist(LHBlistStr, DEBUG=DEBUG):
     """
-    This function create login hash block list. First of all it generate device id and then it makes login hash block string. Finally it update the login hash block list that was joined with login hash block.
+    This function create login hash block list. First of all it generate device id and then it makes login hash block string. 
+    Finally it update the login hash block list that was joined with login hash block.
     :param LHBlistStr: previous login hash block list
     :return:
     """
@@ -94,7 +100,10 @@ def create_loginhashblocklist(LHBlistStr, DEBUG=DEBUG):
 
 def update_loginhashblocklist(LHBlistStr, prevLHBstr, DEBUG=False):
     """
-    This function update login hash block list. It's parsed device id from input login hash block and then it will be updat to new hash block binded parsed device id. If LHBlistStr is null, LHBlistStr will be prevLHBstr. And, the other case is updating login hash block from the list.
+    This function update login hash block list. 
+    It's parsed device id from input login hash block and then it will be updat to new hash block binded parsed device id. 
+    If LHBlistStr is null, LHBlistStr will be prevLHBstr. 
+    And, the other case is updating login hash block from the list.
     :param LHBlistStr: login hash block list string
     :param LHBstr: login hash block
     :return:
@@ -139,7 +148,7 @@ def create_hash(salt, target, hash_name="sha256", iterations=100000, kdf=None, D
     This function is to obtain the digest of the byte target string, It uses HMAC as pseudorandom function.
     :param salt, target: Target and salt are interpreted as buffers of bytes.
     :param hash_name: The string hash_name is the desired name of the hash digest algorithm for HMAC
-    :param iterations: The number of iterations should be chosen based on the hash algorithm and computing power. As of 2013, at least 100,000 iterations of SHA-256 are suggested.
+    :param iterations: The number of iterations should be chosen based on the hash algorithm and computing power. 
     :param kdf: key derivation function(ex, bcrypt, PBKDF2 etc)
     :return:
     """
@@ -193,7 +202,8 @@ def valid_hash(target_hash, salt, target, method, DEBUG=False):
 
 def get_deviceId(LHBstr, DEBUG=False):
     """
-    This function is to get device id from login hash block. login hash block is on device id and hashblock divided by special characters '$'.
+    This function is to get device id from login hash block. 
+    Login hash block is on device id and hashblock divided by special characters '$'.
     :param LHBstr: string of login hash block
     :return:
     """
@@ -212,8 +222,8 @@ def get_deviceId(LHBstr, DEBUG=False):
 
 def create_deviceId(DEBUG=False):
     """
-    This function is to generate device id, Device id is used to identify client computer, terminal and environment.
-devicd is created by random string as a magic number
+    This function is to generate device id, Device id is used to identify client computer, terminal and environment. 
+    DeviceId is created by random string as a magic number
     :return:
     """
 
@@ -228,7 +238,7 @@ devicd is created by random string as a magic number
 
 def compare_loginhashblock(a, b, DEBUG=False):
     """
-    This function is to compare tow login hash block. if these are same, it return True. others cases, it return False
+    This function is to compare tow login hash block. If these are same, it return True. others cases, it return False
     :param a: compare login hash block
     :param b: compare login hash block
     :return: Bool
@@ -255,7 +265,9 @@ def compare_loginhashblock(a, b, DEBUG=False):
 
 def verify_loginhashblock(LHBlistStr, LHBstr, DEBUG=False):
     """
-    This function verify login hash block in db or not. it parse the device id from input login hash block, and search device id in login hash block list string. if it matched, return True
+    This function verify login hash block in db or not. 
+    It parse the device id from input login hash block, and search device id in login hash block list string. 
+    If it matched, return True
     :param LHBlistStr: login hash block list
     :param LHBstr: login hash block
     :return:
@@ -281,7 +293,7 @@ def valid_loginhashblock(LHBstr, DEBUG=False):
     """
     This function is to check login hash block
     hashblock format: deviceid(8)+$+hash
-    ex)jUs6LQMX$jUs6LQMX$ceccffbfa52e55825f87573b068c8d759b1540f9833a7d7ebd7a27c993ffd316
+    ex) jUs6LQMX$jUs6LQMX$ceccffbfa52e55825f87573b068c8d759b1540f9833a7d7ebd7a27c993ffd316
     :param LHBstr:
     :return: BOOL
     """
@@ -378,7 +390,7 @@ def get_loginhashblock(devid, LHBlist, DEBUG=False):
 
 def create_loginhashblock(devid, key=None, DEBUG=False):
     """
-    This functions is to generate login hash block with devid
+    This functions is to generate login hash block with device id.
     :param devid:
     :param key:
     :return: login hash block

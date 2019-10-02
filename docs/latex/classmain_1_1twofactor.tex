@@ -2,7 +2,8 @@
 \label{classmain_1_1twofactor}\index{main.\+twofactor@{main.\+twofactor}}
 
 
-Inheritance diagram for main.\+twofactor\+:\nopagebreak
+Inheritance diagram for main.\+twofactor\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -11,7 +12,8 @@ Inheritance diagram for main.\+twofactor\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for main.\+twofactor\+:\nopagebreak
+Collaboration diagram for main.\+twofactor\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -28,7 +30,7 @@ def \hyperlink{classmain_1_1twofactor_a87a3b360a2540681f4620d2820f8bb31}{get} (s
 \subsection{Detailed Description}
 
 
-Definition at line 124 of file main.\+py.
+Definition at line 127 of file main.\+py.
 
 
 
@@ -42,24 +44,24 @@ Definition at line 124 of file main.\+py.
 )}\hypertarget{classmain_1_1twofactor_a87a3b360a2540681f4620d2820f8bb31}{}\label{classmain_1_1twofactor_a87a3b360a2540681f4620d2820f8bb31}
 
 
-Definition at line 125 of file main.\+py.
+Definition at line 128 of file main.\+py.
 
 
 \begin{DoxyCode}
-125     \textcolor{keyword}{def }\hyperlink{classmain_1_1twofactor_a87a3b360a2540681f4620d2820f8bb31}{get}(self):
-126         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'username'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} session:
-127             \textcolor{keywordflow}{return} redirect(url\_for(\textcolor{stringliteral}{'index'}))
-128 
-129         user = User.query.filter\_by(username=session[\textcolor{stringliteral}{'username'}]).first()
-130 
-131         \textcolor{keywordflow}{if} user \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-132             \textcolor{keywordflow}{return} redirect(url\_for(\textcolor{stringliteral}{'index'}))
+128     \textcolor{keyword}{def }\hyperlink{classmain_1_1twofactor_a87a3b360a2540681f4620d2820f8bb31}{get}(self):
+129         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'username'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} session:
+130             \textcolor{keywordflow}{return} redirect(url\_for(\textcolor{stringliteral}{'index'}))
+131 
+132         user = User.query.filter\_by(username=session[\textcolor{stringliteral}{'username'}]).first()
 133 
-134         param = \{\textcolor{stringliteral}{'Cache-Control'}: \textcolor{stringliteral}{'no-cache, no-store, must-revalidate'}, \textcolor{stringliteral}{'Pragma'}: \textcolor{stringliteral}{'no-cache'}, \textcolor{stringliteral}{'Expires'}: \textcolor{stringliteral}{'
+134         \textcolor{keywordflow}{if} user \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+135             \textcolor{keywordflow}{return} redirect(url\_for(\textcolor{stringliteral}{'index'}))
+136 
+137         param = \{\textcolor{stringliteral}{'Cache-Control'}: \textcolor{stringliteral}{'no-cache, no-store, must-revalidate'}, \textcolor{stringliteral}{'Pragma'}: \textcolor{stringliteral}{'no-cache'}, \textcolor{stringliteral}{'Expires'}: \textcolor{stringliteral}{'
       0'}\}
-135         response = make\_response(render\_template(\textcolor{stringliteral}{'two-factor-setup.html'}), 200, param)
-136         \textcolor{keywordflow}{return} response
-137 
+138         response = make\_response(render\_template(\textcolor{stringliteral}{'two-factor-setup.html'}), 200, param)
+139         \textcolor{keywordflow}{return} response
+140 
 \end{DoxyCode}
 
 

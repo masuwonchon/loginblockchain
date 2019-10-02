@@ -2,7 +2,8 @@
 \label{classmain_1_1User}\index{main.\+User@{main.\+User}}
 
 
-Inheritance diagram for main.\+User\+:\nopagebreak
+Inheritance diagram for main.\+User\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -11,7 +12,8 @@ Inheritance diagram for main.\+User\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for main.\+User\+:\nopagebreak
+Collaboration diagram for main.\+User\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -56,7 +58,7 @@ def \hyperlink{classmain_1_1User_a390f1500b4c2fe34d0ba3cf8d1d54906}{verify\+\_\+
 \begin{DoxyVerb}User model.\end{DoxyVerb}
  
 
-Definition at line 41 of file main.\+py.
+Definition at line 44 of file main.\+py.
 
 
 
@@ -71,16 +73,16 @@ Definition at line 41 of file main.\+py.
 )}\hypertarget{classmain_1_1User_ad8e260b3a15f0c0e77c7df7a68d8fcc7}{}\label{classmain_1_1User_ad8e260b3a15f0c0e77c7df7a68d8fcc7}
 
 
-Definition at line 51 of file main.\+py.
+Definition at line 54 of file main.\+py.
 
 
 \begin{DoxyCode}
-51     \textcolor{keyword}{def }\hyperlink{classmain_1_1User_ad8e260b3a15f0c0e77c7df7a68d8fcc7}{\_\_init\_\_}(self, **kwargs):
-52         super(User, self).\hyperlink{classmain_1_1User_ad8e260b3a15f0c0e77c7df7a68d8fcc7}{\_\_init\_\_}(**kwargs)
-53         \textcolor{keywordflow}{if} self.\hyperlink{classmain_1_1User_a2a7a2d67099632b248ad93661e9733d2}{otp\_secret} \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-54             \textcolor{comment}{# generate a random secret}
-55             self.\hyperlink{classmain_1_1User_a2a7a2d67099632b248ad93661e9733d2}{otp\_secret} = base64.b32encode(os.urandom(10)).decode(\textcolor{stringliteral}{'utf-8'})
-56 
+54     \textcolor{keyword}{def }\hyperlink{classmain_1_1User_ad8e260b3a15f0c0e77c7df7a68d8fcc7}{\_\_init\_\_}(self, **kwargs):
+55         super(User, self).\hyperlink{classmain_1_1User_ad8e260b3a15f0c0e77c7df7a68d8fcc7}{\_\_init\_\_}(**kwargs)
+56         \textcolor{keywordflow}{if} self.\hyperlink{classmain_1_1User_a2a7a2d67099632b248ad93661e9733d2}{otp\_secret} \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+57             \textcolor{comment}{# generate a random secret}
+58             self.\hyperlink{classmain_1_1User_a2a7a2d67099632b248ad93661e9733d2}{otp\_secret} = base64.b32encode(os.urandom(10)).decode(\textcolor{stringliteral}{'utf-8'})
+59 
 \end{DoxyCode}
 
 
@@ -94,14 +96,14 @@ Definition at line 51 of file main.\+py.
 )}\hypertarget{classmain_1_1User_a8b69af8d948dbe7698c904bf94c6ac21}{}\label{classmain_1_1User_a8b69af8d948dbe7698c904bf94c6ac21}
 
 
-Definition at line 72 of file main.\+py.
+Definition at line 75 of file main.\+py.
 
 
 \begin{DoxyCode}
-72     \textcolor{keyword}{def }\hyperlink{classmain_1_1User_a8b69af8d948dbe7698c904bf94c6ac21}{get\_totp\_uri}(self):
-73         \textcolor{keywordflow}{return} \textcolor{stringliteral}{'otpauth://totp/2FA-Demo:\{0\}?secret=\{1\}&issuer=2FA-Demo'}.format(self.
+75     \textcolor{keyword}{def }\hyperlink{classmain_1_1User_a8b69af8d948dbe7698c904bf94c6ac21}{get\_totp\_uri}(self):
+76         \textcolor{keywordflow}{return} \textcolor{stringliteral}{'otpauth://totp/2FA-Demo:\{0\}?secret=\{1\}&issuer=2FA-Demo'}.format(self.
       \hyperlink{classmain_1_1User_afc469a49c408f90fb653d979d2669f62}{username}, self.\hyperlink{classmain_1_1User_a2a7a2d67099632b248ad93661e9733d2}{otp\_secret})
-74 
+77 
 \end{DoxyCode}
 \index{main\+::\+User@{main\+::\+User}!password@{password}}
 \index{password@{password}!main\+::\+User@{main\+::\+User}}
@@ -112,13 +114,13 @@ Definition at line 72 of file main.\+py.
 )}\hypertarget{classmain_1_1User_a0086c67911212cc60a39df0424fff2f8}{}\label{classmain_1_1User_a0086c67911212cc60a39df0424fff2f8}
 
 
-Definition at line 58 of file main.\+py.
+Definition at line 61 of file main.\+py.
 
 
 \begin{DoxyCode}
-58     \textcolor{keyword}{def }\hyperlink{classmain_1_1User_a0086c67911212cc60a39df0424fff2f8}{password}(self):
-59         \textcolor{keywordflow}{raise} AttributeError(\textcolor{stringliteral}{'password is not a readable attribute'})
-60 
+61     \textcolor{keyword}{def }\hyperlink{classmain_1_1User_a0086c67911212cc60a39df0424fff2f8}{password}(self):
+62         \textcolor{keywordflow}{raise} AttributeError(\textcolor{stringliteral}{'password is not a readable attribute'})
+63 
 \end{DoxyCode}
 
 
@@ -141,13 +143,13 @@ Here is the caller graph for this function\+:\nopagebreak
 )}\hypertarget{classmain_1_1User_a5fac9e642b0afaee7e29ddb94e2f1c3e}{}\label{classmain_1_1User_a5fac9e642b0afaee7e29ddb94e2f1c3e}
 
 
-Definition at line 62 of file main.\+py.
+Definition at line 65 of file main.\+py.
 
 
 \begin{DoxyCode}
-62     \textcolor{keyword}{def }\hyperlink{classmain_1_1User_a0086c67911212cc60a39df0424fff2f8}{password}(self, password):
-63         self.\hyperlink{classmain_1_1User_a4bd5dd61d9eca670b326c87ec7f79f94}{password\_hash} = generate\_password\_hash(password)
-64 
+65     \textcolor{keyword}{def }\hyperlink{classmain_1_1User_a0086c67911212cc60a39df0424fff2f8}{password}(self, password):
+66         self.\hyperlink{classmain_1_1User_a4bd5dd61d9eca670b326c87ec7f79f94}{password\_hash} = generate\_password\_hash(password)
+67 
 \end{DoxyCode}
 
 
@@ -170,14 +172,14 @@ Here is the call graph for this function\+:\nopagebreak
 )}\hypertarget{classmain_1_1User_a147049a30fbe51d6192d320aa3ea5409}{}\label{classmain_1_1User_a147049a30fbe51d6192d320aa3ea5409}
 
 
-Definition at line 68 of file main.\+py.
+Definition at line 71 of file main.\+py.
 
 
 \begin{DoxyCode}
-68     \textcolor{keyword}{def }\hyperlink{classmain_1_1User_a147049a30fbe51d6192d320aa3ea5409}{verify\_loginhashblock}(self, LoginHB):
-69         loginhashblock = self.Lhashblock.split(\textcolor{stringliteral}{','})
-70         \textcolor{keywordflow}{return} \textcolor{keyword}{True}
-71 
+71     \textcolor{keyword}{def }\hyperlink{classmain_1_1User_a147049a30fbe51d6192d320aa3ea5409}{verify\_loginhashblock}(self, LoginHB):
+72         loginhashblock = self.Lhashblock.split(\textcolor{stringliteral}{','})
+73         \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+74 
 \end{DoxyCode}
 \index{main\+::\+User@{main\+::\+User}!verify\+\_\+password@{verify\+\_\+password}}
 \index{verify\+\_\+password@{verify\+\_\+password}!main\+::\+User@{main\+::\+User}}
@@ -189,13 +191,13 @@ Definition at line 68 of file main.\+py.
 )}\hypertarget{classmain_1_1User_a8acfe5aa75f7a958346bcb2d156586d9}{}\label{classmain_1_1User_a8acfe5aa75f7a958346bcb2d156586d9}
 
 
-Definition at line 65 of file main.\+py.
+Definition at line 68 of file main.\+py.
 
 
 \begin{DoxyCode}
-65     \textcolor{keyword}{def }\hyperlink{classmain_1_1User_a8acfe5aa75f7a958346bcb2d156586d9}{verify\_password}(self, password):
-66         \textcolor{keywordflow}{return} check\_password\_hash(self.\hyperlink{classmain_1_1User_a4bd5dd61d9eca670b326c87ec7f79f94}{password\_hash}, password)
-67 
+68     \textcolor{keyword}{def }\hyperlink{classmain_1_1User_a8acfe5aa75f7a958346bcb2d156586d9}{verify\_password}(self, password):
+69         \textcolor{keywordflow}{return} check\_password\_hash(self.\hyperlink{classmain_1_1User_a4bd5dd61d9eca670b326c87ec7f79f94}{password\_hash}, password)
+70 
 \end{DoxyCode}
 \index{main\+::\+User@{main\+::\+User}!verify\+\_\+totp@{verify\+\_\+totp}}
 \index{verify\+\_\+totp@{verify\+\_\+totp}!main\+::\+User@{main\+::\+User}}
@@ -207,14 +209,14 @@ Definition at line 65 of file main.\+py.
 )}\hypertarget{classmain_1_1User_a390f1500b4c2fe34d0ba3cf8d1d54906}{}\label{classmain_1_1User_a390f1500b4c2fe34d0ba3cf8d1d54906}
 
 
-Definition at line 75 of file main.\+py.
+Definition at line 78 of file main.\+py.
 
 
 \begin{DoxyCode}
-75     \textcolor{keyword}{def }\hyperlink{classmain_1_1User_a390f1500b4c2fe34d0ba3cf8d1d54906}{verify\_totp}(self, token):
-76         \textcolor{keywordflow}{return} onetimepass.valid\_totp(token, self.\hyperlink{classmain_1_1User_a2a7a2d67099632b248ad93661e9733d2}{otp\_secret})
-77 
-78 @lm.user\_loader
+78     \textcolor{keyword}{def }\hyperlink{classmain_1_1User_a390f1500b4c2fe34d0ba3cf8d1d54906}{verify\_totp}(self, token):
+79         \textcolor{keywordflow}{return} onetimepass.valid\_totp(token, self.\hyperlink{classmain_1_1User_a2a7a2d67099632b248ad93661e9733d2}{otp\_secret})
+80 
+81 @lm.user\_loader
 \end{DoxyCode}
 
 
@@ -224,42 +226,42 @@ Definition at line 75 of file main.\+py.
 \subsubsection[{\texorpdfstring{id}{id}}]{\setlength{\rightskip}{0pt plus 5cm}main.\+User.\+id = db.\+Column(db.\+Integer, primary\+\_\+key=True)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classmain_1_1User_af213bc1240b634425b1b571d6bccc561}{}\label{classmain_1_1User_af213bc1240b634425b1b571d6bccc561}
 
 
-Definition at line 44 of file main.\+py.
+Definition at line 47 of file main.\+py.
 
 \index{main\+::\+User@{main\+::\+User}!Lhashblock@{Lhashblock}}
 \index{Lhashblock@{Lhashblock}!main\+::\+User@{main\+::\+User}}
 \subsubsection[{\texorpdfstring{Lhashblock}{Lhashblock}}]{\setlength{\rightskip}{0pt plus 5cm}main.\+User.\+Lhashblock = db.\+Column(db.\+String(128))\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classmain_1_1User_aa3b839482f4a293703c22ae82e9c639d}{}\label{classmain_1_1User_aa3b839482f4a293703c22ae82e9c639d}
 
 
-Definition at line 48 of file main.\+py.
+Definition at line 51 of file main.\+py.
 
 \index{main\+::\+User@{main\+::\+User}!Login\+HB@{Login\+HB}}
 \index{Login\+HB@{Login\+HB}!main\+::\+User@{main\+::\+User}}
 \subsubsection[{\texorpdfstring{Login\+HB}{LoginHB}}]{\setlength{\rightskip}{0pt plus 5cm}main.\+User.\+Login\+HB = str({\bf Lhashblock})\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classmain_1_1User_aece6256cb85b54493c6d05185f112716}{}\label{classmain_1_1User_aece6256cb85b54493c6d05185f112716}
 
 
-Definition at line 49 of file main.\+py.
+Definition at line 52 of file main.\+py.
 
 \index{main\+::\+User@{main\+::\+User}!otp\+\_\+secret@{otp\+\_\+secret}}
 \index{otp\+\_\+secret@{otp\+\_\+secret}!main\+::\+User@{main\+::\+User}}
 \subsubsection[{\texorpdfstring{otp\+\_\+secret}{otp_secret}}]{\setlength{\rightskip}{0pt plus 5cm}main.\+User.\+otp\+\_\+secret = db.\+Column(db.\+String(16))\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classmain_1_1User_a2a7a2d67099632b248ad93661e9733d2}{}\label{classmain_1_1User_a2a7a2d67099632b248ad93661e9733d2}
 
 
-Definition at line 47 of file main.\+py.
+Definition at line 50 of file main.\+py.
 
 \index{main\+::\+User@{main\+::\+User}!password\+\_\+hash@{password\+\_\+hash}}
 \index{password\+\_\+hash@{password\+\_\+hash}!main\+::\+User@{main\+::\+User}}
 \subsubsection[{\texorpdfstring{password\+\_\+hash}{password_hash}}]{\setlength{\rightskip}{0pt plus 5cm}main.\+User.\+password\+\_\+hash = db.\+Column(db.\+String(128))\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classmain_1_1User_a4bd5dd61d9eca670b326c87ec7f79f94}{}\label{classmain_1_1User_a4bd5dd61d9eca670b326c87ec7f79f94}
 
 
-Definition at line 46 of file main.\+py.
+Definition at line 49 of file main.\+py.
 
 \index{main\+::\+User@{main\+::\+User}!username@{username}}
 \index{username@{username}!main\+::\+User@{main\+::\+User}}
 \subsubsection[{\texorpdfstring{username}{username}}]{\setlength{\rightskip}{0pt plus 5cm}main.\+User.\+username = db.\+Column(db.\+String(64), {\bf index}=True)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classmain_1_1User_afc469a49c408f90fb653d979d2669f62}{}\label{classmain_1_1User_afc469a49c408f90fb653d979d2669f62}
 
 
-Definition at line 45 of file main.\+py.
+Definition at line 48 of file main.\+py.
 
 
 

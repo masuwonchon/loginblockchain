@@ -64,46 +64,45 @@ Example usage:\end{DoxyVerb}
 \item[{}]{D\+E\+B\+UG = {\ttfamily False}}
 \end{DoxyParamCaption}
 )}\hypertarget{namespaceloginhashblock_ac24dd842eb90e0ede55e842d44148d5b}{}\label{namespaceloginhashblock_ac24dd842eb90e0ede55e842d44148d5b}
-\begin{DoxyVerb}This function compare two LHB in Python to check if they are identical.
+\begin{DoxyVerb}This function is to compare tow login hash block. If these are same, it return True. others cases, it return False
 :param a: compare login hash block
 :param b: compare login hash block
-:param DEBUG:
-:return:
+:return: Bool
 \end{DoxyVerb}
  
 
-Definition at line 230 of file loginhashblock.\+py.
+Definition at line 239 of file loginhashblock.\+py.
 
 
 \begin{DoxyCode}
-230 \textcolor{keyword}{def }\hyperlink{namespaceloginhashblock_ac24dd842eb90e0ede55e842d44148d5b}{compare\_loginhashblock}(a, b, DEBUG=False):
-231     \textcolor{stringliteral}{"""}
-232 \textcolor{stringliteral}{    This function compare two LHB in Python to check if they are identical.}
-233 \textcolor{stringliteral}{    :param a: compare login hash block}
-234 \textcolor{stringliteral}{    :param b: compare login hash block}
-235 \textcolor{stringliteral}{    :param DEBUG:}
-236 \textcolor{stringliteral}{    :return:}
-237 \textcolor{stringliteral}{    """}
-238 
-239     \textcolor{keywordflow}{if} DEBUG:
-240         print(\textcolor{stringliteral}{"[info:compare\_loginhashblock] a: "},a)
-241         print(\textcolor{stringliteral}{"[info:compare\_loginhashblock] b: "},b)
-242 
-243     \textcolor{keywordflow}{if} isinstance(a, str):
-244         a = a.encode(\textcolor{stringliteral}{"utf-8"})
-245 
-246     \textcolor{keywordflow}{if} isinstance(b, str):
-247         b = b.encode(\textcolor{stringliteral}{"utf-8"})
-248 
-249     \textcolor{keywordflow}{if} len(a) != len(b):
-250         \textcolor{keywordflow}{return} \textcolor{keyword}{False}
-251 
-252     \textcolor{keywordflow}{for} x, y \textcolor{keywordflow}{in} zip(a, b):
-253         \textcolor{keywordflow}{if} x != y:
-254             \textcolor{keywordflow}{return} \textcolor{keyword}{False}
-255 
-256     \textcolor{keywordflow}{return} \textcolor{keyword}{True}
-257 
+239 \textcolor{keyword}{def }\hyperlink{namespaceloginhashblock_ac24dd842eb90e0ede55e842d44148d5b}{compare\_loginhashblock}(a, b, DEBUG=False):
+240     \textcolor{stringliteral}{"""}
+241 \textcolor{stringliteral}{    This function is to compare tow login hash block. If these are same, it return True. others cases, it
+       return False}
+242 \textcolor{stringliteral}{    :param a: compare login hash block}
+243 \textcolor{stringliteral}{    :param b: compare login hash block}
+244 \textcolor{stringliteral}{    :return: Bool}
+245 \textcolor{stringliteral}{    """}
+246 
+247     \textcolor{keywordflow}{if} DEBUG:
+248         print(\textcolor{stringliteral}{"[info:compare\_loginhashblock] a: "},a)
+249         print(\textcolor{stringliteral}{"[info:compare\_loginhashblock] b: "},b)
+250 
+251     \textcolor{keywordflow}{if} isinstance(a, str):
+252         a = a.encode(\textcolor{stringliteral}{"utf-8"})
+253 
+254     \textcolor{keywordflow}{if} isinstance(b, str):
+255         b = b.encode(\textcolor{stringliteral}{"utf-8"})
+256 
+257     \textcolor{keywordflow}{if} len(a) != len(b):
+258         \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+259 
+260     \textcolor{keywordflow}{for} x, y \textcolor{keywordflow}{in} zip(a, b):
+261         \textcolor{keywordflow}{if} x != y:
+262             \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+263 
+264     \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+265 
 \end{DoxyCode}
 
 
@@ -123,33 +122,33 @@ Here is the caller graph for this function\+:\nopagebreak
 \item[{}]{D\+E\+B\+UG = {\ttfamily False}}
 \end{DoxyParamCaption}
 )}\hypertarget{namespaceloginhashblock_a1bd31fe2f0ea4e6673127d72b6c42826}{}\label{namespaceloginhashblock_a1bd31fe2f0ea4e6673127d72b6c42826}
-\begin{DoxyVerb}This function is to generate device id, Device id is used to identify client computer, terminal and environment.
-devicd is created by random string as a magic number
+\begin{DoxyVerb}This function is to generate device id, Device id is used to identify client computer, terminal and environment. 
+DeviceId is created by random string as a magic number
 :return:
 \end{DoxyVerb}
  
 
-Definition at line 214 of file loginhashblock.\+py.
+Definition at line 223 of file loginhashblock.\+py.
 
 
 \begin{DoxyCode}
-214 \textcolor{keyword}{def }\hyperlink{namespaceloginhashblock_a1bd31fe2f0ea4e6673127d72b6c42826}{create\_deviceId}(DEBUG=False):
-215     \textcolor{stringliteral}{"""}
-216 \textcolor{stringliteral}{    This function is to generate device id, Device id is used to identify client computer, terminal and
-       environment.}
-217 \textcolor{stringliteral}{devicd is created by random string as a magic number}
-218 \textcolor{stringliteral}{    :return:}
-219 \textcolor{stringliteral}{    """}
-220 
-221     RAND\_CHARS = \textcolor{stringliteral}{"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"}
-222     devid = \hyperlink{namespaceloginhashblock_afe116dea3aaff238a5fa2bcd6edf2281}{create\_salt}(8, RAND\_CHARS=RAND\_CHARS)
-223 
-224     \textcolor{keywordflow}{if} DEBUG:
-225         text = \textcolor{stringliteral}{"[info:create\_deviceId] devid: \{\}"}.format(devid)
-226         print(text)
-227 
-228     \textcolor{keywordflow}{return} devid
+223 \textcolor{keyword}{def }\hyperlink{namespaceloginhashblock_a1bd31fe2f0ea4e6673127d72b6c42826}{create\_deviceId}(DEBUG=False):
+224     \textcolor{stringliteral}{"""}
+225 \textcolor{stringliteral}{    This function is to generate device id, Device id is used to identify client computer, terminal and
+       environment. }
+226 \textcolor{stringliteral}{    DeviceId is created by random string as a magic number}
+227 \textcolor{stringliteral}{    :return:}
+228 \textcolor{stringliteral}{    """}
 229 
+230     RAND\_CHARS = \textcolor{stringliteral}{"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"}
+231     devid = \hyperlink{namespaceloginhashblock_afe116dea3aaff238a5fa2bcd6edf2281}{create\_salt}(8, RAND\_CHARS=RAND\_CHARS)
+232 
+233     \textcolor{keywordflow}{if} DEBUG:
+234         text = \textcolor{stringliteral}{"[info:create\_deviceId] devid: \{\}"}.format(devid)
+235         print(text)
+236 
+237     \textcolor{keywordflow}{return} devid
+238 
 \end{DoxyCode}
 
 
@@ -188,50 +187,50 @@ Here is the caller graph for this function\+:\nopagebreak
 \begin{DoxyVerb}This function is to obtain the digest of the byte target string, It uses HMAC as pseudorandom function.
 :param salt, target: Target and salt are interpreted as buffers of bytes.
 :param hash_name: The string hash_name is the desired name of the hash digest algorithm for HMAC
-:param iterations: The number of iterations should be chosen based on the hash algorithm and computing power. As of 2013, at least 100,000 iterations of SHA-256 are suggested.
+:param iterations: The number of iterations should be chosen based on the hash algorithm and computing power. 
 :param kdf: key derivation function(ex, bcrypt, PBKDF2 etc)
 :return:
 \end{DoxyVerb}
  
 
-Definition at line 138 of file loginhashblock.\+py.
+Definition at line 146 of file loginhashblock.\+py.
 
 
 \begin{DoxyCode}
-138 \textcolor{keyword}{def }\hyperlink{namespaceloginhashblock_a935d8ae1c51e50f9e5db6a1d5f02b1b8}{create\_hash}(salt, target, hash\_name="sha256", iterations=100000, kdf=None, DEBUG=False):
-139     \textcolor{stringliteral}{"""}
-140 \textcolor{stringliteral}{    This function is to obtain the digest of the byte target string, It uses HMAC as pseudorandom function.}
-141 \textcolor{stringliteral}{    :param salt, target: Target and salt are interpreted as buffers of bytes.}
-142 \textcolor{stringliteral}{    :param hash\_name: The string hash\_name is the desired name of the hash digest algorithm for HMAC}
-143 \textcolor{stringliteral}{    :param iterations: The number of iterations should be chosen based on the hash algorithm and computing
-       power. As of 2013, at least 100,000 iterations of SHA-256 are suggested.}
-144 \textcolor{stringliteral}{    :param kdf: key derivation function(ex, bcrypt, PBKDF2 etc)}
-145 \textcolor{stringliteral}{    :return:}
-146 \textcolor{stringliteral}{    """}
-147 
-148     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} target \textcolor{keywordflow}{or} \textcolor{keywordflow}{not} salt:
-149         \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{"[info:create\_hash] target string or salt is null"})
-150 
-151     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} kdf:
-152         h = hashlib.new(hash\_name)
-153         h.update(target.encode(\textcolor{stringliteral}{'ascii'}))
-154         hash = h.hexdigest()
-155         method = \textcolor{stringliteral}{"none:%s:%d"} % (hash\_name, iterations)
-156     \textcolor{keywordflow}{else}:
-157         \textcolor{keywordflow}{if} kdf == \textcolor{stringliteral}{"pbkdf2"}:
-158             hash = \hyperlink{namespaceloginhashblock_a104d0a92cdfb6c337794b6ded42667d4}{pbkdf2\_hash}(target, salt, iterations, hash\_name=hash\_name)
-159             method = \textcolor{stringliteral}{"pbkdf2:%s:%d"} % (hash\_name, iterations)
-160         \textcolor{keywordflow}{elif} kdf == \textcolor{stringliteral}{"scrypt"}:
-161             \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{"[info:create\_hash] will be supported"})
-162         \textcolor{keywordflow}{else}:
-163             \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{"[info:create\_hash] Invalid support key derivation function"})
-164 
-165     \textcolor{keywordflow}{if} DEBUG:
-166         text = \textcolor{stringliteral}{"[info:create\_hash] hash: \{\}, method: \{\}"}.format(hash, method)
-167         print(text)
-168 
-169     \textcolor{keywordflow}{return} hash, method
-170 
+146 \textcolor{keyword}{def }\hyperlink{namespaceloginhashblock_a935d8ae1c51e50f9e5db6a1d5f02b1b8}{create\_hash}(salt, target, hash\_name="sha256", iterations=100000, kdf=None, DEBUG=False):
+147     \textcolor{stringliteral}{"""}
+148 \textcolor{stringliteral}{    This function is to obtain the digest of the byte target string, It uses HMAC as pseudorandom function.}
+149 \textcolor{stringliteral}{    :param salt, target: Target and salt are interpreted as buffers of bytes.}
+150 \textcolor{stringliteral}{    :param hash\_name: The string hash\_name is the desired name of the hash digest algorithm for HMAC}
+151 \textcolor{stringliteral}{    :param iterations: The number of iterations should be chosen based on the hash algorithm and computing
+       power. }
+152 \textcolor{stringliteral}{    :param kdf: key derivation function(ex, bcrypt, PBKDF2 etc)}
+153 \textcolor{stringliteral}{    :return:}
+154 \textcolor{stringliteral}{    """}
+155 
+156     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} target \textcolor{keywordflow}{or} \textcolor{keywordflow}{not} salt:
+157         \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{"[info:create\_hash] target string or salt is null"})
+158 
+159     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} kdf:
+160         h = hashlib.new(hash\_name)
+161         h.update(target.encode(\textcolor{stringliteral}{'ascii'}))
+162         hash = h.hexdigest()
+163         method = \textcolor{stringliteral}{"none:%s:%d"} % (hash\_name, iterations)
+164     \textcolor{keywordflow}{else}:
+165         \textcolor{keywordflow}{if} kdf == \textcolor{stringliteral}{"pbkdf2"}:
+166             hash = \hyperlink{namespaceloginhashblock_a104d0a92cdfb6c337794b6ded42667d4}{pbkdf2\_hash}(target, salt, iterations, hash\_name=hash\_name)
+167             method = \textcolor{stringliteral}{"pbkdf2:%s:%d"} % (hash\_name, iterations)
+168         \textcolor{keywordflow}{elif} kdf == \textcolor{stringliteral}{"scrypt"}:
+169             \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{"[info:create\_hash] will be supported"})
+170         \textcolor{keywordflow}{else}:
+171             \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{"[info:create\_hash] Invalid support key derivation function"})
+172 
+173     \textcolor{keywordflow}{if} DEBUG:
+174         text = \textcolor{stringliteral}{"[info:create\_hash] hash: \{\}, method: \{\}"}.format(hash, method)
+175         print(text)
+176 
+177     \textcolor{keywordflow}{return} hash, method
+178 
 \end{DoxyCode}
 
 
@@ -264,45 +263,45 @@ Here is the caller graph for this function\+:\nopagebreak
 \item[{}]{D\+E\+B\+UG = {\ttfamily False}}
 \end{DoxyParamCaption}
 )}\hypertarget{namespaceloginhashblock_ad3ef8dab740c69ca8424797f9c146a53}{}\label{namespaceloginhashblock_ad3ef8dab740c69ca8424797f9c146a53}
-\begin{DoxyVerb}This functions is to generate login hash block with devid
+\begin{DoxyVerb}This functions is to generate login hash block with device id.
 :param devid:
 :param key:
 :return: login hash block
 \end{DoxyVerb}
  
 
-Definition at line 381 of file loginhashblock.\+py.
+Definition at line 391 of file loginhashblock.\+py.
 
 
 \begin{DoxyCode}
-381 \textcolor{keyword}{def }\hyperlink{namespaceloginhashblock_ad3ef8dab740c69ca8424797f9c146a53}{create\_loginhashblock}(devid, key=None, DEBUG=False):
-382     \textcolor{stringliteral}{"""}
-383 \textcolor{stringliteral}{    This functions is to generate login hash block with devid}
-384 \textcolor{stringliteral}{    :param devid:}
-385 \textcolor{stringliteral}{    :param key:}
-386 \textcolor{stringliteral}{    :return: login hash block}
-387 \textcolor{stringliteral}{    """}
-388 
-389     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} devid:
-390         \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{"[info:create\_loginhashblock] devid is null"})
-391 
-392     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} key:
-393         key = \textcolor{stringliteral}{'HKAHJFKIIJF'}
-394 
-395     length = 8
-396     kdf = \textcolor{stringliteral}{'pbkdf2'}
-397     salt = \hyperlink{namespaceloginhashblock_afe116dea3aaff238a5fa2bcd6edf2281}{create\_salt}(length)
-398     hash, method = \hyperlink{namespaceloginhashblock_a935d8ae1c51e50f9e5db6a1d5f02b1b8}{create\_hash}(salt, key, kdf=kdf)
-399 
-400     \textcolor{keywordflow}{if} DEBUG:
-401         text = \textcolor{stringliteral}{"[info:create\_loginhashblock] salt: \{\}, method: \{\}, hash: \{\}, devid: \{\}"}.format(salt, method
+391 \textcolor{keyword}{def }\hyperlink{namespaceloginhashblock_ad3ef8dab740c69ca8424797f9c146a53}{create\_loginhashblock}(devid, key=None, DEBUG=False):
+392     \textcolor{stringliteral}{"""}
+393 \textcolor{stringliteral}{    This functions is to generate login hash block with device id.}
+394 \textcolor{stringliteral}{    :param devid:}
+395 \textcolor{stringliteral}{    :param key:}
+396 \textcolor{stringliteral}{    :return: login hash block}
+397 \textcolor{stringliteral}{    """}
+398 
+399     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} devid:
+400         \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{"[info:create\_loginhashblock] devid is null"})
+401 
+402     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} key:
+403         key = \textcolor{stringliteral}{'HKAHJFKIIJF'}
+404 
+405     length = 8
+406     kdf = \textcolor{stringliteral}{'pbkdf2'}
+407     salt = \hyperlink{namespaceloginhashblock_afe116dea3aaff238a5fa2bcd6edf2281}{create\_salt}(length)
+408     hash, method = \hyperlink{namespaceloginhashblock_a935d8ae1c51e50f9e5db6a1d5f02b1b8}{create\_hash}(salt, key, kdf=kdf)
+409 
+410     \textcolor{keywordflow}{if} DEBUG:
+411         text = \textcolor{stringliteral}{"[info:create\_loginhashblock] salt: \{\}, method: \{\}, hash: \{\}, devid: \{\}"}.format(salt, method
       , hash, devid)
-402         print(text)
-403 
-404     LHBstr = \textcolor{stringliteral}{'\{\}$\{\}'}.format(devid, hash)
-405 
-406     \textcolor{keywordflow}{return} LHBstr
-407 \end{DoxyCode}
+412         print(text)
+413 
+414     LHBstr = \textcolor{stringliteral}{'\{\}$\{\}'}.format(devid, hash)
+415 
+416     \textcolor{keywordflow}{return} LHBstr
+417 \end{DoxyCode}
 
 
 Here is the call graph for this function\+:\nopagebreak
@@ -333,30 +332,32 @@ Here is the caller graph for this function\+:\nopagebreak
 \item[{}]{D\+E\+B\+UG = {\ttfamily {\bf D\+E\+B\+UG}}}
 \end{DoxyParamCaption}
 )}\hypertarget{namespaceloginhashblock_a550707107141dfb228ca4294d7ea31b4}{}\label{namespaceloginhashblock_a550707107141dfb228ca4294d7ea31b4}
-\begin{DoxyVerb}This function create login hash block list. First of all it generate device id and then it makes login hash block string. Finally it update the login hash block list that was joined with login hash block.
+\begin{DoxyVerb}This function create login hash block list. First of all it generate device id and then it makes login hash block string. 
+Finally it update the login hash block list that was joined with login hash block.
 :param LHBlistStr: previous login hash block list
 :return:
 \end{DoxyVerb}
  
 
-Definition at line 83 of file loginhashblock.\+py.
+Definition at line 87 of file loginhashblock.\+py.
 
 
 \begin{DoxyCode}
-83 \textcolor{keyword}{def }\hyperlink{namespaceloginhashblock_a550707107141dfb228ca4294d7ea31b4}{create\_loginhashblocklist}(LHBlistStr, DEBUG=DEBUG):
-84     \textcolor{stringliteral}{"""}
-85 \textcolor{stringliteral}{    This function create login hash block list. First of all it generate device id and then it makes login
-       hash block string. Finally it update the login hash block list that was joined with login hash block.}
-86 \textcolor{stringliteral}{    :param LHBlistStr: previous login hash block list}
-87 \textcolor{stringliteral}{    :return:}
-88 \textcolor{stringliteral}{    """}
-89 
-90     devid = \hyperlink{namespaceloginhashblock_a1bd31fe2f0ea4e6673127d72b6c42826}{create\_deviceId}(DEBUG=DEBUG)
-91     LHBstr = \hyperlink{namespaceloginhashblock_ad3ef8dab740c69ca8424797f9c146a53}{create\_loginhashblock}(devid, DEBUG=DEBUG)
-92     uLHBlistStr, uLHBstr = \hyperlink{namespaceloginhashblock_a2bcc7ddd0fcc3788572dd77808cb624d}{update\_loginhashblocklist}(LHBlistStr, LHBstr)
-93 
-94     \textcolor{keywordflow}{return} uLHBlistStr, uLHBstr
-95 
+87 \textcolor{keyword}{def }\hyperlink{namespaceloginhashblock_a550707107141dfb228ca4294d7ea31b4}{create\_loginhashblocklist}(LHBlistStr, DEBUG=DEBUG):
+88     \textcolor{stringliteral}{"""}
+89 \textcolor{stringliteral}{    This function create login hash block list. First of all it generate device id and then it makes login
+       hash block string. }
+90 \textcolor{stringliteral}{    Finally it update the login hash block list that was joined with login hash block.}
+91 \textcolor{stringliteral}{    :param LHBlistStr: previous login hash block list}
+92 \textcolor{stringliteral}{    :return:}
+93 \textcolor{stringliteral}{    """}
+94 
+95     devid = \hyperlink{namespaceloginhashblock_a1bd31fe2f0ea4e6673127d72b6c42826}{create\_deviceId}(DEBUG=DEBUG)
+96     LHBstr = \hyperlink{namespaceloginhashblock_ad3ef8dab740c69ca8424797f9c146a53}{create\_loginhashblock}(devid, DEBUG=DEBUG)
+97     uLHBlistStr, uLHBstr = \hyperlink{namespaceloginhashblock_a2bcc7ddd0fcc3788572dd77808cb624d}{update\_loginhashblocklist}(LHBlistStr, LHBstr)
+98 
+99     \textcolor{keywordflow}{return} uLHBlistStr, uLHBstr
+100 
 \end{DoxyCode}
 
 
@@ -396,27 +397,27 @@ Here is the caller graph for this function\+:\nopagebreak
 \end{DoxyVerb}
  
 
-Definition at line 66 of file loginhashblock.\+py.
+Definition at line 70 of file loginhashblock.\+py.
 
 
 \begin{DoxyCode}
-66 \textcolor{keyword}{def }\hyperlink{namespaceloginhashblock_afe116dea3aaff238a5fa2bcd6edf2281}{create\_salt}(length, RAND\_CHARS=None, DEBUG=False):
-67     \textcolor{stringliteral}{"""}
-68 \textcolor{stringliteral}{    This function generate a random string of SALT\_CHARS with specified length.}
-69 \textcolor{stringliteral}{    :param length: salt length}
-70 \textcolor{stringliteral}{    :param RAND\_CHARS: random chars}
-71 \textcolor{stringliteral}{    :return:}
-72 \textcolor{stringliteral}{    """}
-73     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} RAND\_CHARS:
-74         RAND\_CHARS = \textcolor{stringliteral}{"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#%^&*()"}
-75 
-76     randx = list()
-77     \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} range(length):
-78          randx.append(random.choice(RAND\_CHARS))
+70 \textcolor{keyword}{def }\hyperlink{namespaceloginhashblock_afe116dea3aaff238a5fa2bcd6edf2281}{create\_salt}(length, RAND\_CHARS=None, DEBUG=False):
+71     \textcolor{stringliteral}{"""}
+72 \textcolor{stringliteral}{    This function generate a random string of SALT\_CHARS with specified length.}
+73 \textcolor{stringliteral}{    :param length: salt length}
+74 \textcolor{stringliteral}{    :param RAND\_CHARS: random chars}
+75 \textcolor{stringliteral}{    :return:}
+76 \textcolor{stringliteral}{    """}
+77     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} RAND\_CHARS:
+78         RAND\_CHARS = \textcolor{stringliteral}{"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#%^&*()"}
 79 
-80     salt = \textcolor{stringliteral}{''}.join(randx)
-81     \textcolor{keywordflow}{return} salt
-82 
+80     randx = list()
+81     \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} range(length):
+82          randx.append(random.choice(RAND\_CHARS))
+83 
+84     salt = \textcolor{stringliteral}{''}.join(randx)
+85     \textcolor{keywordflow}{return} salt
+86 
 \end{DoxyCode}
 
 
@@ -437,36 +438,37 @@ Here is the caller graph for this function\+:\nopagebreak
 \item[{}]{D\+E\+B\+UG = {\ttfamily False}}
 \end{DoxyParamCaption}
 )}\hypertarget{namespaceloginhashblock_a17417f2f6bca76ab51170082a562e5f6}{}\label{namespaceloginhashblock_a17417f2f6bca76ab51170082a562e5f6}
-\begin{DoxyVerb}This function is to get device id from login hash block. login hash block is on device id and hashblock divided by special characters '$'.
+\begin{DoxyVerb}This function is to get device id from login hash block. 
+Login hash block is on device id and hashblock divided by special characters '$'.
 :param LHBstr: string of login hash block
 :return:
 \end{DoxyVerb}
  
 
-Definition at line 195 of file loginhashblock.\+py.
+Definition at line 203 of file loginhashblock.\+py.
 
 
 \begin{DoxyCode}
-195 \textcolor{keyword}{def }\hyperlink{namespaceloginhashblock_a17417f2f6bca76ab51170082a562e5f6}{get\_deviceId}(LHBstr, DEBUG=False):
-196     \textcolor{stringliteral}{"""}
-197 \textcolor{stringliteral}{    This function is to get device id from login hash block. login hash block is on device id and hashblock
-       divided by special characters '$'.}
-198 \textcolor{stringliteral}{    :param LHBstr: string of login hash block}
-199 \textcolor{stringliteral}{    :return:}
-200 \textcolor{stringliteral}{    """}
-201 
-202     \textcolor{keywordflow}{if} DEBUG:
-203         print(\textcolor{stringliteral}{"[info:get\_deviceId] LHBstr: \{\}"}.format(LHBstr))
-204 
-205     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} LHBstr:
-206         \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{"[info:get\_deviceId] login hash block is null"})
-207 
-208     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} \hyperlink{namespaceloginhashblock_adb424539d851426da7b65d53c5a6d577}{valid\_loginhashblock}(LHBstr, DEBUG=DEBUG):
-209         \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{"[info:get\_deviceId] Invalid login hash block"})
+203 \textcolor{keyword}{def }\hyperlink{namespaceloginhashblock_a17417f2f6bca76ab51170082a562e5f6}{get\_deviceId}(LHBstr, DEBUG=False):
+204     \textcolor{stringliteral}{"""}
+205 \textcolor{stringliteral}{    This function is to get device id from login hash block. }
+206 \textcolor{stringliteral}{    Login hash block is on device id and hashblock divided by special characters '$'.}
+207 \textcolor{stringliteral}{    :param LHBstr: string of login hash block}
+208 \textcolor{stringliteral}{    :return:}
+209 \textcolor{stringliteral}{    """}
 210 
-211     devid, loginhash = LHBstr.split(\textcolor{stringliteral}{"$"}, 1)
-212     \textcolor{keywordflow}{return} devid
+211     \textcolor{keywordflow}{if} DEBUG:
+212         print(\textcolor{stringliteral}{"[info:get\_deviceId] LHBstr: \{\}"}.format(LHBstr))
 213 
+214     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} LHBstr:
+215         \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{"[info:get\_deviceId] login hash block is null"})
+216 
+217     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} \hyperlink{namespaceloginhashblock_adb424539d851426da7b65d53c5a6d577}{valid\_loginhashblock}(LHBstr, DEBUG=DEBUG):
+218         \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{"[info:get\_deviceId] Invalid login hash block"})
+219 
+220     devid, loginhash = LHBstr.split(\textcolor{stringliteral}{"$"}, 1)
+221     \textcolor{keywordflow}{return} devid
+222 
 \end{DoxyCode}
 
 
@@ -506,30 +508,30 @@ Here is the caller graph for this function\+:\nopagebreak
 \end{DoxyVerb}
  
 
-Definition at line 361 of file loginhashblock.\+py.
+Definition at line 371 of file loginhashblock.\+py.
 
 
 \begin{DoxyCode}
-361 \textcolor{keyword}{def }\hyperlink{namespaceloginhashblock_a6187961cb9009c7836e7e6e639085f93}{get\_loginhashblock}(devid, LHBlist, DEBUG=False):
-362     \textcolor{stringliteral}{"""}
-363 \textcolor{stringliteral}{    This function is to get login hash block by device id in login hash block list.}
-364 \textcolor{stringliteral}{    :devid: device id}
-365 \textcolor{stringliteral}{    :LHBlist: client's login has block in database}
-366 \textcolor{stringliteral}{    :return:}
-367 \textcolor{stringliteral}{    """}
-368 
-369     \textcolor{keywordflow}{for} LHBstr \textcolor{keywordflow}{in} LHBlist:
-370         \_devid = \hyperlink{namespaceloginhashblock_a17417f2f6bca76ab51170082a562e5f6}{get\_deviceId}(LHBstr, DEBUG=DEBUG)
-371         \textcolor{keywordflow}{if} devid == \_devid:
-372             \textcolor{keywordflow}{if} DEBUG:
-373                 print(\textcolor{stringliteral}{'[info:get\_loginhashblock] devid is found in login hash block list'})
-374             \textcolor{keywordflow}{return} LHBstr
-375 
-376     \textcolor{keywordflow}{if} DEBUG:
-377         print(\textcolor{stringliteral}{'[info:get\_loginhashblock] devid is not found in login hash block list'})
+371 \textcolor{keyword}{def }\hyperlink{namespaceloginhashblock_a6187961cb9009c7836e7e6e639085f93}{get\_loginhashblock}(devid, LHBlist, DEBUG=False):
+372     \textcolor{stringliteral}{"""}
+373 \textcolor{stringliteral}{    This function is to get login hash block by device id in login hash block list.}
+374 \textcolor{stringliteral}{    :devid: device id}
+375 \textcolor{stringliteral}{    :LHBlist: client's login has block in database}
+376 \textcolor{stringliteral}{    :return:}
+377 \textcolor{stringliteral}{    """}
 378 
-379     \textcolor{keywordflow}{return} \textcolor{stringliteral}{''}
-380 
+379     \textcolor{keywordflow}{for} LHBstr \textcolor{keywordflow}{in} LHBlist:
+380         \_devid = \hyperlink{namespaceloginhashblock_a17417f2f6bca76ab51170082a562e5f6}{get\_deviceId}(LHBstr, DEBUG=DEBUG)
+381         \textcolor{keywordflow}{if} devid == \_devid:
+382             \textcolor{keywordflow}{if} DEBUG:
+383                 print(\textcolor{stringliteral}{'[info:get\_loginhashblock] devid is found in login hash block list'})
+384             \textcolor{keywordflow}{return} LHBstr
+385 
+386     \textcolor{keywordflow}{if} DEBUG:
+387         print(\textcolor{stringliteral}{'[info:get\_loginhashblock] devid is not found in login hash block list'})
+388 
+389     \textcolor{keywordflow}{return} \textcolor{stringliteral}{''}
+390 
 \end{DoxyCode}
 
 
@@ -568,34 +570,34 @@ Here is the caller graph for this function\+:\nopagebreak
 \end{DoxyVerb}
  
 
-Definition at line 338 of file loginhashblock.\+py.
+Definition at line 348 of file loginhashblock.\+py.
 
 
 \begin{DoxyCode}
-338 \textcolor{keyword}{def }\hyperlink{namespaceloginhashblock_a746d5c48cd93a76b78c90c34419ebdaa}{isRegistedLHB}(LHBstr, LHBlistStr, DEBUG=False):
-339     \textcolor{stringliteral}{"""}
-340 \textcolor{stringliteral}{    This function is to check valid previous login hash block.}
-341 \textcolor{stringliteral}{    :LHBstr: client's login hash block}
-342 \textcolor{stringliteral}{    :LHBlistStr: client's login has block in database}
-343 \textcolor{stringliteral}{    """}
-344 
-345     LHBlist = LHBlistStr.split(\textcolor{stringliteral}{','})
-346 
-347     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} \hyperlink{namespaceloginhashblock_adb424539d851426da7b65d53c5a6d577}{valid\_loginhashblock}(LHBstr, DEBUG=DEBUG):
-348         \textcolor{keywordflow}{return} \textcolor{keyword}{False}
-349 
-350     devid = \hyperlink{namespaceloginhashblock_a17417f2f6bca76ab51170082a562e5f6}{get\_deviceId}(LHBstr, DEBUG=DEBUG)
-351     target\_LHBstr = \hyperlink{namespaceloginhashblock_a6187961cb9009c7836e7e6e639085f93}{get\_loginhashblock}(devid, LHBlist, DEBUG=DEBUG)
-352 
-353     \textcolor{keywordflow}{if} DEBUG:
-354         print(\textcolor{stringliteral}{"[info:isRegistedLHB]\(\backslash\)nclient\_loginhashblock: \{\}\(\backslash\)nserver\_loginhashblock: \{\}"}.format(LHBstr, 
+348 \textcolor{keyword}{def }\hyperlink{namespaceloginhashblock_a746d5c48cd93a76b78c90c34419ebdaa}{isRegistedLHB}(LHBstr, LHBlistStr, DEBUG=False):
+349     \textcolor{stringliteral}{"""}
+350 \textcolor{stringliteral}{    This function is to check valid previous login hash block.}
+351 \textcolor{stringliteral}{    :LHBstr: client's login hash block}
+352 \textcolor{stringliteral}{    :LHBlistStr: client's login has block in database}
+353 \textcolor{stringliteral}{    """}
+354 
+355     LHBlist = LHBlistStr.split(\textcolor{stringliteral}{','})
+356 
+357     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} \hyperlink{namespaceloginhashblock_adb424539d851426da7b65d53c5a6d577}{valid\_loginhashblock}(LHBstr, DEBUG=DEBUG):
+358         \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+359 
+360     devid = \hyperlink{namespaceloginhashblock_a17417f2f6bca76ab51170082a562e5f6}{get\_deviceId}(LHBstr, DEBUG=DEBUG)
+361     target\_LHBstr = \hyperlink{namespaceloginhashblock_a6187961cb9009c7836e7e6e639085f93}{get\_loginhashblock}(devid, LHBlist, DEBUG=DEBUG)
+362 
+363     \textcolor{keywordflow}{if} DEBUG:
+364         print(\textcolor{stringliteral}{"[info:isRegistedLHB]\(\backslash\)nclient\_loginhashblock: \{\}\(\backslash\)nserver\_loginhashblock: \{\}"}.format(LHBstr, 
       target\_LHBstr))
-355 
-356     \textcolor{keywordflow}{if} LHBstr == target\_LHBstr:
-357         \textcolor{keywordflow}{return} \textcolor{keyword}{True}
-358 
-359     \textcolor{keywordflow}{return} \textcolor{keyword}{False}
-360 
+365 
+366     \textcolor{keywordflow}{if} LHBstr == target\_LHBstr:
+367         \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+368 
+369     \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+370 
 \end{DoxyCode}
 
 
@@ -620,11 +622,15 @@ Here is the call graph for this function\+:\nopagebreak
 \item[{}]{D\+E\+B\+UG = {\ttfamily False}}
 \end{DoxyParamCaption}
 )}\hypertarget{namespaceloginhashblock_a104d0a92cdfb6c337794b6ded42667d4}{}\label{namespaceloginhashblock_a104d0a92cdfb6c337794b6ded42667d4}
-\begin{DoxyVerb}The function generated hash using PKCS#5 password-based key derivation function. It uses HMAC as pseudorandom function and returns the hexadecimal representation of the binary data. Every byte of data is converted into the corresponding 2-digit hex representation.
+\begin{DoxyVerb}The function generated hash using PKCS#5 password-based key derivation function. 
+It uses HMAC as pseudorandom function and returns the hexadecimal representation of the binary data. 
+Every byte of data is converted into the corresponding 2-digit hex representation.
 :param data: data and salt are interpreted as buffers of byte
 :param salt: data and salt are interpreted as buffers of byte
-:param iterations: The number of iterations should be chosen based on the hash algorithm and computing power. As of 2013, at least 100,000 iterations of SHA-256 are suggested.
-:param dklen: dklen is the length of the derived key. If dklen is None then the digest size of the hash algorithm hash_name is used, e.g. 64 for SHA-512.
+:param iterations: The number of iterations should be chosen based on the hash algorithm and computing power. 
+                   As of 2013, at least 100,000 iterations of SHA-256 are suggested.
+:param dklen: dklen is the length of the derived key. 
+              If dklen is None then the digest size of the hash algorithm hash_name is used, e.g. 64 for SHA-512.
 :param hash_name: hash_name is the desired name of the hash digest algorithm for HMAC(default: sha256)
 :return:
 \end{DoxyVerb}
@@ -636,30 +642,32 @@ Definition at line 45 of file loginhashblock.\+py.
 \begin{DoxyCode}
 45 \textcolor{keyword}{def }\hyperlink{namespaceloginhashblock_a104d0a92cdfb6c337794b6ded42667d4}{pbkdf2\_hash}(data, salt, iterations, dklen=None, hash\_name="sha256", DEBUG=False):
 46     \textcolor{stringliteral}{"""}
-47 \textcolor{stringliteral}{    The function generated hash using PKCS#5 password-based key derivation function. It uses HMAC as
-       pseudorandom function and returns the hexadecimal representation of the binary data. Every byte of data is
-       converted into the corresponding 2-digit hex representation.}
-48 \textcolor{stringliteral}{    :param data: data and salt are interpreted as buffers of byte}
-49 \textcolor{stringliteral}{    :param salt: data and salt are interpreted as buffers of byte}
-50 \textcolor{stringliteral}{    :param iterations: The number of iterations should be chosen based on the hash algorithm and computing
-       power. As of 2013, at least 100,000 iterations of SHA-256 are suggested.}
-51 \textcolor{stringliteral}{    :param dklen: dklen is the length of the derived key. If dklen is None then the digest size of the hash
-       algorithm hash\_name is used, e.g. 64 for SHA-512.}
-52 \textcolor{stringliteral}{    :param hash\_name: hash\_name is the desired name of the hash digest algorithm for HMAC(default: sha256)}
-53 \textcolor{stringliteral}{    :return:}
-54 \textcolor{stringliteral}{    """}
-55 
-56     \textcolor{keywordflow}{if} DEBUG:
-57         print(\textcolor{stringliteral}{'[info:pdkdf2\_ascii] hash: '}, hash\_name)
-58         print(\textcolor{stringliteral}{'[info:pdkdf2\_ascii] iterations: '}, iterations)
-59         print(\textcolor{stringliteral}{'[info:pdkdf2\_ascii] data: '}, data.encode(\textcolor{stringliteral}{'ascii'}))
-60         print(\textcolor{stringliteral}{'[info:pdkdf2\_ascii] salt: '}, salt.encode(\textcolor{stringliteral}{'ascii'}))
-61 
-62     dk = hashlib.pbkdf2\_hmac(hash\_name, data.encode(\textcolor{stringliteral}{'ascii'}), salt.encode(\textcolor{stringliteral}{'ascii'}), iterations, dklen=dklen
-      )
-63     hex = binascii.hexlify(dk)
-64     \textcolor{keywordflow}{return} hex.decode(\textcolor{stringliteral}{'ascii'})
+47 \textcolor{stringliteral}{    The function generated hash using PKCS#5 password-based key derivation function. }
+48 \textcolor{stringliteral}{    It uses HMAC as pseudorandom function and returns the hexadecimal representation of the binary data. }
+49 \textcolor{stringliteral}{    Every byte of data is converted into the corresponding 2-digit hex representation.}
+50 \textcolor{stringliteral}{    :param data: data and salt are interpreted as buffers of byte}
+51 \textcolor{stringliteral}{    :param salt: data and salt are interpreted as buffers of byte}
+52 \textcolor{stringliteral}{    :param iterations: The number of iterations should be chosen based on the hash algorithm and computing
+       power. }
+53 \textcolor{stringliteral}{                       As of 2013, at least 100,000 iterations of SHA-256 are suggested.}
+54 \textcolor{stringliteral}{    :param dklen: dklen is the length of the derived key. }
+55 \textcolor{stringliteral}{                  If dklen is None then the digest size of the hash algorithm hash\_name is used, e.g. 64
+       for SHA-512.}
+56 \textcolor{stringliteral}{    :param hash\_name: hash\_name is the desired name of the hash digest algorithm for HMAC(default: sha256)}
+57 \textcolor{stringliteral}{    :return:}
+58 \textcolor{stringliteral}{    """}
+59 
+60     \textcolor{keywordflow}{if} DEBUG:
+61         print(\textcolor{stringliteral}{'[info:pdkdf2\_ascii] hash: '}, hash\_name)
+62         print(\textcolor{stringliteral}{'[info:pdkdf2\_ascii] iterations: '}, iterations)
+63         print(\textcolor{stringliteral}{'[info:pdkdf2\_ascii] data: '}, data.encode(\textcolor{stringliteral}{'ascii'}))
+64         print(\textcolor{stringliteral}{'[info:pdkdf2\_ascii] salt: '}, salt.encode(\textcolor{stringliteral}{'ascii'}))
 65 
+66     dk = hashlib.pbkdf2\_hmac(hash\_name, data.encode(\textcolor{stringliteral}{'ascii'}), salt.encode(\textcolor{stringliteral}{'ascii'}), iterations, dklen=dklen
+      )
+67     hex = binascii.hexlify(dk)
+68     \textcolor{keywordflow}{return} hex.decode(\textcolor{stringliteral}{'ascii'})
+69 
 \end{DoxyCode}
 
 
@@ -680,8 +688,8 @@ Here is the caller graph for this function\+:\nopagebreak
 \item[{}]{D\+E\+B\+UG = {\ttfamily False}}
 \end{DoxyParamCaption}
 )}\hypertarget{namespaceloginhashblock_a1096aa8494b9c5875decc029d8b40ea9}{}\label{namespaceloginhashblock_a1096aa8494b9c5875decc029d8b40ea9}
-\begin{DoxyVerb}a
-The function prints login hash block list for debug. if login hash block list length is above 1, login hash block prints line by line.
+\begin{DoxyVerb}The function prints login hash block list for debug. 
+If login hash block list length is above 1, login hash block prints line by line.
 :param LHBlistStr:
 :return:
 \end{DoxyVerb}
@@ -693,9 +701,8 @@ Definition at line 21 of file loginhashblock.\+py.
 \begin{DoxyCode}
 21 \textcolor{keyword}{def }\hyperlink{namespaceloginhashblock_a1096aa8494b9c5875decc029d8b40ea9}{print\_LHBlist}(LHBlistStr, DEBUG=False):
 22     \textcolor{stringliteral}{"""}
-23 \textcolor{stringliteral}{    a}
-24 \textcolor{stringliteral}{The function prints login hash block list for debug. if login hash block list length is above 1, login hash
-       block prints line by line.}
+23 \textcolor{stringliteral}{    The function prints login hash block list for debug. }
+24 \textcolor{stringliteral}{    If login hash block list length is above 1, login hash block prints line by line.}
 25 \textcolor{stringliteral}{    :param LHBlistStr:}
 26 \textcolor{stringliteral}{    :return:}
 27 \textcolor{stringliteral}{    """}
@@ -736,41 +743,41 @@ Here is the caller graph for this function\+:\nopagebreak
 \item[{}]{D\+E\+B\+UG = {\ttfamily False}}
 \end{DoxyParamCaption}
 )}\hypertarget{namespaceloginhashblock_afef75d97c834ce0fda711b93d0b56b00}{}\label{namespaceloginhashblock_afef75d97c834ce0fda711b93d0b56b00}
-\begin{DoxyVerb}This function is to update login hash block with old login hash block
+\begin{DoxyVerb}This function update login hash block with previous login hash block.
 :param prevLHBstr:
 :param DEBUG:
 :return: updated login hash block
 \end{DoxyVerb}
  
 
-Definition at line 315 of file loginhashblock.\+py.
+Definition at line 325 of file loginhashblock.\+py.
 
 
 \begin{DoxyCode}
-315 \textcolor{keyword}{def }\hyperlink{namespaceloginhashblock_afef75d97c834ce0fda711b93d0b56b00}{update\_loginhashblock}(prevLHBstr, DEBUG=False):
-316     \textcolor{stringliteral}{"""}
-317 \textcolor{stringliteral}{    This function is to update login hash block with old login hash block}
-318 \textcolor{stringliteral}{    :param prevLHBstr:}
-319 \textcolor{stringliteral}{    :param DEBUG:}
-320 \textcolor{stringliteral}{    :return: updated login hash block}
-321 \textcolor{stringliteral}{    """}
-322 
-323     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} prevLHBstr:
-324         \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}
-325 
-326     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} \hyperlink{namespaceloginhashblock_adb424539d851426da7b65d53c5a6d577}{valid\_loginhashblock}(prevLHBstr, DEBUG=DEBUG):
-327         \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{"[info:update\_loginhashblock] Invalid login hash block"})
-328 
-329     devid = \hyperlink{namespaceloginhashblock_a17417f2f6bca76ab51170082a562e5f6}{get\_deviceId}(prevLHBstr, DEBUG=DEBUG)
-330     LHBstr = \hyperlink{namespaceloginhashblock_ad3ef8dab740c69ca8424797f9c146a53}{create\_loginhashblock}(devid, DEBUG=DEBUG)
-331 
-332     \textcolor{keywordflow}{if} DEBUG:
-333         text = \textcolor{stringliteral}{'[info:update\_loginhashblock] \(\backslash\)npre\_loginhashblock: \{\}\(\backslash\)nnew\_loginhashblock: \{\}'}.format(
-      prevLHBstr,LHBstr)
-334         print(text)
+325 \textcolor{keyword}{def }\hyperlink{namespaceloginhashblock_afef75d97c834ce0fda711b93d0b56b00}{update\_loginhashblock}(prevLHBstr, DEBUG=False):
+326     \textcolor{stringliteral}{"""}
+327 \textcolor{stringliteral}{    This function update login hash block with previous login hash block.}
+328 \textcolor{stringliteral}{    :param prevLHBstr:}
+329 \textcolor{stringliteral}{    :param DEBUG:}
+330 \textcolor{stringliteral}{    :return: updated login hash block}
+331 \textcolor{stringliteral}{    """}
+332 
+333     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} prevLHBstr:
+334         \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}
 335 
-336     \textcolor{keywordflow}{return} LHBstr
-337 
+336     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} \hyperlink{namespaceloginhashblock_adb424539d851426da7b65d53c5a6d577}{valid\_loginhashblock}(prevLHBstr, DEBUG=DEBUG):
+337         \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{"[info:update\_loginhashblock] Invalid login hash block"})
+338 
+339     devid = \hyperlink{namespaceloginhashblock_a17417f2f6bca76ab51170082a562e5f6}{get\_deviceId}(prevLHBstr, DEBUG=DEBUG)
+340     LHBstr = \hyperlink{namespaceloginhashblock_ad3ef8dab740c69ca8424797f9c146a53}{create\_loginhashblock}(devid, DEBUG=DEBUG)
+341 
+342     \textcolor{keywordflow}{if} DEBUG:
+343         text = \textcolor{stringliteral}{'[info:update\_loginhashblock] \(\backslash\)npre\_loginhashblock: \{\}\(\backslash\)nnew\_loginhashblock: \{\}'}.format(
+      prevLHBstr,LHBstr)
+344         print(text)
+345 
+346     \textcolor{keywordflow}{return} LHBstr
+347 
 \end{DoxyCode}
 
 
@@ -803,59 +810,66 @@ Here is the caller graph for this function\+:\nopagebreak
 \item[{}]{D\+E\+B\+UG = {\ttfamily False}}
 \end{DoxyParamCaption}
 )}\hypertarget{namespaceloginhashblock_a2bcc7ddd0fcc3788572dd77808cb624d}{}\label{namespaceloginhashblock_a2bcc7ddd0fcc3788572dd77808cb624d}
-\begin{DoxyVerb}This function update login hash block list.
+\begin{DoxyVerb}This function update login hash block list. 
+It's parsed device id from input login hash block and then it will be updat to new hash block binded parsed device id. 
+If LHBlistStr is null, LHBlistStr will be prevLHBstr. 
+And, the other case is updating login hash block from the list.
 :param LHBlistStr: login hash block list string
 :param LHBstr: login hash block
 :return:
 \end{DoxyVerb}
  
 
-Definition at line 96 of file loginhashblock.\+py.
+Definition at line 101 of file loginhashblock.\+py.
 
 
 \begin{DoxyCode}
-96 \textcolor{keyword}{def }\hyperlink{namespaceloginhashblock_a2bcc7ddd0fcc3788572dd77808cb624d}{update\_loginhashblocklist}(LHBlistStr, prevLHBstr, DEBUG=False):
-97     \textcolor{stringliteral}{"""}
-98 \textcolor{stringliteral}{    This function update login hash block list.}
-99 \textcolor{stringliteral}{    :param LHBlistStr: login hash block list string}
-100 \textcolor{stringliteral}{    :param LHBstr: login hash block}
-101 \textcolor{stringliteral}{    :return:}
-102 \textcolor{stringliteral}{    """}
-103 
-104     LHBstr = \hyperlink{namespaceloginhashblock_afef75d97c834ce0fda711b93d0b56b00}{update\_loginhashblock}(prevLHBstr, DEBUG=\textcolor{keyword}{False})
-105 
-106     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} LHBstr:
-107         \textcolor{keywordflow}{return} LHBlistStr, LHBstr
-108 
-109     devid = \hyperlink{namespaceloginhashblock_a17417f2f6bca76ab51170082a562e5f6}{get\_deviceId}(LHBstr, DEBUG=DEBUG)
-110 
-111     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} LHBlistStr:
-112         LHBlistStr = LHBstr
-113         
-114         \textcolor{keywordflow}{if} DEBUG:
-115             print(\textcolor{stringliteral}{"[info:update\_loginhashblocklist] LHBlistStr is null"})
+101 \textcolor{keyword}{def }\hyperlink{namespaceloginhashblock_a2bcc7ddd0fcc3788572dd77808cb624d}{update\_loginhashblocklist}(LHBlistStr, prevLHBstr, DEBUG=False):
+102     \textcolor{stringliteral}{"""}
+103 \textcolor{stringliteral}{    This function update login hash block list. }
+104 \textcolor{stringliteral}{    It's parsed device id from input login hash block and then it will be updat to new hash block binded
+       parsed device id. }
+105 \textcolor{stringliteral}{    If LHBlistStr is null, LHBlistStr will be prevLHBstr. }
+106 \textcolor{stringliteral}{    And, the other case is updating login hash block from the list.}
+107 \textcolor{stringliteral}{    :param LHBlistStr: login hash block list string}
+108 \textcolor{stringliteral}{    :param LHBstr: login hash block}
+109 \textcolor{stringliteral}{    :return:}
+110 \textcolor{stringliteral}{    """}
+111 
+112     LHBstr = \hyperlink{namespaceloginhashblock_afef75d97c834ce0fda711b93d0b56b00}{update\_loginhashblock}(prevLHBstr, DEBUG=\textcolor{keyword}{False})
+113 
+114     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} LHBstr:
+115         \textcolor{keywordflow}{return} LHBlistStr, LHBstr
 116 
-117         \textcolor{keywordflow}{return} LHBlistStr, LHBstr
+117     devid = \hyperlink{namespaceloginhashblock_a17417f2f6bca76ab51170082a562e5f6}{get\_deviceId}(LHBstr, DEBUG=DEBUG)
 118 
-119     LHBlist = LHBlistStr.split(\textcolor{stringliteral}{','})
-120 
-121     \textcolor{keywordflow}{for} i,v \textcolor{keywordflow}{in} enumerate(LHBlist):
-122         \_devid = \hyperlink{namespaceloginhashblock_a17417f2f6bca76ab51170082a562e5f6}{get\_deviceId}(v, DEBUG=DEBUG)
-123         \textcolor{keywordflow}{if} devid == \_devid:
-124             LHBlist[i] = LHBstr
-125             LHBlistStr = \textcolor{stringliteral}{","}.join(LHBlist)
-126             \textcolor{keywordflow}{return} LHBlistStr, LHBstr
-127 
-128     LHBlist.append(LHBstr)
-129 
-130     \textcolor{keywordflow}{if} DEBUG:
-131         print(\textcolor{stringliteral}{"[info:update\_loginhashblocklist] devid: \{\}"}.format(devid))
-132         print(\textcolor{stringliteral}{"[info:update\_loginhashblocklist] db\_hashblock: \{\}"}.format(len(LHBlist)))
-133 
-134     LHBlistStr = \textcolor{stringliteral}{","}.join(LHBlist)
+119     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} LHBlistStr:
+120         LHBlistStr = LHBstr
+121         
+122         \textcolor{keywordflow}{if} DEBUG:
+123             print(\textcolor{stringliteral}{"[info:update\_loginhashblocklist] LHBlistStr is null"})
+124 
+125         \textcolor{keywordflow}{return} LHBlistStr, LHBstr
+126 
+127     LHBlist = LHBlistStr.split(\textcolor{stringliteral}{','})
+128 
+129     \textcolor{keywordflow}{for} i,v \textcolor{keywordflow}{in} enumerate(LHBlist):
+130         \_devid = \hyperlink{namespaceloginhashblock_a17417f2f6bca76ab51170082a562e5f6}{get\_deviceId}(v, DEBUG=DEBUG)
+131         \textcolor{keywordflow}{if} devid == \_devid:
+132             LHBlist[i] = LHBstr
+133             LHBlistStr = \textcolor{stringliteral}{","}.join(LHBlist)
+134             \textcolor{keywordflow}{return} LHBlistStr, LHBstr
 135 
-136     \textcolor{keywordflow}{return} LHBlistStr, LHBstr
+136     LHBlist.append(LHBstr)
 137 
+138     \textcolor{keywordflow}{if} DEBUG:
+139         print(\textcolor{stringliteral}{"[info:update\_loginhashblocklist] devid: \{\}"}.format(devid))
+140         print(\textcolor{stringliteral}{"[info:update\_loginhashblocklist] db\_hashblock: \{\}"}.format(len(LHBlist)))
+141 
+142     LHBlistStr = \textcolor{stringliteral}{","}.join(LHBlist)
+143 
+144     \textcolor{keywordflow}{return} LHBlistStr, LHBstr
+145 
 \end{DoxyCode}
 
 
@@ -899,35 +913,35 @@ Here is the caller graph for this function\+:\nopagebreak
 \end{DoxyVerb}
  
 
-Definition at line 171 of file loginhashblock.\+py.
+Definition at line 179 of file loginhashblock.\+py.
 
 
 \begin{DoxyCode}
-171 \textcolor{keyword}{def }\hyperlink{namespaceloginhashblock_ac7faa165bc305e611390727f11946424}{valid\_hash}(target\_hash, salt, target, method, DEBUG=False):
-172     \textcolor{stringliteral}{"""}
-173 \textcolor{stringliteral}{    This function is to check hash block}
-174 \textcolor{stringliteral}{    :param target\_hash:}
-175 \textcolor{stringliteral}{    :param salt:}
-176 \textcolor{stringliteral}{    :param target:}
-177 \textcolor{stringliteral}{    :param method:}
-178 \textcolor{stringliteral}{    :return:}
-179 \textcolor{stringliteral}{    """}
-180 
-181     \textcolor{keywordflow}{if} method.count(\textcolor{stringliteral}{":"}) != 2:
-182         \textcolor{keywordflow}{return} \textcolor{keyword}{False}
-183 
-184     kdf, hash\_name, iterations = method.split(\textcolor{stringliteral}{":"}, 2)
-185     hash, method = \hyperlink{namespaceloginhashblock_a935d8ae1c51e50f9e5db6a1d5f02b1b8}{create\_hash}(salt, target, hash\_name=hash\_name, iterations=int(iterations), 
+179 \textcolor{keyword}{def }\hyperlink{namespaceloginhashblock_ac7faa165bc305e611390727f11946424}{valid\_hash}(target\_hash, salt, target, method, DEBUG=False):
+180     \textcolor{stringliteral}{"""}
+181 \textcolor{stringliteral}{    This function is to check hash block}
+182 \textcolor{stringliteral}{    :param target\_hash:}
+183 \textcolor{stringliteral}{    :param salt:}
+184 \textcolor{stringliteral}{    :param target:}
+185 \textcolor{stringliteral}{    :param method:}
+186 \textcolor{stringliteral}{    :return:}
+187 \textcolor{stringliteral}{    """}
+188 
+189     \textcolor{keywordflow}{if} method.count(\textcolor{stringliteral}{":"}) != 2:
+190         \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+191 
+192     kdf, hash\_name, iterations = method.split(\textcolor{stringliteral}{":"}, 2)
+193     hash, method = \hyperlink{namespaceloginhashblock_a935d8ae1c51e50f9e5db6a1d5f02b1b8}{create\_hash}(salt, target, hash\_name=hash\_name, iterations=int(iterations), 
       kdf=kdf)
-186     ret = \hyperlink{namespaceloginhashblock_ac24dd842eb90e0ede55e842d44148d5b}{compare\_loginhashblock}(hash, target\_hash)
-187 
-188     \textcolor{keywordflow}{if} DEBUG:
-189         print(\textcolor{stringliteral}{"[info:valid\_hash]        hash: "}, hash)
-190         print(\textcolor{stringliteral}{"[info:valid\_hash] target\_hash: "}, target\_hash)
-191         print(\textcolor{stringliteral}{"[info:valid\_hash]         ret: "}, ret)
-192 
-193     \textcolor{keywordflow}{return} ret
-194 
+194     ret = \hyperlink{namespaceloginhashblock_ac24dd842eb90e0ede55e842d44148d5b}{compare\_loginhashblock}(hash, target\_hash)
+195 
+196     \textcolor{keywordflow}{if} DEBUG:
+197         print(\textcolor{stringliteral}{"[info:valid\_hash]        hash: "}, hash)
+198         print(\textcolor{stringliteral}{"[info:valid\_hash] target\_hash: "}, target\_hash)
+199         print(\textcolor{stringliteral}{"[info:valid\_hash]         ret: "}, ret)
+200 
+201     \textcolor{keywordflow}{return} ret
+202 
 \end{DoxyCode}
 
 
@@ -950,49 +964,49 @@ Here is the call graph for this function\+:\nopagebreak
 )}\hypertarget{namespaceloginhashblock_adb424539d851426da7b65d53c5a6d577}{}\label{namespaceloginhashblock_adb424539d851426da7b65d53c5a6d577}
 \begin{DoxyVerb}This function is to check login hash block
 hashblock format: deviceid(8)+$+hash
-ex)jUs6LQMX$jUs6LQMX$ceccffbfa52e55825f87573b068c8d759b1540f9833a7d7ebd7a27c993ffd316
+ex) jUs6LQMX$jUs6LQMX$ceccffbfa52e55825f87573b068c8d759b1540f9833a7d7ebd7a27c993ffd316
 :param LHBstr:
 :return: BOOL
 \end{DoxyVerb}
  
 
-Definition at line 282 of file loginhashblock.\+py.
+Definition at line 292 of file loginhashblock.\+py.
 
 
 \begin{DoxyCode}
-282 \textcolor{keyword}{def }\hyperlink{namespaceloginhashblock_adb424539d851426da7b65d53c5a6d577}{valid\_loginhashblock}(LHBstr, DEBUG=False):
-283     \textcolor{stringliteral}{"""}
-284 \textcolor{stringliteral}{    This function is to check login hash block}
-285 \textcolor{stringliteral}{    hashblock format: deviceid(8)+$+hash}
-286 \textcolor{stringliteral}{    ex)jUs6LQMX$jUs6LQMX$ceccffbfa52e55825f87573b068c8d759b1540f9833a7d7ebd7a27c993ffd316}
-287 \textcolor{stringliteral}{    :param LHBstr:}
-288 \textcolor{stringliteral}{    :return: BOOL}
-289 \textcolor{stringliteral}{    """}
-290     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} LHBstr:
-291         \textcolor{keywordflow}{if} DEBUG:
-292             print(\textcolor{stringliteral}{'[info:valid\_loginhashblock] Null'})
-293         \textcolor{keywordflow}{return} \textcolor{keyword}{False}
-294 
-295     \textcolor{keywordflow}{if} LHBstr.count(\textcolor{stringliteral}{"$"}) != 1:
-296         \textcolor{keywordflow}{if} DEBUG:
-297             print(\textcolor{stringliteral}{'[info:valid\_loginhashblock] Invalid format'})
-298         \textcolor{keywordflow}{return} \textcolor{keyword}{False}
-299 
-300     devid, hash = LHBstr.split(\textcolor{stringliteral}{"$"}, 1)
-301 
-302     \textcolor{keywordflow}{if} len(devid) != 8:
-303         \textcolor{keywordflow}{if} DEBUG:
-304             print(\textcolor{stringliteral}{'[info:valid\_loginhashblock] Invalid deviceid'})
-305         \textcolor{keywordflow}{return} \textcolor{keyword}{False}
-306 
-307     \textcolor{keywordflow}{if} len(hash) != 64:
+292 \textcolor{keyword}{def }\hyperlink{namespaceloginhashblock_adb424539d851426da7b65d53c5a6d577}{valid\_loginhashblock}(LHBstr, DEBUG=False):
+293     \textcolor{stringliteral}{"""}
+294 \textcolor{stringliteral}{    This function is to check login hash block}
+295 \textcolor{stringliteral}{    hashblock format: deviceid(8)+$+hash}
+296 \textcolor{stringliteral}{    ex) jUs6LQMX$jUs6LQMX$ceccffbfa52e55825f87573b068c8d759b1540f9833a7d7ebd7a27c993ffd316}
+297 \textcolor{stringliteral}{    :param LHBstr:}
+298 \textcolor{stringliteral}{    :return: BOOL}
+299 \textcolor{stringliteral}{    """}
+300     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} LHBstr:
+301         \textcolor{keywordflow}{if} DEBUG:
+302             print(\textcolor{stringliteral}{'[info:valid\_loginhashblock] Null'})
+303         \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+304 
+305     \textcolor{keywordflow}{if} LHBstr.count(\textcolor{stringliteral}{"$"}) != 1:
+306         \textcolor{keywordflow}{if} DEBUG:
+307             print(\textcolor{stringliteral}{'[info:valid\_loginhashblock] Invalid format'})
 308         \textcolor{keywordflow}{return} \textcolor{keyword}{False}
 309 
-310     \textcolor{keywordflow}{if} DEBUG:
-311         print(\textcolor{stringliteral}{'[info:valid\_loginhashblock] login hash block is valid'})
-312 
-313     \textcolor{keywordflow}{return} \textcolor{keyword}{True}
-314 
+310     devid, hash = LHBstr.split(\textcolor{stringliteral}{"$"}, 1)
+311 
+312     \textcolor{keywordflow}{if} len(devid) != 8:
+313         \textcolor{keywordflow}{if} DEBUG:
+314             print(\textcolor{stringliteral}{'[info:valid\_loginhashblock] Invalid deviceid'})
+315         \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+316 
+317     \textcolor{keywordflow}{if} len(hash) != 64:
+318         \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+319 
+320     \textcolor{keywordflow}{if} DEBUG:
+321         print(\textcolor{stringliteral}{'[info:valid\_loginhashblock] login hash block is valid'})
+322 
+323     \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+324 
 \end{DoxyCode}
 
 
@@ -1014,42 +1028,46 @@ Here is the caller graph for this function\+:\nopagebreak
 \item[{}]{D\+E\+B\+UG = {\ttfamily False}}
 \end{DoxyParamCaption}
 )}\hypertarget{namespaceloginhashblock_aa5bb94484a68d0bbebce23b4cfeeb4b7}{}\label{namespaceloginhashblock_aa5bb94484a68d0bbebce23b4cfeeb4b7}
-\begin{DoxyVerb}This function verify login hash block in db or not. it parse the device id from input login hash block, and search device id in login hash block list string. if it matched, return True
+\begin{DoxyVerb}This function verify login hash block in db or not. 
+It parse the device id from input login hash block, and search device id in login hash block list string. 
+If it matched, return True
 :param LHBlistStr: login hash block list
 :param LHBstr: login hash block
 :return:
 \end{DoxyVerb}
  
 
-Definition at line 258 of file loginhashblock.\+py.
+Definition at line 266 of file loginhashblock.\+py.
 
 
 \begin{DoxyCode}
-258 \textcolor{keyword}{def }\hyperlink{namespaceloginhashblock_aa5bb94484a68d0bbebce23b4cfeeb4b7}{verify\_loginhashblock}(LHBlistStr, LHBstr, DEBUG=False):
-259     \textcolor{stringliteral}{"""}
-260 \textcolor{stringliteral}{    This function verify login hash block in db or not. it parse the device id from input login hash block,
-       and search device id in login hash block list string. if it matched, return True}
-261 \textcolor{stringliteral}{    :param LHBlistStr: login hash block list}
-262 \textcolor{stringliteral}{    :param LHBstr: login hash block}
-263 \textcolor{stringliteral}{    :return:}
-264 \textcolor{stringliteral}{    """}
-265 
-266     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} LHBlistStr :
-267         \textcolor{keywordflow}{return} \textcolor{keyword}{False}
-268 
-269     devid = \hyperlink{namespaceloginhashblock_a17417f2f6bca76ab51170082a562e5f6}{get\_deviceId}(LHBstr, DEBUG=DEBUG)
-270     LHBlist = LHBlistStr.split(\textcolor{stringliteral}{','})
-271 
-272     \textcolor{keywordflow}{for} i,v \textcolor{keywordflow}{in} enumerate(LHBlist):
-273         \_devid = \hyperlink{namespaceloginhashblock_a17417f2f6bca76ab51170082a562e5f6}{get\_deviceId}(v, DEBUG=DEBUG)
-274         \textcolor{keywordflow}{if} devid == \_devid:
-275             \textcolor{keywordflow}{if} v == LHBstr:
-276                 \textcolor{keywordflow}{return} \textcolor{keyword}{True}
-277             \textcolor{keywordflow}{else}:
-278                 \textcolor{keywordflow}{return} \textcolor{keyword}{False}
-279 
-280     \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+266 \textcolor{keyword}{def }\hyperlink{namespaceloginhashblock_aa5bb94484a68d0bbebce23b4cfeeb4b7}{verify\_loginhashblock}(LHBlistStr, LHBstr, DEBUG=False):
+267     \textcolor{stringliteral}{"""}
+268 \textcolor{stringliteral}{    This function verify login hash block in db or not. }
+269 \textcolor{stringliteral}{    It parse the device id from input login hash block, and search device id in login hash block list
+       string. }
+270 \textcolor{stringliteral}{    If it matched, return True}
+271 \textcolor{stringliteral}{    :param LHBlistStr: login hash block list}
+272 \textcolor{stringliteral}{    :param LHBstr: login hash block}
+273 \textcolor{stringliteral}{    :return:}
+274 \textcolor{stringliteral}{    """}
+275 
+276     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} LHBlistStr :
+277         \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+278 
+279     devid = \hyperlink{namespaceloginhashblock_a17417f2f6bca76ab51170082a562e5f6}{get\_deviceId}(LHBstr, DEBUG=DEBUG)
+280     LHBlist = LHBlistStr.split(\textcolor{stringliteral}{','})
 281 
+282     \textcolor{keywordflow}{for} i,v \textcolor{keywordflow}{in} enumerate(LHBlist):
+283         \_devid = \hyperlink{namespaceloginhashblock_a17417f2f6bca76ab51170082a562e5f6}{get\_deviceId}(v, DEBUG=DEBUG)
+284         \textcolor{keywordflow}{if} devid == \_devid:
+285             \textcolor{keywordflow}{if} v == LHBstr:
+286                 \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+287             \textcolor{keywordflow}{else}:
+288                 \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+289 
+290     \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+291 
 \end{DoxyCode}
 
 

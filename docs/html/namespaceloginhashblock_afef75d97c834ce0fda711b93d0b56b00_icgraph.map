@@ -1,11 +1,12 @@
 <map id="loginhashblock.update_loginhashblock" name="loginhashblock.update_loginhashblock">
-<area shape="rect" id="node2" href="$namespaceloginhashblock.html#a2bcc7ddd0fcc3788572dd77808cb624d" title="loginhashblock.update\l_loginhashblocklist" alt="" coords="219,107,384,149"/>
-<area shape="rect" id="node3" href="$classmain_1_1login.html#a71ff3f89aaf0f0c8502577445ab38744" title="main.login.post" alt="" coords="669,5,789,32"/>
-<area shape="rect" id="node4" href="$classmain_1_1logout.html#a726ef779e6bf4da8974eae3209276922" title="main.logout.post" alt="" coords="447,56,578,83"/>
-<area shape="rect" id="node5" href="$namespaceloginhashblock.html#a550707107141dfb228ca4294d7ea31b4" title="loginhashblock.create\l_loginhashblocklist" alt="" coords="432,107,593,149"/>
-<area shape="rect" id="node7" href="$namespaceunittest.html#afeccd95cc658ca5f2ffb4df7a1edbbd2" title="unittest.mok_request_post" alt="" coords="865,148,1060,175"/>
-<area shape="rect" id="node10" href="$namespaceunittest.html#a9e16eaba67b93461be6ea8ef6332507a" title="unittest.unittest_update\l_loginhashblocklist" alt="" coords="641,225,817,266"/>
-<area shape="rect" id="node6" href="$namespaceunittest.html#a0e10bea14aac2cc6a08d76f422b9328d" title="unittest.unittest_create\l_loginhashblocklist" alt="" coords="643,57,815,98"/>
-<area shape="rect" id="node8" href="$namespaceunittest.html#aa1c9f3b8631f7f60770414cf8958e2be" title="unittest.unittest_request\l_login_token" alt="" coords="1108,107,1288,149"/>
-<area shape="rect" id="node9" href="$namespaceunittest.html#a8b30a1b14f91e9e9d093c13a7e68ee93" title="unittest.unittest_request\l_login_notoken" alt="" coords="1108,173,1288,214"/>
+<area shape="rect" id="node2" href="$namespaceloginhashblock.html#a2bcc7ddd0fcc3788572dd77808cb624d" title="loginhashblock.update\l_loginhashblocklist" alt="" coords="219,129,384,170"/>
+<area shape="rect" id="node3" href="$classmain_1_1login.html#a71ff3f89aaf0f0c8502577445ab38744" title="main.login.post" alt="" coords="679,5,799,32"/>
+<area shape="rect" id="node4" href="$classmain_1_1logout.html#a726ef779e6bf4da8974eae3209276922" title="main.logout.post" alt="" coords="447,48,578,75"/>
+<area shape="rect" id="node5" href="$namespaceloginhashblock.html#a550707107141dfb228ca4294d7ea31b4" title="loginhashblock.create\l_loginhashblocklist" alt="" coords="432,99,593,141"/>
+<area shape="rect" id="node7" href="$namespaceunittest.html#a67d37c181ab73d9ac88a67b2f9ff2297" title="unittest.unittest_subfunction\l_update_loginhashblock" alt="" coords="1112,150,1317,191"/>
+<area shape="rect" id="node8" href="$namespaceunittest.html#afeccd95cc658ca5f2ffb4df7a1edbbd2" title="unittest.mok_request_post" alt="" coords="641,151,836,177"/>
+<area shape="rect" id="node11" href="$namespaceunittest.html#a9e16eaba67b93461be6ea8ef6332507a" title="unittest.unittest_update\l_loginhashblocklist" alt="" coords="651,267,827,309"/>
+<area shape="rect" id="node6" href="$namespaceunittest.html#a0e10bea14aac2cc6a08d76f422b9328d" title="unittest.unittest_create\l_loginhashblocklist" alt="" coords="888,19,1060,61"/>
+<area shape="rect" id="node9" href="$namespaceunittest.html#aa1c9f3b8631f7f60770414cf8958e2be" title="unittest.unittest_request\l_login_token" alt="" coords="884,85,1064,126"/>
+<area shape="rect" id="node10" href="$namespaceunittest.html#a8b30a1b14f91e9e9d093c13a7e68ee93" title="unittest.unittest_request\l_login_notoken" alt="" coords="884,150,1064,191"/>
 </map>

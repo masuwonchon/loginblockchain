@@ -2,7 +2,8 @@
 \label{classmain_1_1command}\index{main.\+command@{main.\+command}}
 
 
-Inheritance diagram for main.\+command\+:\nopagebreak
+Inheritance diagram for main.\+command\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -11,7 +12,8 @@ Inheritance diagram for main.\+command\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for main.\+command\+:\nopagebreak
+Collaboration diagram for main.\+command\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -30,7 +32,7 @@ def \hyperlink{classmain_1_1command_aad57d3ca75e00b96364b4dd9971f8d34}{post} (se
 \subsection{Detailed Description}
 
 
-Definition at line 274 of file main.\+py.
+Definition at line 280 of file main.\+py.
 
 
 
@@ -44,14 +46,14 @@ Definition at line 274 of file main.\+py.
 )}\hypertarget{classmain_1_1command_a45d94d28b30ca81f482a4bca1bb3bc96}{}\label{classmain_1_1command_a45d94d28b30ca81f482a4bca1bb3bc96}
 
 
-Definition at line 275 of file main.\+py.
+Definition at line 281 of file main.\+py.
 
 
 \begin{DoxyCode}
-275     \textcolor{keyword}{def }\hyperlink{classmain_1_1command_a45d94d28b30ca81f482a4bca1bb3bc96}{get}(self):
-276         response = make\_response(render\_template(\textcolor{stringliteral}{'command.html'}))
-277         \textcolor{keywordflow}{return} response
-278 
+281     \textcolor{keyword}{def }\hyperlink{classmain_1_1command_a45d94d28b30ca81f482a4bca1bb3bc96}{get}(self):
+282         response = make\_response(render\_template(\textcolor{stringliteral}{'command.html'}))
+283         \textcolor{keywordflow}{return} response
+284 
 \end{DoxyCode}
 \index{main\+::command@{main\+::command}!post@{post}}
 \index{post@{post}!main\+::command@{main\+::command}}
@@ -62,45 +64,45 @@ Definition at line 275 of file main.\+py.
 )}\hypertarget{classmain_1_1command_aad57d3ca75e00b96364b4dd9971f8d34}{}\label{classmain_1_1command_aad57d3ca75e00b96364b4dd9971f8d34}
 
 
-Definition at line 279 of file main.\+py.
+Definition at line 285 of file main.\+py.
 
 
 \begin{DoxyCode}
-279     \textcolor{keyword}{def }\hyperlink{classmain_1_1command_aad57d3ca75e00b96364b4dd9971f8d34}{post}(self):
-280         username = request.form.get(\textcolor{stringliteral}{'username'})
-281         command = request.form.get(\textcolor{stringliteral}{'command'})
-282         loginhashblock = request.form.get(\textcolor{stringliteral}{'loginhashblock'})
-283         text = \textcolor{stringliteral}{"[info:command] username: \{\}, command: \{\}, loginhashblock: \{\}"}.format(username, command, 
+285     \textcolor{keyword}{def }\hyperlink{classmain_1_1command_aad57d3ca75e00b96364b4dd9971f8d34}{post}(self):
+286         username = request.form.get(\textcolor{stringliteral}{'username'})
+287         command = request.form.get(\textcolor{stringliteral}{'command'})
+288         loginhashblock = request.form.get(\textcolor{stringliteral}{'loginhashblock'})
+289         text = \textcolor{stringliteral}{"[info:command] username: \{\}, command: \{\}, loginhashblock: \{\}"}.format(username, command, 
       loginhashblock)
-284         print(text)
-285 
-286         user = User.query.filter\_by(username=username).first()
-287 
-288         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} user:
-289             resp = \{\textcolor{stringliteral}{'username'}:\textcolor{stringliteral}{'None'}, \textcolor{stringliteral}{'command'}:command, \textcolor{stringliteral}{'loginhashblock'}:\textcolor{stringliteral}{'None'}\}
-290             \textcolor{keywordflow}{return} make\_response(resp, command)
+290         print(text)
 291 
-292         \textcolor{keywordflow}{if} command == str(3):
-293             loginhashblock = user.Lhashblock
-294 
-295         \textcolor{keywordflow}{if} command == str(4):
-296             user.Lhashblock = loginhashblock
-297             db.session.commit()
-298 
-299         resp = \{\textcolor{stringliteral}{'username'}:username, \textcolor{stringliteral}{'command'}:command, \textcolor{stringliteral}{'loginhashblock'}:loginhashblock\}
-300         \textcolor{keywordflow}{return} make\_response(resp, command)
-301 
-302 db.create\_all()
-303 
-304 api.add\_resource(index, \textcolor{stringliteral}{'/'})
-305 api.add\_resource(logout, \textcolor{stringliteral}{'/logout'})
-306 api.add\_resource(register, \textcolor{stringliteral}{'/register'})
-307 api.add\_resource(twofactor, \textcolor{stringliteral}{'/twofactor'})
-308 api.add\_resource(qrcode, \textcolor{stringliteral}{'/qrcode'})
-309 api.add\_resource(login, \textcolor{stringliteral}{'/login'})
-310 api.add\_resource(command, \textcolor{stringliteral}{'/command'})
-311 
-312 @app.errorhandler(404)
+292         user = User.query.filter\_by(username=username).first()
+293 
+294         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} user:
+295             resp = \{\textcolor{stringliteral}{'username'}:\textcolor{stringliteral}{'None'}, \textcolor{stringliteral}{'command'}:command, \textcolor{stringliteral}{'loginhashblock'}:\textcolor{stringliteral}{'None'}\}
+296             \textcolor{keywordflow}{return} make\_response(resp, command)
+297 
+298         \textcolor{keywordflow}{if} command == str(3):
+299             loginhashblock = user.Lhashblock
+300 
+301         \textcolor{keywordflow}{if} command == str(4):
+302             user.Lhashblock = loginhashblock
+303             db.session.commit()
+304 
+305         resp = \{\textcolor{stringliteral}{'username'}:username, \textcolor{stringliteral}{'command'}:command, \textcolor{stringliteral}{'loginhashblock'}:loginhashblock\}
+306         \textcolor{keywordflow}{return} make\_response(resp, command)
+307 
+308 db.create\_all()
+309 
+310 api.add\_resource(index, \textcolor{stringliteral}{'/'})
+311 api.add\_resource(logout, \textcolor{stringliteral}{'/logout'})
+312 api.add\_resource(register, \textcolor{stringliteral}{'/register'})
+313 api.add\_resource(twofactor, \textcolor{stringliteral}{'/twofactor'})
+314 api.add\_resource(qrcode, \textcolor{stringliteral}{'/qrcode'})
+315 api.add\_resource(login, \textcolor{stringliteral}{'/login'})
+316 api.add\_resource(command, \textcolor{stringliteral}{'/command'})
+317 
+318 @app.errorhandler(404)
 \end{DoxyCode}
 
 

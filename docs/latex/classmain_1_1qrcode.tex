@@ -2,7 +2,8 @@
 \label{classmain_1_1qrcode}\index{main.\+qrcode@{main.\+qrcode}}
 
 
-Inheritance diagram for main.\+qrcode\+:\nopagebreak
+Inheritance diagram for main.\+qrcode\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -11,7 +12,8 @@ Inheritance diagram for main.\+qrcode\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for main.\+qrcode\+:\nopagebreak
+Collaboration diagram for main.\+qrcode\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -28,7 +30,7 @@ def \hyperlink{classmain_1_1qrcode_af826915a83b6a4d5c91686b332662da3}{get} (self
 \subsection{Detailed Description}
 
 
-Definition at line 138 of file main.\+py.
+Definition at line 141 of file main.\+py.
 
 
 
@@ -42,29 +44,29 @@ Definition at line 138 of file main.\+py.
 )}\hypertarget{classmain_1_1qrcode_af826915a83b6a4d5c91686b332662da3}{}\label{classmain_1_1qrcode_af826915a83b6a4d5c91686b332662da3}
 
 
-Definition at line 139 of file main.\+py.
+Definition at line 142 of file main.\+py.
 
 
 \begin{DoxyCode}
-139     \textcolor{keyword}{def }\hyperlink{classmain_1_1qrcode_af826915a83b6a4d5c91686b332662da3}{get}(self):
-140         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'username'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} session:
-141             abort(404)
-142 
-143         user = User.query.filter\_by(username=session[\textcolor{stringliteral}{'username'}]).first()
-144 
-145         \textcolor{keywordflow}{if} user \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-146             abort(404)
+142     \textcolor{keyword}{def }\hyperlink{classmain_1_1qrcode_af826915a83b6a4d5c91686b332662da3}{get}(self):
+143         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'username'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} session:
+144             abort(404)
+145 
+146         user = User.query.filter\_by(username=session[\textcolor{stringliteral}{'username'}]).first()
 147 
-148         del session[\textcolor{stringliteral}{'username'}]
-149 
-150         url = pyqrcode.create(user.get\_totp\_uri())
-151         stream = BytesIO()
-152         url.svg(stream, scale=3)
-153         param = \{\textcolor{stringliteral}{'Content-Type'}: \textcolor{stringliteral}{'image/svg+xml'}, \textcolor{stringliteral}{'Cache-Control'}: \textcolor{stringliteral}{'no-cache, no-store, must-revalidate'},\textcolor{stringliteral}{'
+148         \textcolor{keywordflow}{if} user \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+149             abort(404)
+150 
+151         del session[\textcolor{stringliteral}{'username'}]
+152 
+153         url = pyqrcode.create(user.get\_totp\_uri())
+154         stream = BytesIO()
+155         url.svg(stream, scale=3)
+156         param = \{\textcolor{stringliteral}{'Content-Type'}: \textcolor{stringliteral}{'image/svg+xml'}, \textcolor{stringliteral}{'Cache-Control'}: \textcolor{stringliteral}{'no-cache, no-store, must-revalidate'},\textcolor{stringliteral}{'
       Pragma'}: \textcolor{stringliteral}{'no-cache'}, \textcolor{stringliteral}{'Expires'}: \textcolor{stringliteral}{'0'}\}
-154         response = make\_response(stream.getvalue(), 200, param)
-155         \textcolor{keywordflow}{return} response
-156 
+157         response = make\_response(stream.getvalue(), 200, param)
+158         \textcolor{keywordflow}{return} response
+159 
 \end{DoxyCode}
 
 

@@ -10,6 +10,8 @@ One of the most well-known multi-factor authentication methods is OTP (One-Time 
 In other words, using multi-factor authentication can increase the security level but with the downside of lower user convenience. It is therefore used mostly in the financial sector where additional security can be mandatorily enforced. As low convenience in the general service environment can lead to rejection by users, solutions such as blocking by IP critical value and log analysis are being used in response.
 However, these methods cannot solve the intrinsic problem of account hijacking due to low- security strength even though it provides convenience to users. Thus, the dilemma of security level vs. convenience has limitations as shown in [Figure 14]. Many enterprises struggle with business strategies to deal with account hijacking while balancing the security level and user convenience. The following method presents a hybrid solution to account hijacking with the appropriate balance of the security level and user convenience.
 
+Document: `Login Block Chain Doc <https://masuwonchon.github.io/loginblockchain>`_
+
 Versions
 ========
 
